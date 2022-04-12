@@ -18,6 +18,7 @@ const MoviePage = (
             <div className="row">
                 <div className="column">
                     <img src={movie.poster_path} width="100"/>
+                    
                 </div>
             </div>
 
