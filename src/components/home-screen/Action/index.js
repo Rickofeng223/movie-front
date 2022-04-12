@@ -1,7 +1,7 @@
 import React from "react";
-import po from "../data/movies.json";
+import po from "../../data/movies.json";
 import ActionMovies from "./ActionMovies";
-import "./actionStyle.css";
+import "../actionStyle.css";
 
 const ActMovies = () => {
   return (

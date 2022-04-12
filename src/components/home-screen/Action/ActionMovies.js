@@ -1,6 +1,6 @@
 import React from "react";
 //import "./style.css";
-import "./actionStyle.css";
+import "../actionStyle.css";
 const ActionMovies = ({
   movie = {
     imdb_id: "tt0137523",
@@ -15,18 +15,18 @@ const ActionMovies = ({
   }
 }) => {
   return (
-
     <li className={`wd-actionList`}>
       <div className={`featured-content`}>
-        <img
-          className={`featured-title imageSize`}
-          src="https://amc-theatres-res.cloudinary.com/v1644184331/amc-cdn/production/2/movies/45900/45869/PosterDynamic/134454.jpg"
-          alt=""
-        />
+        <a href="#">
+          <img
+            className={`featured-title imageSize`}
+            src="https://lumiere-a.akamaihd.net/v1/images/image_174b2bb6.jpeg"
+            alt=""
+          />
+        </a>
         <p className={`featured-desc`}>{movie.title}</p>
       </div>
     </li>
-    
   );
 };
 

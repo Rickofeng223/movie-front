@@ -1,5 +1,5 @@
 .wd-actionList{
-    display: inline-block;
+    display: inline-flex;
     margin: 0 20px;
 }
 .menu{

@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
-import MoviePage from "./components/movie-page";
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeScreen from './components/home-screen/HomeScreen';
 
 

@@ -1,7 +1,10 @@
 import React from "react";
-import ActMovies from "../Action";
-import MoviePage from "../movie-page";
+import ActMovies from "./Action/index";
 import NavigationSidebar from "../NavigationSideBar";
+import Comedy from "./Comedy";
+import Drama from "./Drama";
+
+
 
 const HomeScreen = () => {
   return (
@@ -10,10 +13,9 @@ const HomeScreen = () => {
       <h1>Action</h1>
       <ActMovies />
       <h1>Comedy</h1>
-      <h1>Horror</h1>
-      <h1>Romance</h1>
-      <MoviePage />
-      
+      <Comedy/>
+      <h1>Drama</h1>
+      <Drama/>
     </div>
   );
 };
