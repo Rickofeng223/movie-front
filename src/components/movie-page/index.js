@@ -32,7 +32,7 @@ const MoviePage = (
                     <p>{movie.overview}</p>
                     <a href={movie.homepage}>More info</a>
 
-                    <h2>Reviews</h2>
+                    <h2 className="mt-4">Reviews</h2>
                     <ReviewList/>
                 </div>
             </div>
