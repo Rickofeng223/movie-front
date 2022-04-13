@@ -19,7 +19,7 @@ const MoviePage = (
         <>
             <div className="row">
                 <div className="col-2">
-                    <img src={movie.poster_path} width="50"/>
+                    <img src={movie.poster_path} width="150"/>
                     <div className="row">
                         <button>Write Review</button>
                     </div>

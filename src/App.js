@@ -2,6 +2,7 @@ import './App.css';
 
 import MoviePage from "./components/movie-page";
 import "./vendors/bootstrap/css/bootstrap.css"
+import "./vendors/fontawesome/css/all.css"
 
 function App() {
   return (
