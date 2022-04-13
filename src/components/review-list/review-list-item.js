@@ -19,14 +19,12 @@ const ReviewListItem = (
                 <div className="col">
                     <div className="row">
                         <img src="../../../public/images/user.jpeg" width="50"/>
-                        <h4>{review.user_id} (name)</h4>
+                        <h4>{review.user_id}</h4>
+                        <span className="float-right">{review.time}</span>
                     </div>
                 </div>
 
                 <div className="col">
-                    <div className="row">
-                        <span className="float-right">{review.time}</span>
-                    </div>
 
                     <p>{review.content}</p>
 

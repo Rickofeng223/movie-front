@@ -25,18 +25,17 @@ const MoviePage = (
                 <div className="col-2">
                     <img src={movie.poster_path} width="150"/>
                     <div className="row">
-                        <button>Write Review</button>
+                        <button className="btn btn-primary btn-block rounded-pill w-100 mt-2">Write Review</button>
                     </div>
                 </div>
 
-                <div className="col-8">
+                <div className="col-8 ml-3">
                     <h1>{movie.title}</h1>
                     <span>{movie.genres[0].name}</span> | <span>{movie.release_date}</span>
                     <h4>Overview</h4>
                     <p>{movie.overview}</p>
                     <a href={movie.homepage}>More info</a>
 
-                    <h2 className="mt-4">Reviews</h2>
                     <ReviewList/>
                 </div>
             </div>
