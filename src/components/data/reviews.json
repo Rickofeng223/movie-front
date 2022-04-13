@@ -3,7 +3,7 @@
     "wd_id": "nwwejf923f",
     "tmdb_id": 550,
     "user_id":"931864",
-    "content":"this is my favorite movie",
+    "content":"this is my favorite movie, I watch it all the time",
     "time": "2022-03-12 11:59pm est",
     "likes":2,
     "dislikes":0
@@ -12,10 +12,20 @@
   {
     "wd_id": "qw34r",
     "tmdb_id": 550,
-    "user_id":"931864",
-    "content":"this is my favorite movie",
-    "time": "2022-03-12 11:59pm est",
-    "likes":2,
-    "dislikes":0
+    "user_id":"24643",
+    "content":"Did not see the twist ending coming, won't spoil but worth the watch",
+    "time": "2022-03-10 9:30am pst",
+    "likes":5,
+    "dislikes":2
+  },
+
+  {
+    "wd_id": "vegrg53",
+    "tmdb_id": 550,
+    "user_id":"13435",
+    "content":"I hated this movie but I also don't like Brad Pitt so I am biased",
+    "time": "2022-03-10 9:30am pst",
+    "likes":4,
+    "dislikes":9
   }
 ]
