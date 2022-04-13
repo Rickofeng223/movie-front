@@ -7,5 +7,15 @@
     "time": "2022-03-12 11:59pm est",
     "likes":2,
     "dislikes":0
+  },
+
+  {
+    "wd_id": "qw34r",
+    "tmdb_id": 550,
+    "user_id":"931864",
+    "content":"this is my favorite movie",
+    "time": "2022-03-12 11:59pm est",
+    "likes":2,
+    "dislikes":0
   }
 ]
