@@ -28,7 +28,7 @@ const MoviePage = (
                 <div className="col-8">
                     <h1>{movie.title}</h1>
                     <span>{movie.genres[0].name}</span> | <span>{movie.release_date}</span>
-                    <h3>Overview</h3>
+                    <h4>Overview</h4>
                     <p>{movie.overview}</p>
                     <a href={movie.homepage}>More info</a>
 

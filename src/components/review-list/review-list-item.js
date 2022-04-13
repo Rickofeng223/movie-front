@@ -15,14 +15,16 @@ const ReviewListItem = (
 ) => {
     return (
         <>
-            <li>
+            <li className="card p-4 mb-2">
                 <div className="col">
-                    <img src="" width="20"/>
+                    <div className="row">
+                        <img src="../../../public/images/user.jpeg" width="50"/>
+                        <h4>{review.user_id} (name)</h4>
+                    </div>
                 </div>
 
                 <div className="col">
                     <div className="row">
-                        <h4 className="float-left">{review.user_id}</h4>
                         <span className="float-right">{review.time}</span>
                     </div>
 
