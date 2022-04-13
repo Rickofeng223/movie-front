@@ -29,8 +29,8 @@ const ReviewListItem = (
                     <p>{review.content}</p>
 
                     <div className="row">
-                        <i className="fa-solid fa-thumbs-up">{review.likes}</i>
-                        <i className="fa-solid fa-thumbs-down">{review.dislikes}</i>
+                        <i className="fa-solid fa-thumbs-up">{review.likes} likes</i>
+                        <i className="fa-solid fa-thumbs-down">{review.dislikes} dislikes</i>
                     </div>
 
                 </div>

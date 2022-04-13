@@ -1,5 +1,5 @@
 import React from "react";
-import reviews from "./reviews.json"
+import reviews from "../data/reviews.json"
 import ReviewListItem from "./review-list-item";
 
 const ReviewList = () => {
@@ -17,3 +17,5 @@ const ReviewList = () => {
         </>
     );
 }
+
+export default ReviewList;
