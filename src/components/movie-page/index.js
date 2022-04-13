@@ -18,6 +18,10 @@ const MoviePage = (
     return(
         <>
             <div className="row">
+                <span className="mb-3"><i className="fa-solid fa-arrow-left"/> Back</span>
+            </div>
+
+            <div className="row">
                 <div className="col-2">
                     <img src={movie.poster_path} width="150"/>
                     <div className="row">
