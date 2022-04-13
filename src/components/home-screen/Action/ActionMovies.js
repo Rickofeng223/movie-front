@@ -1,6 +1,9 @@
 import React from "react";
 //import "./style.css";
 import "../actionStyle.css";
+
+
+//   http://api.themoviedb.org/3/genre/movie/list?api_key=f48cf3e24ec9e89cc63cc40d1d8975c1
 const ActionMovies = ({
   movie = {
     imdb_id: "tt0137523",
