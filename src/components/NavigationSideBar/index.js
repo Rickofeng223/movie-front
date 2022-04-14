@@ -1,5 +1,7 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+
+import React, { useRef, useState} from "react";
+import { Link, useLocation } from "react-router-dom";
+import MovieSearchList from "../movie-search/MovieSearch";
 //import { useLocation } from "react-router-dom";
 
 const NavigationSidebar = () => {
@@ -10,6 +12,11 @@ const NavigationSidebar = () => {
   console.log(locationArray);
   console.log(locationArray[locationArray.length - 1]);
   const currentPart = locationArray[locationArray.length - 1];
+
+  const [inputMovie,setInputMovie] = useState("");
+
+  const searchRef = useRef();
+  
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-primary`}>
@@ -32,9 +39,9 @@ const NavigationSidebar = () => {
         <div className={`collapse navbar-collapse`} id="navbarColor01">
           <ul className={`navbar-nav me-auto`}>
             <li className={`nav-item `}>
-              <a className={`nav-link `} href="#">
+              <Link to={"/home"} className={`nav-link `}>
                 Home
-              </a>
+              </Link>
             </li>
             <li className={`nav-item`}>
               <a className={`nav-link`} href="#">
@@ -43,7 +50,6 @@ const NavigationSidebar = () => {
             </li>
             <li className={`nav-item`}>
               <a className={`nav-link`} href="#">
-                {" "}
                 Movie
               </a>
             </li>
@@ -79,11 +85,20 @@ const NavigationSidebar = () => {
             <input
               className={`form-control me-sm-2`}
               type="text"
-              placeholder="Search"
+              placeholder="Search Movies"
+              //ref={searchRef}
+              onChange={(x)=> setInputMovie(x.target.value)}
+              value = {inputMovie}
             />
-            <button className={`btn btn-secondary my-2 my-sm-0`} type="submit">
-              Search
-            </button>
+            <Link to={"/home/search"}>
+              <button
+                className={`btn btn-secondary my-2 my-sm-0`}
+                type="submit"
+                onClick={MovieSearchList.searchByTitle}
+              >
+                Search
+              </button>
+            </Link>
           </form>
         </div>
       </div>
