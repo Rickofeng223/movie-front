@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import ReviewList from "../review-list";
+import WriteReviewModal from "../write-review-modal";
 
 const MoviePage = (
     {
@@ -15,6 +16,9 @@ const MoviePage = (
             "vote_average":8.4
         }
     }) => {
+
+    const[show, setShow] = useState(false)
+
     return(
         <>
             <div className="row">
@@ -22,12 +26,16 @@ const MoviePage = (
             </div>
 
             <div className="row">
-                <div className="col-2">
+                <div className="sticky col-2">
                     <img src={movie.poster_path} width="150"/>
                     <div className="row">
-                        <button className="btn btn-primary btn-block rounded-pill w-100 mt-2">Write Review</button>
+                        <button className="btn btn-primary btn-block rounded-pill w-100 mt-2"
+                                onClick={() => setShow(true) }>Write Review</button>
+                        <WriteReviewModal show={show}/>
                     </div>
                 </div>
+
+
 
                 <div className="col-8 ml-3">
                     <h1>{movie.title}</h1>

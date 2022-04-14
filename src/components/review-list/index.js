@@ -5,9 +5,12 @@ import ReviewListItem from "./review-list-item";
 const ReviewList = () => {
     return(
         <>
-            <row>
+            <div>
                 <h2 className="mt-4">Reviews</h2>
-                <label className="">
+            </div>
+
+            <div className="row">
+                <label className="float-right ml-3">
                     Filter
                     <select>
                         <option value="recent">Recent</option>
@@ -15,9 +18,9 @@ const ReviewList = () => {
                         <option value="disliked">Most dislikes</option>
                     </select>
                 </label>
-            </row>
+            </div>
 
-            <ul>
+            <ul className="">
                 {
                     reviews.map(reviews => {
                         return(
