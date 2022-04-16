@@ -1,11 +1,12 @@
 import './App.css';
 
 import MoviePage from "./components/movie-page";
+import Login from "./components/login";
 
 function App() {
   return (
       <div className="container">
-        
+        <Login/>
       </div>
   );
 }
