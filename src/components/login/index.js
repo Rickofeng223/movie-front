@@ -12,12 +12,12 @@ const Login = () => {
                 </p>
                 <form>
                     <div className="row">
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="username">Username</label><br/>
                         <input type="text" id="username" placeholder="example@aol.com"/>
                     </div>
 
                     <div className="row">
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password">Password</label><br/>
                         <input type="password" id="password"/>
                     </div>
 
