@@ -17,7 +17,7 @@ const MoviePage = (
         }
     }) => {
 
-    const[show, setShow] = useState(false)
+    const[modalShow, setModalShow] = React.useState(false)
 
     return(
         <>
@@ -30,8 +30,10 @@ const MoviePage = (
                     <img src={movie.poster_path} width="150"/>
                     <div className="row">
                         <button className="btn btn-primary btn-block rounded-pill w-100 mt-2"
-                                onClick={() => setShow(true) }>Write Review</button>
-                        <WriteReviewModal show={show}/>
+                                onClick={() => setModalShow(true)}>Write Review</button>
+                        <WriteReviewModal
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}/>
                     </div>
                 </div>
 

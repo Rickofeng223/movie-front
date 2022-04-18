@@ -1,28 +1,32 @@
 import React from "react";
-import "./modal.css"
+import {Button, Modal} from "react-bootstrap";
 
-const WriteReviewModal = prop => {
-    if (!prop.show) {
-        return null
-    }
+const WriteReviewModal = props => {
     return (
         <>
-            <div className="modal">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h4 className="modal-title">Write a Review</h4>
-                    </div>
-                    <div className="modal-body">
-                        This is where the content will go
-                    </div>
-                    <div className="modal-footer">
-                        <button className="button">Close</button>
-                        <button className="button">Publish</button>
-                    </div>
-                </div>
-            </div>
+            <Modal
+                {...props}
+                size="lg"
+                centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        Write a Review
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form>
+                        <textarea>
+                            What did you think? Tell us!
+                        </textarea>
+                    </form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={props.onHide}>Cancel</Button>
+                    <Button>Submit</Button>
+                </Modal.Footer>
+            </Modal>
         </>
-    )
+    );
 }
 
 export default WriteReviewModal;
