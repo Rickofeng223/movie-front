@@ -21,7 +21,7 @@ const WriteReviewModal = props => {
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Cancel</Button>
+                    <Button className="btn-secondary" onClick={props.onHide}>Cancel</Button>
                     <Button>Submit</Button>
                 </Modal.Footer>
             </Modal>
