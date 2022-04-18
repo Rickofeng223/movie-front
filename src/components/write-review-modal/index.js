@@ -15,9 +15,13 @@ const WriteReviewModal = props => {
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <textarea>
-                            What did you think? Tell us!
+                        <textarea
+                            className="form-control mb-4"
+                            placeholder="What did you think? Tell us!">
                         </textarea>
+
+                        <label htmlFor="customRange3" className="form-label">On a scale of 1-5, how would you rate this movie</label>
+                        <input type="range" className="form-range" min="0" max="5" step="0.5" id="customRange3"/>
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
