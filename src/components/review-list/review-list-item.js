@@ -18,9 +18,15 @@ const ReviewListItem = (
             <li className="card p-4 mb-2">
                 <div className="col">
                     <div className="row">
-                        <img src="../../../public/images/user.jpeg" width="50"/>
-                        <h6>{review.user_id}</h6>
-                        <span className="float-right">{review.time}</span>
+                        <div className="col">
+                            <img src="/public/images/user.jpeg" width="50"/>
+                        </div>
+                        <div className="col">
+                            <h6>{review.user_id}</h6>
+                        </div>
+                        <div className="col">
+                            <span className="float-right">{review.time}</span>
+                        </div>
                     </div>
                 </div>
 

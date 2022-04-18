@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import ReviewList from "../review-list";
 import WriteReviewModal from "../write-review-modal";
+import StickyBoxComp, {UseStickyBoxOptions} from "react-sticky-box";
 
 const MoviePage = (
     {
@@ -25,9 +26,9 @@ const MoviePage = (
                 <span className="mb-3"><i className="fa-solid fa-arrow-left"/> Back</span>
             </div>
 
-            <div className="row">
-                <div className="sticky col-2">
-                    <img src={movie.poster_path} width="150"/>
+            <div className="row flex-row">
+                <div className="col-2">
+                    <img src={movie.poster_path} width="180"/>
                     <div className="row">
                         <button className="btn btn-primary btn-block rounded-pill w-100 mt-2"
                                 onClick={() => setModalShow(true)}>Write Review</button>
@@ -36,6 +37,7 @@ const MoviePage = (
                             onHide={() => setModalShow(false)}/>
                     </div>
                 </div>
+
 
 
 
