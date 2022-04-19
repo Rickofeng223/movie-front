@@ -1,10 +1,9 @@
-
-import React, { useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import MovieSearchList from "../movie-search/MovieSearch";
 //import { useLocation } from "react-router-dom";
 
-const NavigationSidebar = () => {
+const NavigationSidebar = ({ handleSearch }) => {
   console.log(window.location.href); // window location for url example: http://localhost:3000/tuiter/home
   const location = useLocation(); // get the current location
   console.log(location.pathname); // /tuiter/home
@@ -13,10 +12,9 @@ const NavigationSidebar = () => {
   console.log(locationArray[locationArray.length - 1]);
   const currentPart = locationArray[locationArray.length - 1];
 
-  const [inputMovie,setInputMovie] = useState("");
+  const [inputMovie, setInputMovie] = useState("");
 
   const searchRef = useRef();
-  
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-primary`}>
@@ -87,14 +85,14 @@ const NavigationSidebar = () => {
               type="text"
               placeholder="Search Movies"
               //ref={searchRef}
-              onChange={(x)=> setInputMovie(x.target.value)}
-              value = {inputMovie}
+              onChange={(x) => setInputMovie(x.target.value)}
+              value={inputMovie}
             />
-            <Link to={"/home/search"}>
+            <Link to={`/home/search/${inputMovie}`}>
               <button
                 className={`btn btn-secondary my-2 my-sm-0`}
                 type="submit"
-                onClick={MovieSearchList.searchByTitle}
+                onClick={() => handleSearch(inputMovie)}
               >
                 Search
               </button>
