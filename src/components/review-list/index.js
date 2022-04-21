@@ -1,28 +1,39 @@
-import React from "react";
-import reviews from "../data/reviews.json"
+import React, {useEffect, useState} from "react";
+//import reviews from "../data/reviews.json"
 import ReviewListItem from "./review-list-item";
+import {useSelector} from "react-redux";
 
 const ReviewList = () => {
+    const [data, setData] = useState(useSelector(state => state.reviews))
+    //const [data, setData] = useState([]);
+    const [sortType, setSort] = useState('recent');
+
+    useEffect(() => {
+
+        const sorted = data.sort((a, b) => b[sortType] - a[sortType]);
+        setData(sorted);
+
+
+    }, [sortType]);
+
     return(
         <>
-            <div>
-                <h2 className="mt-4">Reviews</h2>
-            </div>
-
             <div className="row">
-                <label className="float-right ml-3">
-                    Filter
-                    <select>
-                        <option value="recent">Recent</option>
-                        <option value="liked">Most likes</option>
-                        <option value="disliked">Most dislikes</option>
-                    </select>
-                </label>
+                <div>
+                    <h2 className="mt-4">Reviews</h2>
+                </div>
+
+                <select onChange={(event) => setSort(event.target.value)}
+                        className="float-end w-25">
+                    <option value="recent">Recent</option>
+                    <option value="likes">Most likes</option>
+                    <option value="dislikes">Most dislikes</option>
+                </select>
             </div>
 
             <ul className="">
                 {
-                    reviews.map(reviews => {
+                    data.map(reviews => {
                         return(
                             <ReviewListItem review={reviews}/>
                         );

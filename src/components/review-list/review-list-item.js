@@ -19,9 +19,6 @@ const ReviewListItem = (
                 <div className="col">
                     <div className="row">
                         <div className="col">
-                            <img src="/public/images/user.jpeg" width="50"/>
-                        </div>
-                        <div className="col">
                             <h6>{review.user_id}</h6>
                         </div>
                         <div className="col">
