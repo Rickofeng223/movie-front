@@ -24,6 +24,9 @@ const ReviewListItem = (
                         <div className="col">
                             <span className="float-right">{review.time}</span>
                         </div>
+                        <div className="col mr-1">
+
+                        </div>
                     </div>
                 </div>
 
