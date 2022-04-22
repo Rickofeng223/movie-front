@@ -26,8 +26,8 @@ const ReviewList = () => {
                 <select onChange={(event) => setSort(event.target.value)}
                         className="float-end w-25">
                     <option value="recent">Recent</option>
-                    <option value="likes">Most likes</option>
-                    <option value="dislikes">Most dislikes</option>
+                    <option value="likes">Most dislikes</option>
+                    <option value="dislikes">Most likes</option>
                 </select>
             </div>
 
