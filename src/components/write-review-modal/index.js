@@ -5,16 +5,16 @@ import {useDispatch, useSelector} from "react-redux";
 
 const WriteReviewModal = props => {
     let [reviewModal, setReviewModal] = useState('');
-    let [reviewsState, setReviewsState] = props.reviewsState;
+    //let [reviewsState, setReviewsState] = props.reviewsState;
     const dispatch = useDispatch();
-    const revs = useSelector(s=>s.reviews);
+    //const revs = useSelector(s=>s.reviews);
     const reviewClickHandler = () => {
-        console.log(reviewModal)
+        //console.log(reviewModal)
         dispatch({type: 'create-review',
         review: reviewModal
         });
-        setReviewsState(revs);
-
+        //setReviewsState(revs);
+        //console.log(revs);
     }
     return (
         <>

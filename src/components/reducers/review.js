@@ -18,13 +18,12 @@ const reviewReducer =
                 newReview,
                 ...state,
             ];
-            console.log(rv.find(item=>item.time===time));
+            console.log(rv);
             return rv;
         default:
             console.log('hit default');
-            return reviews
+            return state;
     }
-    console.log('unreachable code');
 }
 
 export default reviewReducer;

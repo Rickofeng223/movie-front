@@ -3,15 +3,20 @@ import React, {useEffect, useState} from "react";
 import ReviewListItem from "./review-list-item";
 import {useSelector} from "react-redux";
 
-const ReviewList = ({reviewsState: [reviewsData, setReviewsData]}) => {
+const ReviewList = () => {
 
+    const reviews = useSelector(s=>s.reviews);
+    let sorted = reviews
+    let [sortedData, setSorted] = useState(sorted);
     //const [data, setData] = useState([]);
     const [sortType, setSort] = useState('recent');
 
     useEffect(() => {
 
-        const sorted = reviewsData.sort((a, b) => b[sortType] - a[sortType]);
-        setReviewsData(sorted);
+        //const sorted = reviewsData.sort((a, b) => b[sortType] - a[sortType]);
+        let temp = sortedData.sort((a, b) => b[sortType] - a[sortType]);
+        setSorted(temp);
+        //setReviewsData(sorted);
 
 
     }, [sortType]);
@@ -33,7 +38,7 @@ const ReviewList = ({reviewsState: [reviewsData, setReviewsData]}) => {
 
             <ul className="">
                 {
-                    reviewsData.map(reviews => {
+                    sorted.map(reviews => {
                         return(
                             <ReviewListItem review={reviews}/>
                         );
