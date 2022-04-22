@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import ReviewList from "../review-list";
 import WriteReviewModal from "../write-review-modal";
-import StickyBoxComp, {UseStickyBoxOptions} from "react-sticky-box";
+import {useSelector} from "react-redux";
+
 
 const MoviePage = (
     {
@@ -17,6 +18,9 @@ const MoviePage = (
             "vote_average":8.4
         }
     }) => {
+
+    const reviews = useSelector(state => state.reviews);
+    const [reviewsData, setReviewsData] = useState(reviews);
 
     const[modalShow, setModalShow] = React.useState(false)
 
@@ -34,6 +38,7 @@ const MoviePage = (
                                 onClick={() => setModalShow(true)}>Write Review</button>
                         <WriteReviewModal
                             show={modalShow}
+                            reviewsState={[reviewsData, setReviewsData]}
                             onHide={() => setModalShow(false)}/>
                     </div>
                 </div>
@@ -48,7 +53,7 @@ const MoviePage = (
                     <h3>Overview</h3>
                     <p>{movie.overview}</p>
                     <a href={movie.homepage}>More info</a>
-                    <ReviewList/>
+                    <ReviewList reviewsState={[reviewsData, setReviewsData]}/>
                 </div>
             </div>
         </>
