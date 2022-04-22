@@ -18,14 +18,13 @@ const ReviewListItem = (
             <li className="card p-4 mb-2">
                 <div className="col">
                     <div className="row">
-                        <div className="col">
+                        <div className="col mb-3">
                             <h6>{review.user_id}</h6>
+                            <small className="">{review.time}</small>
                         </div>
-                        <div className="col">
-                            <span className="float-right">{review.time}</span>
-                        </div>
-                        <div className="col mr-1">
 
+                        <div className="col">
+                            <i className="float-end fa-solid fa-trash-can"/>
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,7 @@ const reviewReducer =
                 likes: 0,
                 dislikes: 0
             }
+            console.log('reducer!');
             return [
                 newReview,
                 ...state,
