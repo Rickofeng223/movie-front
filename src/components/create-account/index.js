@@ -3,34 +3,15 @@ import React from "react";
 const CreateAccount = () => {
     return(
         <>
-            <div className="d-flex flex-column">
-                <h2>Create Account</h2>
-
-                <form>
-                    <div className="row">
-                        <label htmlFor="name">Name</label><br/>
-                        <input type="text" id="name" placeholder="example@aol.com"/>
-                    </div>
-
-                    <div className="row">
-                        <label htmlFor="username">Username</label><br/>
-                        <input type="text" id="username" placeholder="example@aol.com"/>
-                    </div>
-
-                    <div className="row">
-                        <label htmlFor="password">Password</label><br/>
-                        <input type="password" id="password"/>
-                    </div>
-
-                    <button>
-                        Create Account
-                    </button>
-                </form>
-
-                <p>Already have an account?</p>
-                <a href="">Login</a>
-
+            <div className="row d-flex justify-content-center">
+                <div className="col-4">
+                    <h2>Heading</h2>
+                </div>
+                <div className="col-4">
+                    <h2>Heading</h2>
+                </div>
             </div>
+
         </>
     )
 };
