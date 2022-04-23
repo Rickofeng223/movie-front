@@ -20,6 +20,9 @@ const reviewReducer =
             ];
             console.log(rv);
             return rv;
+        case 'delete-review':
+            return state.filter(
+                review => review.wd_id !== action.review.wd_id);
         default:
             console.log('hit default');
             return state;

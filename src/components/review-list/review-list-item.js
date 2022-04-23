@@ -1,4 +1,5 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 
 const ReviewListItem = (
     {
@@ -13,6 +14,12 @@ const ReviewListItem = (
         }
     }
 ) => {
+
+    const dispatch = useDispatch();
+    const deleteReview = (review) => {
+        dispatch({type: 'delete-review', review})
+    }
+
     return (
         <>
             <li className="card p-4 mb-2">
@@ -24,7 +31,9 @@ const ReviewListItem = (
                         </div>
 
                         <div className="col">
-                            <i className="float-end fa-solid fa-trash-can"/>
+                            <i className="float-end fa-solid fa-trash-can"
+                                onClick={() => {
+                                    deleteReview(review)}}/>
                         </div>
                     </div>
                 </div>
