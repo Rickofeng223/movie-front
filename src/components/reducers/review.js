@@ -23,7 +23,8 @@ const reviewReducer =
         case 'delete-review':
             return state.filter(
                 review => review.wd_id !== action.review.wd_id);
-        case 'like-tuit':
+        case 'like-review':
+            console.log('like');
             return state.map(review => {
                 if (review.wd_id === action.review.wd_id) {
                     if (review.liked === true) {
