@@ -3,6 +3,10 @@ import React, {useEffect, useState} from "react";
 import ReviewListItem from "./review-list-item";
 import {useSelector} from "react-redux";
 
+const sortRecent = (a, b) => b.recent - a.recent;
+const sortLikes = (a, b) => b.likes - a.likes;
+const sortDislikes = (a, b) => b.dislikes - a.dislikes;
+
 const ReviewList = () => {
 
     const reviews = useSelector(s=>s.reviews);
@@ -13,9 +17,24 @@ const ReviewList = () => {
 
     useEffect(() => {
 
+        let temp;
+        switch (sortType) {
+            case "recent":
+                temp = sortedData.sort(sortRecent);
+                setSorted(temp);
+                break
+            case "likes":
+                temp = sortedData.sort(sortLikes);
+                setSorted(temp);
+                break
+            case "dislikes":
+                temp = sortedData.sort(sortDislikes);
+                setSorted(temp);
+                break
+        }
         //const sorted = reviewsData.sort((a, b) => b[sortType] - a[sortType]);
-        let temp = sortedData.sort((a, b) => b[sortType] - a[sortType]);
-        setSorted(temp);
+        //temp = sortedData.sort((a, b) => b[sortType] - a[sortType]);
+        //setSorted(temp);
         //setReviewsData(sorted);
 
 
