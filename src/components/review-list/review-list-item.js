@@ -10,7 +10,9 @@ const ReviewListItem = (
             "content":"this is my favorite movie",
             "time": "2022-03-12 11:59pm est",
             "likes":2,
-            "dislikes":0
+            "dislikes":0,
+            "liked":false,
+            "disliked": false
         }
     }
 ) => {
@@ -18,6 +20,10 @@ const ReviewListItem = (
     const dispatch = useDispatch();
     const deleteReview = (review) => {
         dispatch({type: 'delete-review', review})
+    }
+
+    const likeReview = (review) => {
+        dispatch({type: 'like-review', review})
     }
 
     return (
@@ -42,9 +48,23 @@ const ReviewListItem = (
 
                     <p>{review.content}</p>
 
-                    <div className="row">
-                        <span className="mr-3"><i className="fa-solid fa-thumbs-up"/> {review.likes} likes</span>
-                        <span><i className="fa-solid fa-thumbs-down"/> {review.dislikes} dislikes</span>
+                    <div className="row d-inline">
+                        <span className="mr-3"
+                            onClick={likeReview}>
+                            {
+                                review.liked &&
+                                <i className="fa-solid fa-thumbs-up"
+                                    style={{color: 'purple'}}/>
+                            }
+                            {
+                                !review.liked &&
+                                <i className="fa-solid fa-thumbs-up"/>
+                            }
+                            {review.likes} likes
+                        </span>
+                        <span>
+                            <i className="fa-solid fa-thumbs-down"/> {review.dislikes} dislikes
+                        </span>
                     </div>
 
                 </div>
