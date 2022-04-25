@@ -26,9 +26,9 @@ const MoviePage = (
 
     return(
         <>
-            <div className="row">
+            {/* <div className="row">
                 <span className="mb-3"><i className="fa-solid fa-arrow-left"/> Back</span>
-            </div>
+            </div> */}
 
             <div className="row flex-row">
                 <div className="col-2">

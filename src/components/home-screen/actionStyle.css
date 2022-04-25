@@ -1,0 +1,15 @@
+.wd-actionList {
+  display: inline-flex;
+  margin: 0 10px;
+}
+.menu {
+  padding-left: 0;
+}
+
+.imageSize {
+  width: 200px;
+  height: 300px;
+}
+.wd-text-size {
+  width: 80%;
+}
