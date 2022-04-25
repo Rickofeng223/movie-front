@@ -65,7 +65,7 @@ const NavigationSidebar = () => {
               </Link>
             </li>
             <li className={`nav-item`}>
-              <Link className={`nav-link`} to="/home/createAccount">
+              <Link className={`nav-link`} to="/home/login">
                 Login
               </Link>
             </li>

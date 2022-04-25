@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeScreen from "./components/home-screen/HomeScreen";
 import MoviePage from "./components/movie-page";
-import CreateAccount from "./components/create-account";
+
 
 import "./vendors/bootstrap/blue-SkyTh/bootstrap.min.css";
 import "./vendors/fontawesome/css/all.min.css";
@@ -14,6 +14,7 @@ import reviewReducer from "./components/reducers/review";
 import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import ProfileComponent from "./components/profile";
+import Login from "./components/login";
 const reducer = combineReducers({
   reviews: reviewReducer,
 });
@@ -35,12 +36,12 @@ function App() {
               <Route
                 path="home/moviedetail"
                 exact={true}
-                element={<MoviePage />}
+                element={<MoviePage /> }
               />
               <Route
-                path="home/createAccount"
+                path="home/login"
                 exact={true}
-                element={<CreateAccount />}
+                element={<Login/>}
               />
               <Route
                 path="home/profile"
