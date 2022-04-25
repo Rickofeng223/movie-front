@@ -10,7 +10,7 @@ import CreateAccount from "./components/create-account";
 function App() {
   return (
       <div className="container">
-        <Login/>
+        <CreateAccount/>
       </div>
   );
 }
