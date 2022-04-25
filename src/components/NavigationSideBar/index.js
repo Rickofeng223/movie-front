@@ -1,22 +1,28 @@
 import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import MovieSearchList from "../movie-search/MovieSearch";
 //import { useLocation } from "react-router-dom";
 
-const NavigationSidebar = ({ handleSearch }) => {
-  console.log(window.location.href); // window location for url example: http://localhost:3000/tuiter/home
+const NavigationSidebar = () => {
+  // console.log(window.location.href); // window location for url example: http://localhost:3000/tuiter/home
   const location = useLocation(); // get the current location
-  console.log(location.pathname); // /tuiter/home
+  // console.log(location.pathname); // /tuiter/home
   const locationArray = location.pathname.split("/");
-  console.log(locationArray);
-  console.log(locationArray[locationArray.length - 1]);
+  // console.log(locationArray);
+  // console.log(locationArray[locationArray.length - 1]);
   const currentPart = locationArray[locationArray.length - 1];
+
+  const pathParams = window.location.pathname.split("/");
+
+  // React.useEffect(() => {
+  //   if (pathParams.length >= 4) {
+  //     setInputMovie(pathParams[3]);
+  //   }
+  // }, [pathParams]);
 
   const [inputMovie, setInputMovie] = useState("");
 
-  const navigation = useSelector((state) => state.homeReducer);
-  //const searchRef = useRef();
+  const searchRef = useRef();
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-primary`}>
@@ -94,7 +100,7 @@ const NavigationSidebar = ({ handleSearch }) => {
               <button
                 className={`btn btn-secondary my-2 my-sm-0`}
                 type="submit"
-                onClick={() => handleSearch(inputMovie)}
+                onClick={MovieSearchList.searchByTitle}
               >
                 Search
               </button>

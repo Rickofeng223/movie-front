@@ -6,6 +6,7 @@ import HomeScreen from "./components/home-screen/HomeScreen";
 import "./vendors/bootstrap/blue-SkyTh/bootstrap.min.css";
 import "./vendors/fontawesome/css/all.min.css";
 import SearchList from "./components/movie-search";
+import NavigationSidebar from "./components/NavigationSideBar";
 
 //import "./vendors/jquery/jquery-3.6.0.min"
 
@@ -13,6 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container">
+        <NavigationSidebar />
         <Routes>
           <Route path="/">
             <Route path="/" element={<HomeScreen />} />

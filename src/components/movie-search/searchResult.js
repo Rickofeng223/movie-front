@@ -2,22 +2,7 @@ import React from "react";
 import "../home-screen/actionStyle.css";
 
 const SearchResult = ({ m }) => {
-  // const [movies, setMovies] = useState([]);
-  // const [loaded, setLoaded] = useState(true);
-  // const ActionUrl =
-  //   "https://api.themoviedb.org/3/discover/movie?api_key=f48cf3e24ec9e89cc63cc40d1d8975c1&with_genres=35";
-
-  // const getAction = async () => {
-  //   const response = await axios.get(`${ActionUrl}`);
-  //   setMovies(response.data.results.slice(0,5));
-  //   setLoaded(true);
-  // };
-
-  // useEffect(() => {
-  //   if (loaded) {
-  //     getAction();
-  //   }
-  // });
+  
   const getImage = (path) => `https://image.tmdb.org/t/p/original${path}`;
 
   return (

@@ -1,40 +1,39 @@
 import React from "react";
-import ActMovies from "./Action/index";
-import NavigationSidebar from "../NavigationSideBar";
+import Movies from "./movies/index";
 
-import homeReducer from "../reducers/home-reducers";
-import { Provider } from "react-redux";
-import { combineReducers, createStore } from "redux";
-
-import Horror from "./Horror";
-import UpcomingMovies from "./UpComing";
-
-//fetch()
-// https://image.tmdb.org/t/p/original/bvYjhsbxOBwpm8xLE5BhdA3a8CZ.jpg
-///zlyhKMi2aLk25nOHnNm43MpZMtQ.jpg
-// api_key=f48cf3e24ec9e89cc63cc40d1d8975c1
-
-const reducer = combineReducers({
-  homeReducer
-});
-
-const store = createStore(reducer);
+const movieCategories = [
+  {
+    title: "New Release",
+    dataUrl:
+      "https://api.themoviedb.org/3/movie/upcoming?api_key=f48cf3e24ec9e89cc63cc40d1d8975c1&language=en-US&page=1",
+  },
+  {
+    title: "Action",
+    dataUrl:
+      "https://api.themoviedb.org/3/discover/movie?api_key=f48cf3e24ec9e89cc63cc40d1d8975c1&with_genres=28",
+  },
+  {
+    title: "Horror",
+    dataUrl:
+      "https://api.themoviedb.org/3/discover/movie?api_key=f48cf3e24ec9e89cc63cc40d1d8975c1&with_genres=27",
+  },
+];
 
 const HomeScreen = () => {
+  // const [movieList, setMovieList] = React.useState([]);
+
+  // React.useEffect(() => {
+  //   axios.get("").then((response) => {
+  //     setMovieList(response.data);
+  //   });
+  // }, []);
+
   return (
-    <Provider store={store}>
-      <div>
-        <NavigationSidebar />
-        <h1>New Release</h1>
-        <UpcomingMovies/>
-        <h1>Action</h1>
-        <ActMovies />
-        <h1>Horror</h1>
-        <Horror/>
-        
-       
-      </div>
-    </Provider>
+    <div>
+      {movieCategories.map((val, key) => {
+        return <Movies key={key} movieType={val.title} dataUrl={val.dataUrl} />;
+      })}
+    </div>
   );
 };
 export default HomeScreen;
