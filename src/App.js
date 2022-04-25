@@ -8,6 +8,7 @@ import "./vendors/fontawesome/css/all.css"
 import reviewReducer from "./components/reducers/review";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
+import ProfileComponent from "./components/profile";
 const reducer = combineReducers({
     reviews: reviewReducer
 });
@@ -18,7 +19,7 @@ function App() {
 
       <Provider store={store}>
           <div className="container">
-              <MoviePage/>
+              <ProfileComponent/>
           </div>
       </Provider>
 
