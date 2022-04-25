@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import MovieSearchList from "../movie-search/MovieSearch";
 //import { useLocation } from "react-router-dom";
@@ -14,7 +15,8 @@ const NavigationSidebar = ({ handleSearch }) => {
 
   const [inputMovie, setInputMovie] = useState("");
 
-  const searchRef = useRef();
+  const navigation = useSelector((state) => state.homeReducer);
+  //const searchRef = useRef();
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-primary`}>

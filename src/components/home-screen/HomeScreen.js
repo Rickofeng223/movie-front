@@ -15,7 +15,7 @@ import UpcomingMovies from "./UpComing";
 // api_key=f48cf3e24ec9e89cc63cc40d1d8975c1
 
 const reducer = combineReducers({
-  home: homeReducer
+  homeReducer
 });
 
 const store = createStore(reducer);
