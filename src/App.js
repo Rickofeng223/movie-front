@@ -1,6 +1,6 @@
 import './App.css';
 import "./vendors/bootstrap/css/bootstrap.css"
-//import "./vendors/bootswatch/bootstrap.min.css"
+import "./vendors/bootswatch/bootstrap.min.css"
 import "./vendors/fontawesome/css/all.css"
 
 import MoviePage from "./components/movie-page";
@@ -10,7 +10,7 @@ import CreateAccount from "./components/create-account";
 function App() {
   return (
       <div className="container">
-        <CreateAccount/>
+        <Login/>
       </div>
   );
 }
