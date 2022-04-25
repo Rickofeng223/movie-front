@@ -11,9 +11,9 @@ const NavigationSidebar = () => {
   // console.log(locationArray);
   // console.log(locationArray[locationArray.length - 1]);
   const currentPart = locationArray[locationArray.length - 1];
-
   const pathParams = window.location.pathname.split("/");
 
+  
   // React.useEffect(() => {
   //   if (pathParams.length >= 4) {
   //     setInputMovie(pathParams[3]);
