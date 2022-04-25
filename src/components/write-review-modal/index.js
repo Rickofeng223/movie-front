@@ -45,7 +45,7 @@ const WriteReviewModal = props => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="btn-secondary" onClick={props.onHide}>Cancel</Button>
-                    <Button onClick={reviewClickHandler}>Submit</Button>
+                    <Button onClick={()=>{reviewClickHandler(); props.onHide()}}>Submit</Button>
                 </Modal.Footer>
             </Modal>
         </>
