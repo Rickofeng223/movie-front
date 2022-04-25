@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../actionStyle.css";
 
 // const BASE_URL = "https://api.themoviedb.org/3";
@@ -27,13 +28,13 @@ const MovieCard = ({ m }) => {
   return (
     <li className={`wd-actionList`}>
       <div className={`featured-content`}>
-        <a href="#">
+        <Link to="/movie/page">
           <img
             className={`featured-title imageSize`}
             src={getImage(m.poster_path)}
             alt="listMovies"
           />
-        </a>
+        </Link>
         <p className={`featured-desc wd-text-size`}>{m.title}</p>
       </div>
     </li>
