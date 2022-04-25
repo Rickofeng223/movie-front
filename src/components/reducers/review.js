@@ -13,7 +13,6 @@ const reviewReducer =
                 likes: 0,
                 dislikes: 0
             }
-            console.log('reducer!');
             const rv = [
                 newReview,
                 ...state,
@@ -33,6 +32,26 @@ const reviewReducer =
                     } else {
                        review.liked = true;
                        review.likes++;
+                    }
+                    return review;
+                } else {
+                    return review;
+                }
+            });
+        case 'dislike-review':
+            console.log('dislike');
+            return state.map(review => {
+                if (review.wd_id === action.review.wd_id) {
+                    if (review.disliked === true) {
+                        review.disliked = false;
+                        review.dislikes--;
+                    } else {
+                        review.disliked = true;
+                        review.dislikes++;
+                        if(review.liked = true) {
+                            review.liked = false;
+                            review.likes--;
+                        }
                     }
                     return review;
                 } else {

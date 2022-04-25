@@ -26,6 +26,10 @@ const ReviewListItem = (
         dispatch({type: 'like-review', review})
     }
 
+    const dislikeReview = (review) => {
+        dispatch({type: 'dislike-review', review})
+    }
+
     return (
         <>
             <li className="card p-4 mb-2">
@@ -58,12 +62,22 @@ const ReviewListItem = (
                             }
                             {
                                 !review.liked &&
-                                <i className="fa-solid fa-thumbs-up"/>
+                                <i className="mr-2 fa-solid fa-thumbs-up"/>
                             }
                             {review.likes} likes
                         </span>
-                        <span>
-                            <i className="fa-solid fa-thumbs-down"/> {review.dislikes} dislikes
+                        <span className="mr-3"
+                              onClick={dislikeReview}>
+                            {
+                                review.disliked &&
+                                <i className="fa-solid fa-thumbs-down"
+                                   style={{color: 'purple'}}/>
+                            }
+                            {
+                                !review.disliked &&
+                                <i className="mr-2 fa-solid fa-thumbs-down"/>
+                            }
+                            {review.dislikes} likes
                         </span>
                     </div>
 
