@@ -28,7 +28,7 @@ const MovieCard = ({ m }) => {
   return (
     <li className={`wd-actionList`}>
       <div className={`featured-content`}>
-        <Link to="/movie/page">
+        <Link to="/home/moviedetail">
           <img
             className={`featured-title imageSize`}
             src={getImage(m.poster_path)}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../home-screen/actionStyle.css";
 
 const SearchResult = ({ m }) => {
@@ -8,14 +9,14 @@ const SearchResult = ({ m }) => {
   return (
     <li className={`wd-actionList`}>
       <div className={`featured-content`}>
-        <a href="#">
+        <Link to="/home/moviedetail">
           <img
             className={`featured-title imageSize`}
             //src="https://image.tmdb.org/t/p/original/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg"
             src={getImage(m.poster_path)}
             alt="listMovies"
           />
-        </a>
+        </Link>
         <p className={`featured-desc wd-text-size`}>{m.title}</p>
       </div>
     </li>
