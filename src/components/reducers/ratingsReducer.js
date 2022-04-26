@@ -35,7 +35,7 @@ const ratingsReducer =
                     }
                 });
             default:
-                console.log('hit default');
+                console.log('hit default ratings');
                 return state;
         }
     }

@@ -21,7 +21,7 @@ const reviewReducer =
             return rv;
         case 'delete-review':
             return state.filter(
-                review => review.wd_id !== action.review.wd_id);
+                review => review._id !== action.review._id);
         case 'like-review':
             console.log('like in review reducer');
             return state.map(review => {
@@ -54,7 +54,7 @@ const reviewReducer =
                 }
             });
         default:
-            console.log('hit default');
+            console.log('hit default review');
             return state;
     }
 }

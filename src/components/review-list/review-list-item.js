@@ -16,13 +16,6 @@ const ReviewListItem = ({ review =
         }
     }) => {
 
-    // const ratings =
-    //     {"user": "62643e20df7769194cc3b19b",
-    //     "review": "62643e20df7769194cc3b297",
-    //     "likes": 0,
-    //     "dislikes": 0,
-    //     "liked": false,
-    //     "disliked": true}
 
     const dispatch = useDispatch();
     const deleteReview = (review) => {
