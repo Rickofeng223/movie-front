@@ -1,73 +1,203 @@
 [
   {
-    "wd_id": "nwwejf923f",
-    "tmdb_id": 550,
-    "user_id":"931864",
-    "content":"this is my favorite movie, I watch it all the time",
-    "time": "2022-03-12 11:59pm est",
-    "likes":2,
-    "dislikes":0,
-    "liked":false,
-    "disliked": false
+    "movie": "62643e1edf7769194cc3a4be",
+    "critic": "62643e20df7769194cc3b159",
+    "content": "Ea ratione quibusdam nisi amet qui laudantium inventore. Eum rerum qui nulla eum. Praesentium quam aut molestiae earum aut assumenda culpa tempora. Enim rerum cum magnam unde libero.",
+    "rating": 64,
+    "time": "2022-04-23T03:33:04.000Z",
+    "visibility": "Rico_Haley37",
+    "_id": "62643e20df7769194cc3b227",
+    "__v": 0
   },
-
   {
-    "wd_id": "qw34r",
-    "tmdb_id": 550,
-    "user_id":"24643",
-    "content":"Did not see the twist ending coming, won't spoil but worth the watch",
-    "time": "2022-03-10 9:30am pst",
-    "likes":5,
-    "dislikes":2,
-    "liked":false,
-    "disliked": false
+    "movie": "62643e1fdf7769194cc3a8da",
+    "critic": "62643e20df7769194cc3b159",
+    "content": "Corrupti nihil est sed. Sint et tempora vel omnis vitae architecto voluptas sit. Itaque voluptatibus eius aut ut voluptas occaecati rerum. Officiis nemo adipisci consectetur consequatur cum assumenda.",
+    "rating": 61,
+    "time": "2022-04-23T08:33:12.000Z",
+    "visibility": "Francisco.OKeefe42",
+    "_id": "62643e20df7769194cc3b229",
+    "__v": 0
   },
-
   {
-    "wd_id": "vegrg53",
-    "tmdb_id": 550,
-    "user_id":"13435",
-    "content":"I hated this movie but I also don't like Brad Pitt so I am biased",
-    "time": "2022-03-11 9:30am pst",
-    "likes":4,
-    "dislikes":9,
-    "liked":false,
-    "disliked": false
+    "movie": "62643e1fdf7769194cc3a738",
+    "critic": "62643e20df7769194cc3b159",
+    "content": "Deserunt quo mollitia nemo. Aspernatur dolor est. Dolorum vel dicta qui. Provident earum odit quis sint asperiores. Consequuntur sint ut tenetur distinctio eius aliquid qui eaque.",
+    "rating": 60,
+    "time": "2022-04-23T00:44:23.000Z",
+    "visibility": "Zackary84",
+    "_id": "62643e20df7769194cc3b22b",
+    "__v": 0
   },
-
   {
-    "wd_id": "24vr3f",
-    "tmdb_id": 550,
-    "user_id":"13435",
-    "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-    "time": "2022-03-2 9:30am pst",
-    "likes":14,
-    "dislikes":0,
-    "liked":false,
-    "disliked": false
+    "movie": "62643e1fdf7769194cc3a89a",
+    "critic": "62643e20df7769194cc3b141",
+    "content": "Quia blanditiis libero et error quas architecto atque omnis. Vero aut alias velit quia sed ratione provident nobis. Deserunt deserunt facilis ut architecto dolor non. Aut autem nam saepe repellat.",
+    "rating": 68,
+    "time": "2022-04-23T16:59:46.000Z",
+    "visibility": "Garret82",
+    "_id": "62643e20df7769194cc3b22d",
+    "__v": 0
   },
-
   {
-    "wd_id": "23f4gsqqq",
-    "tmdb_id": 550,
-    "user_id":"13435",
-    "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-    "time": "2022-02-19 9:30am pst",
-    "likes":11,
-    "dislikes":340,
-    "liked":false,
-    "disliked": false
+    "movie": "62643e1fdf7769194cc3a8c4",
+    "critic": "62643e20df7769194cc3b14d",
+    "content": "Possimus est eum beatae quae cupiditate fugit. In sint eos aut in consequatur reiciendis est cum ut. Nihil incidunt facilis aut omnis laboriosam neque commodi.",
+    "rating": 34,
+    "time": "2022-04-23T12:06:52.000Z",
+    "visibility": "Guadalupe.Sipes",
+    "_id": "62643e20df7769194cc3b22f",
+    "__v": 0
   },
-
   {
-    "wd_id": "wfwvw1",
-    "tmdb_id": 550,
-    "user_id":"13435",
-    "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-    "time": "2022-01-8 9:30am pst",
-    "likes":1,
-    "dislikes":40,
-    "liked":false,
-    "disliked": false
+    "movie": "62643e1fdf7769194cc3a943",
+    "critic": "62643e20df7769194cc3b159",
+    "content": "Ex ut rerum earum est. Reprehenderit aut est nihil distinctio ducimus fuga. Quod cumque veritatis explicabo qui voluptatem omnis sint amet. Vel distinctio est sed ea est sit sed neque.",
+    "rating": 7,
+    "time": "2022-04-23T08:03:40.000Z",
+    "visibility": "Minerva46",
+    "_id": "62643e20df7769194cc3b231",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a57c",
+    "critic": "62643e20df7769194cc3b141",
+    "content": "Id ea blanditiis qui eligendi perspiciatis incidunt dignissimos id. Aut eos quo quod dolores.",
+    "rating": 44,
+    "time": "2022-04-23T16:43:50.000Z",
+    "visibility": "Gianni46",
+    "_id": "62643e20df7769194cc3b233",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1fdf7769194cc3a88a",
+    "critic": "62643e20df7769194cc3b15f",
+    "content": "Molestias est in at et vitae aut dolorem. Dolorem aut facilis necessitatibus temporibus. Dolor excepturi nulla nulla ut et consequuntur.",
+    "rating": 72,
+    "time": "2022-04-23T15:11:26.000Z",
+    "visibility": "Vicky.Monahan40",
+    "_id": "62643e20df7769194cc3b235",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a3a2",
+    "critic": "62643e20df7769194cc3b165",
+    "content": "Consequuntur quo excepturi in. Consequatur rerum quo corrupti.",
+    "rating": 34,
+    "time": "2022-04-22T18:30:33.000Z",
+    "visibility": "Jerrod_Roob6",
+    "_id": "62643e20df7769194cc3b237",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a333",
+    "critic": "62643e20df7769194cc3b141",
+    "content": "Nisi quam blanditiis ullam ratione repudiandae iusto. Eos aperiam iste quas illum culpa est excepturi. Consequatur atque eaque. Ipsam aliquid sunt nihil beatae quod officiis quaerat.",
+    "rating": 15,
+    "time": "2022-04-23T17:32:29.000Z",
+    "visibility": "Shayna_Lesch",
+    "_id": "62643e20df7769194cc3b239",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a23e",
+    "critic": "62643e20df7769194cc3b15f",
+    "content": "Magni quasi voluptatum fuga in est dolor harum quae. Blanditiis voluptatem aut ipsam consequatur ullam perspiciatis quo quidem. Blanditiis aperiam explicabo repellendus aut voluptatem cumque. Impedit et aperiam excepturi. Enim ipsa aspernatur dolorem ea similique ut.",
+    "rating": 69,
+    "time": "2022-04-23T17:24:06.000Z",
+    "visibility": "Brook55",
+    "_id": "62643e20df7769194cc3b23b",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a3a9",
+    "critic": "62643e20df7769194cc3b165",
+    "content": "Veniam et deserunt id fugit repellendus. Explicabo eos tempora est et ea. Blanditiis voluptate fugit eum assumenda tempora et asperiores culpa. Aut quasi dolorem dolores. Odio asperiores impedit molestias dolores sed reprehenderit nisi a molestias. Iusto commodi possimus et et.",
+    "rating": 39,
+    "time": "2022-04-22T18:49:06.000Z",
+    "visibility": "Cierra88",
+    "_id": "62643e20df7769194cc3b23d",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a51d",
+    "critic": "62643e20df7769194cc3b153",
+    "content": "Ut modi natus dolorum nisi reiciendis fugiat. Vel sit facilis placeat rerum cumque. Molestias nisi quos voluptatibus molestiae sed ea.",
+    "rating": 1,
+    "time": "2022-04-23T06:51:54.000Z",
+    "visibility": "Wellington99",
+    "_id": "62643e20df7769194cc3b23f",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1fdf7769194cc3a64d",
+    "critic": "62643e20df7769194cc3b15f",
+    "content": "Sunt omnis cumque recusandae. Libero earum quia autem.",
+    "rating": 19,
+    "time": "2022-04-22T23:08:11.000Z",
+    "visibility": "Clement_McKenzie",
+    "_id": "62643e20df7769194cc3b241",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1fdf7769194cc3a94a",
+    "critic": "62643e20df7769194cc3b165",
+    "content": "Ut consectetur eius sunt cum nisi animi in voluptates. Atque ducimus accusamus.",
+    "rating": 41,
+    "time": "2022-04-23T01:24:32.000Z",
+    "visibility": "Nathen.Ebert",
+    "_id": "62643e20df7769194cc3b243",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a23b",
+    "critic": "62643e20df7769194cc3b14d",
+    "content": "Quas eos officia est. Ut animi earum. Iste quod laborum. Ea nesciunt fuga est error labore. Quos aut quasi cupiditate.",
+    "rating": 62,
+    "time": "2022-04-23T01:49:43.000Z",
+    "visibility": "Heloise.Koss90",
+    "_id": "62643e20df7769194cc3b245",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a42c",
+    "critic": "62643e20df7769194cc3b147",
+    "content": "Placeat corrupti ipsa voluptas iste sit numquam sed aspernatur velit. Fuga voluptate voluptate dolorem et et. Ab perspiciatis placeat similique.",
+    "rating": 56,
+    "time": "2022-04-23T02:32:49.000Z",
+    "visibility": "Aryanna.Stanton30",
+    "_id": "62643e20df7769194cc3b247",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a289",
+    "critic": "62643e20df7769194cc3b15f",
+    "content": "Voluptatem reiciendis esse aut. Odio quia deserunt eos at eum quibusdam. Optio fugit quis omnis dolore in. Cumque et cumque. Dignissimos consequatur ratione recusandae at tempora sapiente rerum. Laudantium perferendis itaque.",
+    "rating": 13,
+    "time": "2022-04-23T14:49:14.000Z",
+    "visibility": "Marcellus36",
+    "_id": "62643e20df7769194cc3b249",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a4b7",
+    "critic": "62643e20df7769194cc3b141",
+    "content": "Facilis est blanditiis eveniet animi. Nam consequatur dolores iste voluptatem dignissimos illo nihil ex. Autem sunt sequi error dignissimos rerum.",
+    "rating": 79,
+    "time": "2022-04-23T03:12:34.000Z",
+    "visibility": "Aimee_Gleason",
+    "_id": "62643e20df7769194cc3b24b",
+    "__v": 0
+  },
+  {
+    "movie": "62643e1edf7769194cc3a4d3",
+    "critic": "62643e20df7769194cc3b141",
+    "content": "Fugiat ea molestias et veniam nihil. Voluptatibus sint quis quae nam quia eveniet dolorem. Omnis et voluptas tenetur.",
+    "rating": 3,
+    "time": "2022-04-22T20:00:23.000Z",
+    "visibility": "Orval.Leannon52",
+    "_id": "62643e20df7769194cc3b24d",
+    "__v": 0
   }
+
 ]

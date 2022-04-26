@@ -5,11 +5,13 @@ import "./vendors/bootstrap/css/bootstrap.css"
 import "./vendors/bootswatch/bootstrap.min.css"
 import "./vendors/fontawesome/css/all.css"
 
+import ratingsReducer from "./components/reducers/ratingsReducer";
 import reviewReducer from "./components/reducers/review";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 const reducer = combineReducers({
-    reviews: reviewReducer
+    reviews: reviewReducer,
+    ratings: reviewReducer
 });
 const store = createStore(reducer);
 
