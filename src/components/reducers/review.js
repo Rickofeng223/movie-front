@@ -22,6 +22,37 @@ const reviewReducer =
         case 'delete-review':
             return state.filter(
                 review => review.wd_id !== action.review.wd_id);
+        case 'like-review':
+            console.log('like in review reducer');
+            return state.map(review => {
+                if (review._id === action.review._id) {
+                    if (review.liked === true) {
+                        review.likes--;
+                    } else {
+                        review.likes++;
+                    }
+                    return review;
+                } else {
+                    return review;
+                }
+            });
+        case 'dislike-review':
+            console.log('dislike in review reducer');
+            return state.map(review => {
+                if (review._id === action.review._id) {
+                    if (review.disliked === true) {
+                        review.dislikes--;
+                    } else {
+                        review.dislikes++;
+                        if(review.liked === true) {
+                            review.likes--;
+                        }
+                    }
+                    return review;
+                } else {
+                    return review;
+                }
+            });
         default:
             console.log('hit default');
             return state;
