@@ -1,6 +1,8 @@
 import React from "react";
 import profile from "../data/user.json";
 
+// import isUsingserver from "../../isUsingserver"; import using reducer
+
 const ProfileComponent = () => {
   return (
     <>
