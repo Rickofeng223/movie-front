@@ -7,9 +7,11 @@ import MoviePage from "./components/movie-page";
 
 import "./vendors/bootstrap/blue-SkyTh/bootstrap.min.css";
 import "./vendors/fontawesome/css/all.min.css";
+
 import SearchList from "./components/movie-search";
 import NavigationSidebar from "./components/NavigationSideBar";
 import reviewReducer from "./components/reducers/review";
+import ratingsReducer from "./components/reducers/ratingsReducer";
 
 import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
@@ -17,6 +19,7 @@ import ProfileComponent from "./components/profile";
 import Login from "./components/login";
 const reducer = combineReducers({
   reviews: reviewReducer,
+  ratings: ratingsReducer
 });
 const store = createStore(reducer);
 
