@@ -14,4 +14,4 @@ const ProfileComponent = () => {
 };
 
 export default ProfileComponent;
->>>>>>> 2ac7d4b987002babe09300762f52bfb56942e829
+
