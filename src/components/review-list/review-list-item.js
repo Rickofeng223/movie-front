@@ -1,5 +1,5 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const ReviewListItem = (
     {
@@ -11,32 +11,34 @@ const ReviewListItem = (
             "time": "2022-04-23T03:33:04.000Z",
             "visibility": "Rico_Haley37",
             "_id": "62643e20df7769194cc3b227",
-            "__v": 0,
+            "__v": 0
 
         }
     }
 ) => {
 
-    const ratings =
-        {"user": "62643e20df7769194cc3b19b",
-        "review": "62643e20df7769194cc3b297",
-        "likes": 0,
-        "dislikes": 0,
-        "liked": false,
-        "disliked": true}
+    // const ratings =
+    //     {"user": "62643e20df7769194cc3b19b",
+    //     "review": "62643e20df7769194cc3b297",
+    //     "likes": 0,
+    //     "dislikes": 0,
+    //     "liked": false,
+    //     "disliked": true}
 
     const dispatch = useDispatch();
     const deleteReview = (review) => {
         dispatch({type: 'delete-review', review})
     }
 
-    const likeReview = (review) => {
-        dispatch({type: 'like-review', review})
+    const likeRating = (rating) => {
+        dispatch({type: 'like-rating', rating})
     }
 
-    const dislikeReview = (review) => {
-        dispatch({type: 'dislike-review', review})
+    const dislikeRating = (rating) => {
+        dispatch({type: 'dislike-rating', rating})
     }
+
+    const rating = useSelector(state => state.ratings);
 
     return (
         <>
@@ -62,30 +64,30 @@ const ReviewListItem = (
 
                     <div className="row d-inline">
                         <span className="mr-3"
-                            onClick={likeReview}>
+                            onClick={likeRating}>
                             {
-                                ratings.liked &&
+                                rating.liked &&
                                 <i className="fa-solid fa-thumbs-up"
                                     style={{color: 'purple'}}/>
                             }
                             {
-                                !ratings.liked &&
+                                !rating.liked &&
                                 <i className="mr-2 fa-solid fa-thumbs-up"/>
                             }
-                            {ratings.likes} likes
+                            {rating.likes} likes
                         </span>
                         <span className="mr-3"
-                              onClick={dislikeReview}>
+                              onClick={dislikeRating}>
                             {
-                                ratings.disliked &&
+                                rating.disliked &&
                                 <i className="fa-solid fa-thumbs-down"
                                    style={{color: 'purple'}}/>
                             }
                             {
-                                !ratings.disliked &&
+                                !rating.disliked &&
                                 <i className="mr-2 fa-solid fa-thumbs-down"/>
                             }
-                            {ratings.dislikes}  dislikes
+                            {rating.dislikes} dislikes
                         </span>
                     </div>
 

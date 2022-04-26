@@ -11,7 +11,7 @@ import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 const reducer = combineReducers({
     reviews: reviewReducer,
-    ratings: reviewReducer
+    ratings: ratingsReducer
 });
 const store = createStore(reducer);
 
