@@ -6,11 +6,13 @@ import "./vendors/bootswatch/bootstrap.min.css"
 import "./vendors/fontawesome/css/all.css"
 
 import reviewReducer from "./components/reducers/review";
+import profileReducer from "./components/reducers/profile-reducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ProfileComponent from "./components/profile";
 const reducer = combineReducers({
-    reviews: reviewReducer
+    reviews: reviewReducer,
+    profile: profileReducer
 });
 const store = createStore(reducer);
 
