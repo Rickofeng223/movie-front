@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../home-screen/actionStyle.css";
+import AsyncImage from "../util/AsyncImage";
 
 const SearchResult = ({ m }) => {
   
@@ -10,7 +11,7 @@ const SearchResult = ({ m }) => {
     <li className={`wd-actionList`}>
       <div className={`featured-content`}>
         <Link to="/home/moviedetail">
-          <img
+          <AsyncImage
             className={`featured-title imageSize`}
             //src="https://image.tmdb.org/t/p/original/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg"
             src={getImage(m.poster_path)}

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import ReviewList from "../review-list";
 import WriteReviewModal from "../write-review-modal";
 import {useSelector} from "react-redux";
+import AsyncImage from "../util/AsyncImage";
 
 
 const MoviePage = (
@@ -32,7 +33,7 @@ const MoviePage = (
 
             <div className="row flex-row">
                 <div className="col-2">
-                    <img src={movie.poster_path} width="180"/>
+                    <AsyncImage src={movie.poster_path} width="180"/>
                     <div className="row">
                         <button className="btn btn-primary btn-block rounded-pill w-100 mt-2"
                                 onClick={() => setModalShow(true)}>Write Review</button>
