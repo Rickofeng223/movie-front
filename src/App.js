@@ -10,13 +10,15 @@ import "./vendors/fontawesome/css/all.min.css";
 import SearchList from "./components/movie-search";
 import NavigationSidebar from "./components/NavigationSideBar";
 import reviewReducer from "./components/reducers/review";
-
+import UserReducer from './reducers/userReducer'
 import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import ProfileComponent from "./components/profile";
 import Login from "./components/login";
+import CreateAccount from "./components/create-account";
 const reducer = combineReducers({
   reviews: reviewReducer,
+    user:UserReducer
 });
 const store = createStore(reducer);
 
@@ -29,6 +31,16 @@ function App() {
         <div className="container">
           <NavigationSidebar />
           <Routes>
+             <Route
+                 path="/login"
+                 exact={true}
+                 element={<Login/>}
+             />
+             <Route
+                 path="/signup"
+                 exact={true}
+                 element={<CreateAccount/>}
+             />
             <Route path="/">
               <Route path="/" element={<HomeScreen />} />
               <Route path="home" exact={true} element={<HomeScreen />} />
@@ -38,11 +50,7 @@ function App() {
                 exact={true}
                 element={<MoviePage /> }
               />
-              <Route
-                path="home/login"
-                exact={true}
-                element={<Login/>}
-              />
+
               <Route
                 path="home/profile"
                 exact={true}
