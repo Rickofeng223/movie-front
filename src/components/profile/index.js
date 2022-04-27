@@ -1,5 +1,6 @@
 import React from "react";
-import profile from "../data/user.json";
+
+import ReviewList from "../review-list";
 
 const ProfileComponent = () => {
 
@@ -20,16 +21,29 @@ const ProfileComponent = () => {
       <div className="card">
           <img className="card-img-top" src="/images/background.jpg" alt="popcorn banner"/>
         <div className="card-body">
-          <img className="img-thumbnail rounded-circle" src="/images/user-placeholder.png" alt="person silhouette" width="150"/>
-          <h2 className="card-title">
-              {user.first_name} {user.last_name}
-          </h2>
-           <h3>
-               <small className="text-muted">@{user.username}</small>
-           </h3>
+            <div className="d-flex align-items-center">
+                <img className="img-thumbnail rounded-circle mr-3" src="/images/user-placeholder.png" alt="person silhouette" width="150"/>
+                <h2 className="card-title mr-3">
+                    {user.first_name} {user.last_name}
+                </h2>
+                <h3>
+                    <small className="text-muted">@{user.username}</small>
+                </h3>
+            </div>
+
+            <div className="ml-2">
+                <h5 className="mt-4 mb-4">Personal information</h5>
+                <p><i className="fa-solid fa-envelope"/> {user.email_id}</p>
+                <p><i className="fa-solid fa-cake-candles"/> {user.DOB}</p>
+                <p><i className="fa-solid fa-phone"/> {user.phone_no}</p>
+            </div>
+
+            {user.role === "CRITIC" ? <ReviewList/> : ''}
 
         </div>
       </div>
+
+
     </>
   );
 };
