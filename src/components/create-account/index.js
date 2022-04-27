@@ -9,7 +9,7 @@ const CreateAccount = () => {
 
                     <form>
                         <label className="font-weight-bold" htmlFor="name">First Name</label><br/>
-                        <input className="mb-4" type="text" id="fname" /><br/>
+                        <input className="mb-4" type="text" id="fname"/><br/>
 
                         <label className="font-weight-bold" htmlFor="name">Last Name</label><br/>
                         <input className="mb-4" type="text" id="lname" /><br/>
@@ -24,18 +24,18 @@ const CreateAccount = () => {
                         <input className="mb-4" type="date" id="dob"/><br/>
 
                         <label className="font-weight-bold">Account type:</label><br/>
-                        <input type="radio" value="Standard"
-                               name="radio-account-type" id="radio-standard"
+                        <input type="radio" value="NORMAL"
+                               name="radio-account-type" id="radio-normal"
                                className="mr-2"/>
-                        <label htmlFor="radio-standard">Standard</label><br/>
-                        <input type="radio" value="Admin"
+                        <label htmlFor="radio-normal">Normal</label><br/>
+                        <input type="radio" value="CRITIC"
+                               name="radio-account-type" id="radio-critic"
+                               className="mr-2"/>
+                        <label htmlFor="radio-critic">Critic</label><br/>
+                        <input type="radio" value="ADMIN"
                                name="radio-account-type" id="radio-admin"
                                className="mr-2"/>
                         <label htmlFor="radio-admin">Admin</label><br/>
-                        <input type="radio" value="Verified"
-                               name="radio-account-type" id="radio-verified"
-                               className="mr-2"/>
-                        <label htmlFor="radio-verified">Verified</label><br/>
 
                         <label className="font-weight-bold">Favorite movie genres:</label>
                         <br/>
