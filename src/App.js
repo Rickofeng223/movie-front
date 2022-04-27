@@ -5,8 +5,9 @@ import HomeScreen from "./components/home-screen/HomeScreen";
 import MoviePage from "./components/movie-page";
 
 
-import "./vendors/bootstrap/blue-SkyTh/bootstrap.min.css";
+import "./vendors/bootstrap/css/bootstrap.min.css"
 import "./vendors/fontawesome/css/all.min.css";
+import "./vendors/bootswatch/bootstrap.min.css";
 import SearchList from "./components/movie-search";
 import NavigationSidebar from "./components/NavigationSideBar";
 import reviewReducer from "./components/reducers/review";
