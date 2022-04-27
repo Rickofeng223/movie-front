@@ -8,31 +8,37 @@ const CreateAccount = () => {
                     <h2>Create Account</h2>
 
                     <form>
-                        <label className="font-weight-bold" htmlFor="name">First Name</label><br/>
-                        <input className="mb-4" type="text" id="fname"/><br/>
+                        <label className="font-weight-bold" htmlFor="name">First Name *</label><br/>
+                        <input required className="mb-4" type="text" id="fname"/><br/>
 
-                        <label className="font-weight-bold" htmlFor="name">Last Name</label><br/>
-                        <input className="mb-4" type="text" id="lname" /><br/>
+                        <label className="font-weight-bold" htmlFor="name">Last Name *</label><br/>
+                        <input required className="mb-4" type="text" id="lname" /><br/>
 
-                        <label className="font-weight-bold" htmlFor="username">Username</label><br/>
-                        <input className="mb-4" type="text" id="username" placeholder="example@aol.com"/><br/>
+                        <label className="font-weight-bold" htmlFor="username">Username *</label><br/>
+                        <input required className="mb-4" type="text" id="username"/><br/>
 
-                        <label className="font-weight-bold" htmlFor="password">Password</label><br/>
-                        <input className="mb-4" type="password" id="password"/><br/>
+                        <label className="font-weight-bold" htmlFor="password">Password *</label><br/>
+                        <input required className="mb-4" type="password" id="password"/><br/>
+
+                        <label className="font-weight-bold" htmlFor="email">Email</label><br/>
+                        <input required className="mb-4" type="email" id="email" placeholder="email@domain.com"/><br/>
+
+                        <label className="font-weight-bold" htmlFor="phone">Phone Number</label><br/>
+                        <input required className="mb-4" type="text" id="phone" placeholder="6175478890"/><br/>
 
                         <label className="font-weight-bold" htmlFor="dob">Date of Birth</label><br/>
                         <input className="mb-4" type="date" id="dob"/><br/>
 
-                        <label className="font-weight-bold">Account type:</label><br/>
-                        <input type="radio" value="NORMAL"
+                        <label className="font-weight-bold">Account type: *</label><br/>
+                        <input required type="radio" value="NORMAL"
                                name="radio-account-type" id="radio-normal"
                                className="mr-2"/>
                         <label htmlFor="radio-normal">Normal</label><br/>
-                        <input type="radio" value="CRITIC"
+                        <input required type="radio" value="CRITIC"
                                name="radio-account-type" id="radio-critic"
                                className="mr-2"/>
                         <label htmlFor="radio-critic">Critic</label><br/>
-                        <input type="radio" value="ADMIN"
+                        <input required type="radio" value="ADMIN"
                                name="radio-account-type" id="radio-admin"
                                className="mr-2"/>
                         <label htmlFor="radio-admin">Admin</label><br/>
