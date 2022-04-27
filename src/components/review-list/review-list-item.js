@@ -16,6 +16,7 @@ const ReviewListItem = ({ review =
         }
     }) => {
 
+    const rating = useSelector(state => state.ratings);
 
     const dispatch = useDispatch();
     const deleteReview = (review) => {
@@ -31,8 +32,6 @@ const ReviewListItem = ({ review =
         dispatch({type: 'dislike-rating', rating})
         dispatch({type: 'dislike-review', review, liked:rating.liked, disliked:rating.disliked})
     }
-
-    const rating = useSelector(state => state.ratings);
 
     return (
         <>

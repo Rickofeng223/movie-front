@@ -2,6 +2,7 @@ import reviews from '../data/reviews.json';
 
 const reviewReducer =
     (state = reviews, action) => {
+        console.log(action);
     switch (action.type) {
         case 'create-review':
             const time = (new Date()).getTime() + '';
@@ -26,10 +27,13 @@ const reviewReducer =
             console.log('like in review reducer');
             return state.map(review => {
                 if (review._id === action.review._id) {
-                    if (review.liked === true) {
+                    if (action.liked === true) {
                         review.likes--;
                     } else {
                         review.likes++;
+                        if(action.disliked === true) {
+                            review.dislikes--;
+                        }
                     }
                     return review;
                 } else {
@@ -40,11 +44,11 @@ const reviewReducer =
             console.log('dislike in review reducer');
             return state.map(review => {
                 if (review._id === action.review._id) {
-                    if (review.disliked === true) {
+                    if (action.disliked === true) {
                         review.dislikes--;
                     } else {
                         review.dislikes++;
-                        if(review.liked === true) {
+                        if(action.liked === true) {
                             review.likes--;
                         }
                     }
