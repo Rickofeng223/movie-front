@@ -1,8 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {postSignup} from "../util/services";
-
+import {postSignup} from "./services";
+import axios from "axios";
+ import {useDispatch} from 'react-redux'
+import {LOGIN} from "../../reducers/userReducer";
+import {useNavigate} from "react-router-dom";
+import {signup } from '../../reducers/userReducer'
 const CreateAccount = () => {
-    const [first_name, setFirst] = useState('')
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+     const [first_name, setFirst] = useState('')
     const [last_name, setLast] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPass] = useState('')
@@ -18,7 +25,7 @@ const CreateAccount = () => {
                 <div className="col-4">
                     <h2>Create Account</h2>
 
-                    <form>
+                    <div>
                         <label className="font-weight-bold" htmlFor="name">First Name *</label><br/>
                         <input required className="mb-4" type="text" id="fname"
                                value={first_name} onChange={(event => {
@@ -52,18 +59,21 @@ const CreateAccount = () => {
 
                         <label className="font-weight-bold">Account type: *</label><br/>
                         <input required checked type="radio" value="NORMAL"
-                               name="radio-account-type" id="radio-normal"
+                               // name="radio-account-type"
+                               // id="radio-normal"
                                className="mr-2"
                                onChange={() => setRole("NORMAL")}
                         />
                         <label htmlFor="radio-normal">Normal</label><br/>
                         <input required type="radio" value="CRITIC"
-                               name="radio-account-type" id="radio-critic"
+                               // name="radio-account-type"
+                               // id="radio-critic"
                                onChange={() => setRole("CRITIC")}
                                className="mr-2"/>
                         <label htmlFor="radio-critic">Critic</label><br/>
                         <input required type="radio" value="ADMIN"
-                               name="radio-account-type" id="radio-admin"
+                               // name="radio-account-type"
+                               // id="radio-admin"
                                onChange={() => setRole("ADMIN")}
                                className="mr-2"/>
                         <label htmlFor="radio-admin">Admin</label><br/>
@@ -111,27 +121,16 @@ const CreateAccount = () => {
                         {/*<Form.Radio label="Male" checked={gender === 'Male'} value="Male" onClick={() => setGender('Male')} />*/}
                         {/*{first_name,last_name,username,password,email,phone,DOB,role}*/}
                         <button onClick={
-                            async (event) => {
-                                const user_data = {
-                                    password,
-                                    uesrData: {
-                                        first_name, last_name, username, email, phone, DOB, role
-                                    }
+                            ()=>signup({
+                                password,
+                                userData: {
+                                    first_name, last_name, username, email, phone, DOB, role
                                 }
-                                try {
-                                    let data = await postSignup(user_data)
-                                    console.log(data.data)
-                                    console.log("SUCCESS")
-                                } catch (e) {
-                                    console.log("FAIL")
-
-                                    console.log(e.message)
-                                }
-                            }
+                            }, {navigate, dispatch})
                         } className="btn btn-primary btn-block rounded-pill mt-4 mb-2">
                             Create Account
                         </button>
-                    </form>
+                    </div>
 
                     <p>Already have an account? <a href="">Login</a></p>
 
