@@ -24,8 +24,8 @@ export const login = async (auth,{navigate,dispatch}) => {
 }
 export const logout = async ({navigate,dispatch}) => {
     try {
-        let {data} = await axios.post('http://localhost:4000/api/auth/logout',{})
-        dispatch({type:LOGOUT, user:data})
+        let {status } = await axios.post('http://localhost:4000/api/auth/logout',{})
+        dispatch({type:LOGOUT, user:{_id:null}})
         navigate('/logged-out')
     } catch (e) {
         navigate('/login-error')
