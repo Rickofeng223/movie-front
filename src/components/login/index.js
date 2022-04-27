@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { postLogin } from "../../services/services";
 
 
 const Login = () => {
+    const username = "Amelie_Wisozk62";
+    const password = "Tthd7nt7xVkLHyO";
+    const [user,setUser]  = useState("");
+    let loginStuff = async () => {
+        let response = await postLogin({username,password})
+        setUser(response.data)
+    }
+    // useEffect(() => {
+    //     loginStuff()
+    // }, []);
     return(
         <>
             <div className="row d-flex justify-content-center">
@@ -21,7 +32,7 @@ const Login = () => {
                         <input className="mb-4"  type="password" id="password"/><br/>
 
 
-                        <button className="btn btn-primary btn-block rounded-pill mt-4 mb-2">
+                        <button className="btn btn-primary btn-block rounded-pill mt-4 mb-2" onClick={loginStuff}>
                             Login
                         </button>
                     </form>
