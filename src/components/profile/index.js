@@ -39,7 +39,9 @@ const ProfileComponent = () => {
                 <p><i className="fa-solid fa-phone"/> {user.phone_no}</p>
             </div>
 
-            {user.role === "ADMIN" ? <button>Manage site</button> : ''}
+            {user.role === "ADMIN" ? <button className="btn btn-primary rounded-pill mr-3">Manage Site</button> : ''}
+
+            <button className="btn btn-secondary rounded-pill">Edit Profile</button>
 
             {user.role === "CRITIC" ? <ReviewList/> : ''}
 
