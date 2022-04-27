@@ -18,6 +18,7 @@ const ProfileComponent = () => {
 
   return (
     <>
+
       <div className="card">
           <img className="card-img-top" src="/images/background.jpg" alt="popcorn banner"/>
         <div className="card-body">
@@ -37,6 +38,8 @@ const ProfileComponent = () => {
                 <p><i className="fa-solid fa-cake-candles"/> {user.DOB}</p>
                 <p><i className="fa-solid fa-phone"/> {user.phone_no}</p>
             </div>
+
+            {user.role === "ADMIN" ? <button>Manage site</button> : ''}
 
             {user.role === "CRITIC" ? <ReviewList/> : ''}
 
