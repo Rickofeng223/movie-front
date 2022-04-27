@@ -21,16 +21,16 @@ const CreateAccount = () => {
                         <input required className="mb-4" type="password" id="password"/><br/>
 
                         <label className="font-weight-bold" htmlFor="email">Email</label><br/>
-                        <input required className="mb-4" type="email" id="email" placeholder="email@domain.com"/><br/>
+                        <input className="mb-4" type="email" id="email" placeholder="email@domain.com"/><br/>
 
                         <label className="font-weight-bold" htmlFor="phone">Phone Number</label><br/>
-                        <input required className="mb-4" type="text" id="phone" placeholder="6175478890"/><br/>
+                        <input className="mb-4" type="text" id="phone" placeholder="6175478890"/><br/>
 
                         <label className="font-weight-bold" htmlFor="dob">Date of Birth</label><br/>
                         <input className="mb-4" type="date" id="dob"/><br/>
 
                         <label className="font-weight-bold">Account type: *</label><br/>
-                        <input required type="radio" value="NORMAL"
+                        <input required checked type="radio" value="NORMAL"
                                name="radio-account-type" id="radio-normal"
                                className="mr-2"/>
                         <label htmlFor="radio-normal">Normal</label><br/>
@@ -45,6 +45,7 @@ const CreateAccount = () => {
 
                         <label className="font-weight-bold">Favorite movie genres:</label>
                         <br/>
+
                         <input type="checkbox" value="action"
                                name="check-genre" id="check-action"
                                 className="mr-2"/>
@@ -82,7 +83,7 @@ const CreateAccount = () => {
                                className="mr-2"/>
                         <label htmlFor="check-western">Western</label> <br/>
 
-                        <button className="btn btn-primary btn-block rounded-pill mt-4 mb-2">
+                        <button onClick={(event)=>console.log(event)} className="btn btn-primary btn-block rounded-pill mt-4 mb-2">
                             Create Account
                         </button>
                     </form>
