@@ -4,7 +4,7 @@ import {Tab, Row, Col, Nav} from "react-bootstrap";
 
 import usersNormal from '../data/users-normal.json'
 import usersCritic from '../data/users-critic.json'
-import usersAdmin from '../data/users-critic.json'
+import usersAdmin from '../data/users-admin.json'
 
 const UserList = () => {
 
