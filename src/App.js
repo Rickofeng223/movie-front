@@ -29,6 +29,7 @@ import thunk from "redux-thunk";
 import ProfileComponent from "./components/profile";
 import Login from "./components/login";
 import CreateAccount from "./components/create-account";
+import EditProfileComponent from "./components/edit-profile";
 const reducer = combineReducers({
   reviews: reviewReducer,
   ratings: ratingsReducer,
@@ -72,6 +73,13 @@ function App() {
                 exact={true}
                 element={<ProfileComponent />}
               />
+
+                <Route
+                    path="profile/edit"
+                    exact={true}
+                    element={<EditProfileComponent />}
+                />
+
             </Route>
           </Routes>
         </div>
