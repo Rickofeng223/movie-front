@@ -1,9 +1,10 @@
-import reviews from '../data/reviews.json';
 
 const reviewReducer =
-    (state = reviews, action) => {
+    (state = [], action) => {
         console.log(action);
     switch (action.type) {
+        case 'get-reviews':
+            return action.reviews
         case 'create-review':
             const time = (new Date()).getTime() + '';
             const newReview = {
@@ -14,12 +15,10 @@ const reviewReducer =
                 likes: 0,
                 dislikes: 0
             }
-            const rv = [
-                newReview,
+            return [
+                /*action.review*/newReview,
                 ...state,
             ];
-            console.log(rv);
-            return rv;
         case 'delete-review':
             return state.filter(
 
