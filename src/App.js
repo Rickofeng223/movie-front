@@ -15,6 +15,8 @@ import { Provider } from "react-redux";
 import ProfileComponent from "./components/profile";
 import Login from "./components/login";
 import CreateAccount from "./components/create-account";
+import AdminPage from "./components/admin-page";
+import ratingsReducer from "./components/reducers/ratingsReducer";
 const reducer = combineReducers({
   reviews: reviewReducer,
     user:UserReducer,
@@ -42,6 +44,11 @@ function App() {
                  exact={true}
                  element={<CreateAccount/>}
              />
+              <Route
+                  path="/admin"
+                  exact={true}
+                  element={<AdminPage/>}
+              />
             <Route path="/">
               <Route path="/" element={<HomeScreen />} />
               <Route path="home" exact={true} element={<HomeScreen />} />

@@ -1,10 +1,13 @@
 import React from "react";
+import {Tabs, Tab} from "react-bootstrap";
+
+import ReviewList from "../review-list";
 
 const AdminPage = () => {
 
     return (
         <>
-            <h1>Manage Site</h1>
+            <h1 className="mt-4 mb-3">Manage Site</h1>
 
             <Tabs defaultActiveKey="users" id="admin-tabs" className="mb-3">
                 <Tab eventKey="users" title="Users">
@@ -15,13 +18,7 @@ const AdminPage = () => {
                     </p>
                 </Tab>
                 <Tab eventKey="reviews" title="Reviews">
-                    <p>
-                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-                        below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus
-                        Bonorum et Malorum" by Cicero are also reproduced in their exact
-                        original form, accompanied by English versions from the 1914 translation
-                        by H. Rackham.
-                    </p>
+                    <ReviewList/>
                 </Tab>
             </Tabs>
         </>
