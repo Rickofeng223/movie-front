@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { searchForMovies, seartStartForMovies } from "../actions/searcActions";
 import MovieSearchList from "../movie-search/MovieSearch";
@@ -17,6 +17,7 @@ const NavigationSidebar = () => {
 
   const dispatch = useDispatch();
 
+  const user = useSelector(e=>e.currentUser)
 
   const [inputMovie, setInputMovie] = useState("");
 
@@ -52,6 +53,13 @@ const NavigationSidebar = () => {
                 Home
               </Link>
             </li>
+            {user && user.role==="ADMIN" &&
+            <li className={`nav-item `}>
+              <Link to={"/admin"} className={`nav-link `}>
+                Admin
+              </Link>
+            </li>
+            }
             <li className={`nav-item`}>
               <a className={`nav-link`} href="#">
                 Top List
