@@ -15,6 +15,7 @@ import SearchList from "./components/movie-search";
 import NavigationSidebar from "./components/NavigationSideBar";
 import reviewReducer from "./components/reducers/review";
 
+
 import ratingsReducer from "./components/reducers/ratingsReducer";
 import searchReducer from "./components/reducers/searchReducers";
 
@@ -34,7 +35,7 @@ const reducer = combineReducers({
   reviews: reviewReducer,
   ratings: ratingsReducer,
   searchMovies: searchReducer,
-  user:UserReducer,
+  currentUser:UserReducer,
 
 });
 const store = createStore(reducer, applyMiddleware(thunk));

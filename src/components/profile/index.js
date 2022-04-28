@@ -3,14 +3,13 @@ import React, {useState} from "react";
 import ReviewList from "../review-list";
 import {updateProfile} from "../../actions/userActions";
 import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const ProfileComponent = () => {
 
     const navigate = useNavigate()
 
-    const user = useSelector((s) => s.user)
-
+    const user = useSelector((s) => s.currentUser)
 
     return (
         <>
@@ -42,11 +41,13 @@ const ProfileComponent = () => {
                         Manage Site
                     </button> : ''}
 
-                    <button onClick={() => {
-                        navigate('/profile/edit')
-                    }} className="btn btn-secondary rounded-pill">
+                    <Link to='/profile/edit'
+                    //     onClick={() => {
+                    //     navigate('/profile/edit')
+                    // }}
+                        className="btn btn-secondary rounded-pill">
                         Edit Profile
-                    </button>
+                    </Link>
 
                     {user.role === "CRITIC" ? <ReviewList/> : ''}
 

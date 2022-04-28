@@ -9,7 +9,7 @@ const EditProfileComponent = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const user = useSelector(s => s.user)
+    const user = useSelector(s => s.currentUser)
 
     const [username, setUsername] = useState(user.username)
     const [first_name, setFirstname] = useState(user.first_name)
