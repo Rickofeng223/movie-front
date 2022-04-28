@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { searchForMovies, seartStartForMovies } from "../actions/searcActions";
 import MovieSearchList from "../movie-search/MovieSearch";
@@ -7,6 +7,9 @@ import MovieSearchList from "../movie-search/MovieSearch";
 
 const NavigationSidebar = () => {
   // console.log(window.location.href); // window location for url example: http://localhost:3000/tuiter/home
+
+  const user = useSelector((x) => x.currentUser)
+
   const location = useLocation(); // get the current location
   // console.log(location.pathname); // /tuiter/home
   const locationArray = location.pathname.split("/");
@@ -67,11 +70,11 @@ const NavigationSidebar = () => {
                 Profile
               </Link>
             </li>
-            <li className={`nav-item`}>
+            {(!user) && <li className={`nav-item`}>
               <Link className={`nav-link`} to="/login">
                 Login
               </Link>
-            </li>
+            </li>}
             <li className={`nav-item dropdown`}>
               <a
                 className={`nav-link dropdown-toggle`}
