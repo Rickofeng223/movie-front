@@ -8,7 +8,9 @@ const AsyncImage = ({src, alt, className}) => {
         setImg(URL.createObjectURL(blob));
     };
 
-    useEffect(fetchImage, []);
+    useEffect(()=> {
+        fetchImage()
+    }, []);
 
     return (<img src={img} alt={alt} className={className}/>);
 }
