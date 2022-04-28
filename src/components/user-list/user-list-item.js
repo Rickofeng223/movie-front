@@ -22,6 +22,11 @@ const UserListItem = (
     return (
         <>
             <li className="card p-4 mb-2">
+
+                <div className="col">
+                    <i className="float-end fa-solid fa-trash-can"/>
+                </div>
+
                 <h5>{user.first_name} {user.last_name}</h5>
                 <h6><small className="text-muted">@{user.username}</small></h6>
 
