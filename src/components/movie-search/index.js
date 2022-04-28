@@ -1,20 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import MovieSearchList from "./MovieSearch";
 
 const SearchList = () => {
-  const [searchQuery, serSearchQuery] = React.useState("");
-
-  const pathParams = window.location.pathname.split("/");
-
-  React.useEffect(() => {
-    if (pathParams.length >= 4) {
-      serSearchQuery(pathParams[3]);
-    }
-  }, [pathParams]);
+  const searchMovies = useSelector((state) => state.searchMovies);
+  let { searchResults, stateOfTheResults } = searchMovies;
 
   return (
     <div>
-      <MovieSearchList searchQuery={searchQuery} />
+      {stateOfTheResults === "loading" ? (
+        <p> Loading....</p>
+      ) : stateOfTheResults === "completed" ? (
+        <MovieSearchList searchResult={searchResults} />
+      ) : stateOfTheResults === "error" ? (
+        <p> Something went wrong</p>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

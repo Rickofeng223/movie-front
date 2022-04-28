@@ -9,6 +9,7 @@ const ratingsReducer =
                     if (rating.user === action.rating.user) {
                         if (rating.liked === true) {
                             rating.liked = false;
+
                             rating.likes--;
                         } else {
                             rating.liked = true;
@@ -20,11 +21,14 @@ const ratingsReducer =
                     }
                 });
             case 'dislike-rating':
+
                 console.log('dislike');
+
                 return state.map(rating => {
                     if (rating.user === action.rating.user) {
                         if (rating.disliked === true) {
                             rating.disliked = false;
+
                             rating.dislikes--;
                         } else {
                             rating.disliked = true;

@@ -1,7 +1,6 @@
 import React from "react";
 import Movies from "./movies/index";
-import movieCategories from "../data/movieCategories.json"
-
+import movieCategories from "../data/movieCategories.json";
 
 const HomeScreen = () => {
   // const [movieList, setMovieList] = React.useState([]);
