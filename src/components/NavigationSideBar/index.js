@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { searchForMovies, seartStartForMovies } from "../actions/searcActions";
 import MovieSearchList from "../movie-search/MovieSearch";
 //import { useLocation } from "react-router-dom";
 
@@ -13,16 +15,17 @@ const NavigationSidebar = () => {
   const currentPart = locationArray[locationArray.length - 1];
   const pathParams = window.location.pathname.split("/");
 
-  
-  // React.useEffect(() => {
-  //   if (pathParams.length >= 4) {
-  //     setInputMovie(pathParams[3]);
-  //   }
-  // }, [pathParams]);
+  const dispatch = useDispatch();
+
 
   const [inputMovie, setInputMovie] = useState("");
 
-  const searchRef = useRef();
+  //const searchRef = useRef();
+
+  const handleSearch = () => {
+    dispatch(seartStartForMovies());
+    dispatch(searchForMovies(inputMovie));
+  };
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-primary`}>
@@ -100,7 +103,7 @@ const NavigationSidebar = () => {
               <button
                 className={`btn btn-secondary my-2 my-sm-0`}
                 type="submit"
-                onClick={MovieSearchList.searchByTitle}
+                onClick={handleSearch}
               >
                 Search
               </button>

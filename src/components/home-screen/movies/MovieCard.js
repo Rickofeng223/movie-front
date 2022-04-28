@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getImage } from "../../../util/constant";
 import "../actionStyle.css";
 import AsyncImage from "../../util/AsyncImage";
 
@@ -7,7 +8,7 @@ import AsyncImage from "../../util/AsyncImage";
 // const BASE_URL = "https://api.themoviedb.org/3";
 //   const api_key = "f48cf3e24ec9e89cc63cc40d1d8975c1";
 // //   http://api.themoviedb.org/3/genre/movie/list?api_key=f48cf3e24ec9e89cc63cc40d1d8975c1
-const MovieCard = ({ m }) => {
+const MovieCard = ({ m, handleClick }) => {
   // const [movies, setMovies] = useState([]);
   // const [loaded, setLoaded] = useState(true);
   // const ActionUrl =
@@ -24,11 +25,10 @@ const MovieCard = ({ m }) => {
   //     returnAction();
   //   }
   // });
-  const getImage = (path) => `https://image.tmdb.org/t/p/original${path}`;
 
   //const imLink = "https://image.tmdb.org/t/p/original/"    // get the img starter link
   return (
-    <li className={`wd-actionList`}>
+    <li className={`wd-actionList`} onClick={() => handleClick(m)}>
       <div className={`featured-content`}>
         <Link to="/home/moviedetail">
           <AsyncImage
