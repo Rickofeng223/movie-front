@@ -1,0 +1,24 @@
+[
+  {
+  "username": "co99",
+  "first_name": "Carol",
+  "last_name": "O'Connell",
+  "email_id": "Estrella_Weimann21@hotmail.com",
+  "phone_no": "337-058-8144 x28295",
+  "DOB": "2022-04-26T01:53:16.000Z",
+  "role": "CRITIC",
+  "_id": "62680d3d3171ef12bf184974",
+  "__v": 0
+  },
+  {
+  "username": "will.gonzalez87",
+  "first_name": "William",
+  "last_name": "Gonzalez",
+  "email_id": "May.Lehner30@yahoo.com",
+  "phone_no": "1-223-401-2629 x957",
+  "DOB": "2022-04-25T17:43:32.000Z",
+  "role": "CRITIC",
+  "_id": "62680d3d3171ef12bf18497a",
+  "__v": 0
+  }
+]

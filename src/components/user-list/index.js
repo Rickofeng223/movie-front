@@ -2,14 +2,15 @@ import React from "react";
 import UserListItem from "./user-list-item";
 import {Tab, Row, Col, Nav} from "react-bootstrap";
 
-import users from '../data/users-normal.json'
-
+import usersNormal from '../data/users-normal.json'
+import usersCritic from '../data/users-critic.json'
+import usersAdmin from '../data/users-critic.json'
 
 const UserList = () => {
 
     return(
         <>
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+            <Tab.Container id="left-tabs-example" defaultActiveKey="normal">
                 <Row>
                     <Col sm={3}>
                         <Nav variant="pills" className="flex-column">
@@ -28,7 +29,7 @@ const UserList = () => {
                         <Tab.Content>
                             <Tab.Pane eventKey="normal">
                                 {
-                                    users.map(user => {
+                                    usersNormal.map(user => {
                                         return(
                                             <UserListItem user={user}/>
                                         );
@@ -36,10 +37,22 @@ const UserList = () => {
                                 }
                             </Tab.Pane>
                             <Tab.Pane eventKey="critic">
-                                <p>critic tab</p>
+                                {
+                                    usersCritic.map(user => {
+                                        return(
+                                            <UserListItem user={user}/>
+                                        );
+                                    })
+                                }
                             </Tab.Pane>
                             <Tab.Pane eventKey="admin">
-                                <p>admin tab</p>
+                                {
+                                    usersAdmin.map(user => {
+                                        return(
+                                            <UserListItem user={user}/>
+                                        );
+                                    })
+                                }
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>
