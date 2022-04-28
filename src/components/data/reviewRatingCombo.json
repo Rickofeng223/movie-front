@@ -1,0 +1,44 @@
+[
+  {
+    "movie": "62680d3b3171ef12bf183b4e",
+    "critic": "62680d3d3171ef12bf184974",
+    "content": "Non corporis atque. Qui saepe omnis ea hic pariatur blanditiis. Quos modi soluta sed molestias voluptatibus consectetur vel ducimus molestiae. Unde mollitia unde est at qui consequatur voluptatem earum odio. Quis cupiditate doloremque voluptatibus placeat. Tempora totam eum incidunt sint doloribus odio voluptatum rerum necessitatibus.",
+    "rating": 41,
+    "likes": 28,
+    "dislikes": 49,
+    "time": "2022-04-26T08:54:20.000Z",
+    "visibility": "Renee_Rath26",
+    "_id": "62680d3d3171ef12bf184983",
+    "__v": 0,
+    "liked": true,
+    "disliked": false
+  },
+  {
+    "movie": "62680d3b3171ef12bf183b27",
+    "critic": "62680d3d3171ef12bf184974",
+    "content": "Consequatur vitae quis. Sapiente vero ut ad a id ipsam aperiam iste tempore. Accusamus et harum sapiente eos cumque hic ex. Fuga maxime aut voluptates nulla qui. Reiciendis quibusdam quia unde facilis eum laboriosam in. Occaecati laborum rerum.",
+    "rating": 1,
+    "likes": 26,
+    "dislikes": 56,
+    "time": "2022-04-25T18:31:43.000Z",
+    "visibility": "Rosie.Bins15",
+    "_id": "62680d3d3171ef12bf184985",
+    "__v": 0,
+    "liked": false,
+    "disliked": true
+  },
+  {
+    "movie": "62680d3c3171ef12bf183f83",
+    "critic": "62680d3d3171ef12bf184974",
+    "content": "Quo dolor molestias laboriosam aliquam unde. Qui et cumque et voluptatibus ea eaque. Alias recusandae aut et sed ab recusandae.",
+    "rating": 12,
+    "likes": 74,
+    "dislikes": 53,
+    "time": "2022-04-26T03:31:17.000Z",
+    "visibility": "Millie.Donnelly",
+    "_id": "62680d3d3171ef12bf184987",
+    "__v": 0,
+    "liked": true,
+    "disliked": false
+  }
+]

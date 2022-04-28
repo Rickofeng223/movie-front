@@ -29,6 +29,7 @@ import thunk from "redux-thunk";
 import ProfileComponent from "./components/profile";
 import Login from "./components/login";
 import CreateAccount from "./components/create-account";
+import UserHistory from "./components/user-history";
 const reducer = combineReducers({
   reviews: reviewReducer,
   ratings: ratingsReducer,
@@ -57,6 +58,11 @@ function App() {
                  exact={true}
                  element={<CreateAccount/>}
              />
+              <Route
+                  path="/test"
+                  exact={true}
+                  element={<UserHistory/>}
+              />
             <Route path="/">
               <Route path="/" element={<HomeScreen />} />
               <Route path="home" exact={true} element={<HomeScreen />} />
