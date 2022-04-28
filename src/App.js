@@ -35,7 +35,7 @@ const reducer = combineReducers({
   reviews: reviewReducer,
   ratings: ratingsReducer,
   searchMovies: searchReducer,
-  user:UserReducer,
+  currentUser:UserReducer,
 
 });
 const store = createStore(reducer, applyMiddleware(thunk));
