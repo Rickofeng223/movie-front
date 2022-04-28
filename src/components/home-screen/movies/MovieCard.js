@@ -1,7 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { getImage } from "../../../util/constant";
 import "../actionStyle.css";
+import AsyncImage from "../../util/AsyncImage";
+
+// import {Image} from "react-bootstrap";
 
 // const BASE_URL = "https://api.themoviedb.org/3";
 //   const api_key = "f48cf3e24ec9e89cc63cc40d1d8975c1";
@@ -29,7 +31,7 @@ const MovieCard = ({ m, handleClick }) => {
     <li className={`wd-actionList`} onClick={() => handleClick(m)}>
       <div className={`featured-content`}>
         <Link to="/home/moviedetail">
-          <img
+          <AsyncImage
             className={`featured-title imageSize`}
             src={getImage(m.poster_path)}
             alt="listMovies"

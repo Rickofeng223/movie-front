@@ -25,6 +25,7 @@ const MoviePage = (
 
   const movie = useSelector((state) => state.searchMovies.selectedMovie);
 
+
   return (
     <>
       {/* <div className="row">
@@ -64,6 +65,7 @@ const MoviePage = (
       </div>
     </>
   );
+
 };
 
 export default MoviePage;
