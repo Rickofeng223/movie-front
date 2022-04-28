@@ -1,15 +1,31 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import UserListItem from "./user-list-item";
-import {Tab, Row, Col, Nav} from "react-bootstrap";
+import {Col, Nav, Row, Tab} from "react-bootstrap";
+import {useDispatch, useSelector} from "react-redux";
+import {DELETE_USER, GET_USERS, getUsers} from "../../actions/admin/usersActions";
+import {useAsync} from "react-async";
+import axios from "axios";
 
-import usersNormal from '../data/users-normal.json'
-import usersCritic from '../data/users-critic.json'
-import usersAdmin from '../data/users-admin.json'
+const UserList = ({uid}) => {
+    const users = useSelector(e => e.users)
+    const dispatch = useDispatch()
 
-const UserList = () => {
 
-    return(
-        <>
+
+    //
+    //
+    // useEffect(() => {
+    //
+    //     return () => { mountedRef.current = false }
+    // }, [dispatch])
+        // // const [all,setUsers]= useState(_users)
+        useEffect(()=>{
+            getUsers(uid, dispatch)
+            //.then(e=>setUsers(e))
+        },[dispatch])
+
+        return (
+                <>
             <Tab.Container id="left-tabs-example" defaultActiveKey="normal">
                 <Row>
                     <Col sm={3}>
@@ -27,41 +43,45 @@ const UserList = () => {
                     </Col>
                     <Col sm={9}>
                         <Tab.Content>
-                            <Tab.Pane eventKey="normal">
+
+                              <Tab.Pane eventKey={'normal'}>
                                 {
-                                    usersNormal.map(user => {
-                                        return(
-                                            <UserListItem user={user}/>
+                                    users.filter((x) => x.role === "NORMAL").map(user => {
+                                        return (
+                                            <UserListItem key={user._id} uid={uid} user={user}/>
                                         );
                                     })
                                 }
                             </Tab.Pane>
-                            <Tab.Pane eventKey="critic">
+                              <Tab.Pane eventKey={'critic'}>
                                 {
-                                    usersCritic.map(user => {
-                                        return(
-                                            <UserListItem user={user}/>
+                                    users.filter((x) => x.role === "CRITIC").map(user => {
+                                        return (
+                                            <UserListItem key={user._id} uid={uid} user={user}/>
                                         );
                                     })
                                 }
                             </Tab.Pane>
-                            <Tab.Pane eventKey="admin">
+                              <Tab.Pane eventKey={'admin'}>
                                 {
-                                    usersAdmin.map(user => {
-                                        return(
-                                            <UserListItem user={user}/>
+                                    users.filter((x) => x.role === "ADMIN").map(user => {
+                                        return (
+                                            <UserListItem key={user._id} uid={uid} user={user}/>
                                         );
                                     })
                                 }
                             </Tab.Pane>
+
+
+
                         </Tab.Content>
                     </Col>
                 </Row>
             </Tab.Container>
 
 
-        </>
-    );
+      </>
+        );
 }
 
 export default UserList;

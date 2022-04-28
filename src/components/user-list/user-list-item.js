@@ -1,9 +1,11 @@
 import React from "react";
-
+import {useDispatch} from "react-redux";
+import {DELETE_USER, deleteUser,} from "../../actions/admin/usersActions";
+import axios from "axios";
 
 const UserListItem = (
     {
-        user = {
+        uid,user/* = {
             "username": "Andre.Smitham",
             "first_name": "Annabell",
             "last_name": "Mante",
@@ -13,10 +15,11 @@ const UserListItem = (
             "role": "NORMAL",
             "_id": "62680d3d3171ef12bf184978",
             "__v": 0
-        }
+        }*/
     }
 ) => {
 
+const dispatch = useDispatch()
 
 
     return (
@@ -24,7 +27,7 @@ const UserListItem = (
             <li className="card p-4 mb-2">
 
                 <div className="col">
-                    <i className="float-end fa-solid fa-trash-can"/>
+                    <i className="float-end fa-solid fa-trash-can" onClick={()=> deleteUser (uid,user._id,dispatch)}/>
                 </div>
 
                 <h5>{user.first_name} {user.last_name}</h5>
