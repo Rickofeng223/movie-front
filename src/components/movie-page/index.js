@@ -4,9 +4,9 @@ import WriteReviewModal from "../write-review-modal";
 import {useSelector} from "react-redux";
 
 
-const MoviePage = ({movie =
+const MoviePage = ( {movie = 
     {
-        "tmdb_id": 550,
+       "tmdb_id": 550,
         "title":"Fight Club",
         "homepage":"http://www.foxmovies.com/movies/fight-club",
         "release_date":"1999-10-15",
@@ -21,8 +21,8 @@ const MoviePage = ({movie =
         "_id": "62643e1edf7769194cc3a19d",
         "__v": 0
 
-    }}) => {
 
+    }}) => {
 
     const[modalShow, setModalShow] = React.useState(false)
 

@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeScreen from "./components/home-screen/HomeScreen";
 import MoviePage from "./components/movie-page";
 
-
 import "./vendors/bootstrap/blue-SkyTh/bootstrap.min.css";
 import "./vendors/fontawesome/css/all.min.css";
 import SearchList from "./components/movie-search";
@@ -18,7 +17,9 @@ import Login from "./components/login";
 import CreateAccount from "./components/create-account";
 const reducer = combineReducers({
   reviews: reviewReducer,
-    user:UserReducer
+    user:UserReducer,
+    ratings: ratingsReducer,
+
 });
 const store = createStore(reducer);
 
@@ -50,7 +51,6 @@ function App() {
                 exact={true}
                 element={<MoviePage /> }
               />
-
               <Route
                 path="home/profile"
                 exact={true}

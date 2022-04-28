@@ -5,7 +5,7 @@ import SearchResult from "./searchResult";
 //   https://api.themoviedb.org/3/search/movie?api_key=f48cf3e24ec9e89cc63cc40d1d8975c1&query=spiderman
 const MovieSearchList = ({ searchQuery }) => {
   const [moviesList, setMoviesList] = useState([]);
-  const [loaded, setLoaded] = useState(false);
+  //const [loaded, setLoaded] = useState(false);
   //const searchRef = useRef();
   const searchUrl =
     "https://api.themoviedb.org/3/search/movie?api_key=f48cf3e24ec9e89cc63cc40d1d8975c1&";
