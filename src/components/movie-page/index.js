@@ -54,7 +54,6 @@ const MoviePage = ({movie =
                     <h2 className="mb-3 mt-2">Vote Average: {movie.vote_average}</h2>
                     <h3>Overview</h3>
                     <p>{movie.overview}</p>
-                    <a href={movie.homepage}>More info</a>
                     <ReviewList/>
                 </div>
             </div>
