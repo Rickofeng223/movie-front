@@ -1,44 +1,53 @@
 import React, {useEffect, useState} from "react";
 //import reviews from "../data/reviews.json"
 import ReviewListItem from "./review-list-item";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {getReviews}   from "../../actions/admin/reviewsActions.js";
+import review from "../reducers/review";
 
 const sortRecent = (a, b) => b.recent - a.recent;
 const sortLikes = (a, b) => b.likes - a.likes;
 const sortDislikes = (a, b) => b.dislikes - a.dislikes;
 
 const ReviewList = () => {
-
+const dispatch = useDispatch()
+    const user = useSelector(s=>s.currentUser);
     const reviews = useSelector(s=>s.reviews);
-    let sorted = reviews
-    let [sortedData, setSorted] = useState(sorted);
+
+    let [sortedData, setSorted] = useState(reviews);
     //const [data, setData] = useState([]);
     const [sortType, setSort] = useState('recent');
 
     useEffect(() => {
+        let iife = async ()=>{
+        if(!reviews.length){console.log("GETTING REIVIEWS")
+            await getReviews(user._id, null,dispatch )
+        }
+
 
         let temp;
         switch (sortType) {
             case "recent":
-                temp = sortedData.sort(sortRecent);
+                temp = reviews.sort(sortRecent);
                 setSorted(temp);
                 break
             case "likes":
-                temp = sortedData.sort(sortLikes);
+                temp = reviews.sort(sortLikes);
                 setSorted(temp);
                 break
             case "dislikes":
-                temp = sortedData.sort(sortDislikes);
+                temp = reviews.sort(sortDislikes);
                 setSorted(temp);
                 break
-        }
+        }}
+        iife()
         //const sorted = reviewsData.sort((a, b) => b[sortType] - a[sortType]);
         //temp = sortedData.sort((a, b) => b[sortType] - a[sortType]);
         //setSorted(temp);
         //setReviewsData(sorted);
 
 
-    }, [sortType]);
+    }, [sortType,dispatch]);
 
     return(
         <>
@@ -56,10 +65,11 @@ const ReviewList = () => {
             </div>
 
             <ul className="">
+
                 {
-                    sorted.map(reviews => {
+                    sortedData.map(reviews => {
                         return(
-                            <ReviewListItem review={reviews}/>
+                            <ReviewListItem uid={user._id} review={reviews}/>
                         );
                     })
                 }

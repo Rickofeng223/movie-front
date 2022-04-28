@@ -1,50 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {deleteReview} from "../../actions/admin/reviewsActions";
 
 
-const ReviewListItem = ({ review =
-         {
+const ReviewListItem = ({
+                            uid, review
+                        }) => {
+    const dispatch = useDispatch();
 
-            "movie": "62643e1edf7769194cc3a4be",
-            "critic": "62643e20df7769194cc3b159",
-            "content": "Ea ratione quibusdam nisi amet qui laudantium inventore. Eum rerum qui nulla eum. Praesentium quam aut molestiae earum aut assumenda culpa tempora. Enim rerum cum magnam unde libero.",
-            "rating": 64,
-
-             "likes": 27,
-             "dislikes": 75,
-
-            "time": "2022-04-23T03:33:04.000Z",
-            "visibility": "Rico_Haley37",
-            "_id": "62643e20df7769194cc3b227",
-            "__v": 0
-
-        }
-    }) => {
 
     const rating = useSelector(state => state.ratings);
 
-    // const ratings =
-    //     {"user": "62643e20df7769194cc3b19b",
-    //     "review": "62643e20df7769194cc3b297",
-    //     "likes": 0,
-    //     "dislikes": 0,
-    //     "liked": false,
-    //     "disliked": true}
 
-    const dispatch = useDispatch();
-    const deleteReview = (review) => {
-        dispatch({type: 'delete-review', review})
-    }
 
-    const likeRating = (rating) => {
+    const likeRating = async (rating) => {
+
         dispatch({type: 'like-rating', rating});
-        dispatch({type: 'like-review', review, liked:rating.liked, disliked:rating.disliked});
+        dispatch({type: 'like-review', review, liked: rating.liked, disliked: rating.disliked});
 
     }
 
-    const dislikeRating = (rating) => {
+    const dislikeRating = async (rating) => {
         dispatch({type: 'dislike-rating', rating})
-        dispatch({type: 'dislike-review', review, liked:rating.liked, disliked:rating.disliked})
+        dispatch({type: 'dislike-review', review, liked: rating.liked, disliked: rating.disliked})
 
     }
 
@@ -58,11 +36,11 @@ const ReviewListItem = ({ review =
                             <h6>{review.critic}</h6>
                             <small className="">{review.time}</small>
                         </div>
-
-                        <div className="col">
+                         <div className="col">
                             <i className="float-end fa-solid fa-trash-can"
-                                onClick={() => {
-                                    deleteReview(review)}}/>
+                               onClick={() => {
+                                   deleteReview(uid, review, dispatch)
+                               }}/>
                         </div>
                     </div>
                 </div>
@@ -73,11 +51,11 @@ const ReviewListItem = ({ review =
 
                     <div className="row d-inline">
                         <span className="mr-3"
-                            onClick={likeRating}>
+                              onClick={likeRating}>
                             {
                                 rating.liked &&
                                 <i className="fa-solid fa-thumbs-up"
-                                    style={{color: 'purple'}}/>
+                                   style={{color: 'purple'}}/>
                             }
                             {
                                 !rating.liked &&
