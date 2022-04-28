@@ -2,6 +2,7 @@ import React from "react";
 import {Tabs, Tab} from "react-bootstrap";
 
 import ReviewList from "../review-list";
+import UserList from "../user-list";
 
 const AdminPage = () => {
 
@@ -11,11 +12,7 @@ const AdminPage = () => {
 
             <Tabs defaultActiveKey="users" id="admin-tabs" className="mb-3">
                 <Tab eventKey="users" title="Users">
-                    <p>
-                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                        It has roots in a piece of classical Latin literature from 45 BC,
-                        making it over 2000 years old.
-                    </p>
+                    <UserList/>
                 </Tab>
                 <Tab eventKey="reviews" title="Reviews">
                     <ReviewList/>

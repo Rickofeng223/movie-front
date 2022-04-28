@@ -1,0 +1,35 @@
+[
+      {
+        "username": "Ignacio_Crooks",
+        "first_name": "Myra",
+        "last_name": "Altenwerth",
+        "email_id": "Liliane39@hotmail.com",
+        "phone_no": "1-243-117-5863",
+        "DOB": "2022-04-26T06:52:50.000Z",
+        "role": "NORMAL",
+        "_id": "62680d3d3171ef12bf184972",
+        "__v": 0
+      },
+      {
+        "username": "Andre.Smitham",
+        "first_name": "Annabell",
+        "last_name": "Mante",
+        "email_id": "Joseph78@gmail.com",
+        "phone_no": "654.853.6532",
+        "DOB": "2022-04-25T15:21:56.000Z",
+        "role": "NORMAL",
+        "_id": "62680d3d3171ef12bf184978",
+        "__v": 0
+      },
+      {
+        "username": "Luigi.Braun91",
+        "first_name": "Lyric",
+        "last_name": "Schuster",
+        "email_id": "Jace81@hotmail.com",
+        "phone_no": "(430) 369-9874",
+        "DOB": "2022-04-26T13:41:13.000Z",
+        "role": "NORMAL",
+        "_id": "62680d3d3171ef12bf18497e",
+        "__v": 0
+      }
+]
