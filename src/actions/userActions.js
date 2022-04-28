@@ -3,7 +3,7 @@ export const LOGIN='login', UPDATE='update',LOGOUT='logout',PROFILE='profile'
 
 export const signup = async (user_data,{navigate,dispatch}) => {
     try {
-        let {data} = await axios.post('http://localhost:4000/api/auth/signup',user_data)
+        let {data} = await axios.post(`http://localhost:4000/api/auth/signup`,user_data)
         dispatch({type:LOGIN, user:data})
         navigate('/')
     } catch (e) {
@@ -15,7 +15,9 @@ export const signup = async (user_data,{navigate,dispatch}) => {
 export const login = async (auth,{navigate,dispatch}) => {
     try {
         let {data} = await axios.post('http://localhost:4000/api/auth/login',auth)
+        await axios.get(`http://localhost:4000/api/session/set/user/${data._id.toString()}`)
         dispatch({type:LOGIN, user:data})
+
         navigate('/')
     } catch (e) {
         navigate('/login-error')
