@@ -1,8 +1,8 @@
 
 const reviewReducer =
     (state = [], action) => {
-        console.log(action);
     switch (action.type) {
+
         case 'get-reviews':
             return action.reviews
         case 'create-review':
@@ -24,7 +24,6 @@ const reviewReducer =
 
                 review => review._id !== action.review._id);
         case 'like-review':
-            console.log('like in review reducer');
             return state.map(review => {
                 if (review._id === action.review._id) {
                     if (action.liked === true) {
@@ -41,7 +40,6 @@ const reviewReducer =
                 }
             });
         case 'dislike-review':
-            console.log('dislike in review reducer');
             return state.map(review => {
                 if (review._id === action.review._id) {
                     if (action.disliked === true) {
@@ -59,7 +57,6 @@ const reviewReducer =
             });
 
         default:
-            console.log('hit default review');
             return state;
     }
 }
