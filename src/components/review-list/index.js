@@ -9,14 +9,10 @@ const ReviewList = () => {
  const dispatch = useDispatch()
      const user = useSelector(s=>s.currentUser);
      const reviews = useSelector(s=>s.reviews);
-
     const [sortType, setSort] = useState('recent');
     useEffect(() => {
          let iife = async ()=> {
-
-                console.log("GETTING REIVIEWS")
                 await getReviews(user._id, null, dispatch,sortType)
-
         }
         iife();
     }, [sortType,dispatch]);
@@ -42,6 +38,8 @@ const ReviewList = () => {
             <ul className="">
                 {
                     reviews.map(review => {
+                        console.log(review)
+
                         return(
                             <ReviewListItem uid={user._id}
                                             review={review}
