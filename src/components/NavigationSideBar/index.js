@@ -54,11 +54,17 @@ const NavigationSidebar = () => {
                   onChange={(x) => setInputMovie(x.target.value)}
                   value={inputMovie}
               />
-              <Button variant="outline-success rounded-pill"
-                      className="btn btn-secondary"
-                      onClick={handleSearch}>
-                Search
-              </Button>
+              <Link to={`/home/search/${inputMovie}`}>
+                <Button variant="outline-success rounded-pill"
+                        type="submit"
+                        className="btn btn-secondary"
+                        onClick={handleSearch}>
+                  Search
+                </Button>
+              </Link>
+
+
+
             </Form>
           </Navbar.Collapse>
         </Container>
