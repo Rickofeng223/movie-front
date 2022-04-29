@@ -57,11 +57,6 @@ const NavigationSidebar = () => {
             </li>
             <li className={`nav-item`}>
               <a className={`nav-link`} href="#">
-                Top List
-              </a>
-            </li>
-            <li className={`nav-item`}>
-              <a className={`nav-link`} href="#">
                 Movie
               </a>
             </li>
