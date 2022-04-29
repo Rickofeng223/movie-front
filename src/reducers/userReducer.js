@@ -7,16 +7,17 @@ import axios from "axios";
 
 const loggedOut={id:null, user:null}
 export default function UserReducer(state=null,action){
-    let x
     switch (action.type){
         case LOGIN:
             return action.user  ;
         case UPDATE:
             let {user:update}=action
+            console.log(update)
             return {user: update}
         case LOGOUT:
-            return loggedOut
+            return  null
         default:
+            console.log(state)
             return state
     }
 }

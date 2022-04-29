@@ -33,11 +33,11 @@ export const logout = async ({navigate,dispatch}) => {
     }
 }
 
-export const updateProfile = async (user, {navigate,dispatch}) => {
+export const updateProfile = async (user, {navigate,dispatch}, obj) => {
     try {
-        let {data} = await axios.put(`http://localhost:4000/api/users/${user._id}`,user)
-        dispatch({type:UPDATE, user:data})
-        navigate('/profile')
+        let {data} = await axios.put(`http://localhost:4000/api/users/${user._id}?user=${user._id}`,user)
+        dispatch({type:UPDATE, user:user})
+        obj.value = true
     } catch (e) {
         navigate('/error')
         console.log(e.message)

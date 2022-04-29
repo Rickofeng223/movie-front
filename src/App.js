@@ -70,13 +70,13 @@ function App() {
               />
 
               <Route
-                path="home/profile"
+                path="/profile/:uid"
                 exact={true}
                 element={<ProfileComponent />}
               />
 
                 <Route
-                    path="profile/edit"
+                    path="/profile/edit"
                     exact={true}
                     element={<EditProfileComponent />}
                 />
