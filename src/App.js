@@ -7,8 +7,9 @@ import "./vendors/bootstrap/css/bootstrap.min.css"
 import "./vendors/fontawesome/css/all.min.css";
 import "./vendors/bootswatch/bootstrap.min.css";
 import SearchList from "./components/movie-search";
-import NavigationSidebar from "./components/NavigationSideBar";
+
 import reviewReducer from "./components/reducers/review";
+
 import ratingsReducer from "./components/reducers/ratingsReducer";
 import searchReducer from "./components/reducers/searchReducers";
 import {applyMiddleware, combineReducers, createStore} from "redux";
@@ -19,8 +20,9 @@ import ProfileComponent from "./components/profile";
 import Login from "./components/login";
 import CreateAccount from "./components/create-account";
 import AdminPage from "./components/admin-page";
-import EditProfileComponent from "./components/edit-profile";
 import UsersReducer from "./reducers/admin-users-reducer";
+import NavigationSidebar from "./components/NavigationSideBar";
+
 
 const reducer = combineReducers({
     reviews: reviewReducer,
@@ -31,6 +33,10 @@ const reducer = combineReducers({
 });
 const store = createStore(reducer, applyMiddleware(thunk));
 
+
+function EditProfileComponent() {
+    return null;
+}
 
 function App() {
     return (
@@ -73,9 +79,10 @@ function App() {
                 <Route
                     path="profile/edit"
                     exact={true}
-                    element={<EditProfileComponent/>}
+                    element={<EditProfileComponent />}
                 />
-            </Route>
+
+             </Route>
           </Routes>
         </div>
       </BrowserRouter>

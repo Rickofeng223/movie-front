@@ -10,7 +10,6 @@ const NavigationSidebar = () => {
   // console.log(window.location.href); // window location for url example: http://localhost:3000/tuiter/home
   const user = useSelector(e=>e.currentUser)
 
-
   const location = useLocation(); // get the current location
   // console.log(location.pathname); // /tuiter/home
   const locationArray = location.pathname.split("/");
@@ -78,6 +77,7 @@ const NavigationSidebar = () => {
                 Profile
               </Link>
             </li>
+
             {
             <li className={`nav-item`}>
               {user ? <Link className={`nav-link`} to={'/'} onClick={()=>logout({dispatch})}>Logout</Link>
@@ -87,6 +87,7 @@ const NavigationSidebar = () => {
               </Link>}
             </li>
             }
+
             <li className={`nav-item dropdown`}>
               <a
                 className={`nav-link dropdown-toggle`}
