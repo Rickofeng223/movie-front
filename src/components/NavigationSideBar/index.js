@@ -56,11 +56,6 @@ const NavigationSidebar = () => {
               </Link>
             </li>
             <li className={`nav-item`}>
-              <a className={`nav-link`} href="#">
-                Movie
-              </a>
-            </li>
-            <li className={`nav-item`}>
               <Link className={`nav-link`} to="/home/profile">
                 Profile
               </Link>
