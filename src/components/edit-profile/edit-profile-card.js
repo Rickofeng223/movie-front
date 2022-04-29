@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import ReviewList from "../review-list";
 import {updateProfile} from "../../actions/userActions";
@@ -6,6 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 
 import '../edit-profile/edit-profile-styles.css';
+import profile from "../profile";
+
 
 const EditProfileCard = () => {
 
@@ -14,21 +16,46 @@ const EditProfileCard = () => {
     const dispatch = useDispatch()
     const user = useSelector(s => s.currentUser)
 
-    const [username, setUsername] = useState(user.username)
-    const [first_name, setFirstname] = useState(user.first_name)
-    const [last_name, setLastname] = useState(user.last_name)
-    const [email_id, setEmail] = useState(user.email_id)
-    const [phone_no, setPhone] = useState(user.phone_no)
-    const [DOB, setDob] = useState(user.DOB)
+    const obj = {value: false}
+
+    // useEffect(() => {
+    //     if(obj.value){
+    //         navigate(`/profile/${user._id}`)
+    //     }
+    // }, [navigate])
+
+    const saveProfileButton = () => {
+        const profile = {...user, first_name, last_name, email_id, phone_no}
+        // alert(JSON.stringify(profile, null, 4))
+        updateProfile(profile, {navigate, dispatch}, obj)
+    }
+
+    const {username:_username,
+    first_name: _first_name,
+        last_name: _last_name,
+        email_id: _email_id,
+        phone_no: _phone_no,
+        DOB: _DOB,
+    } = user
+
+    const [username, setUsername] = useState(_username || '')
+    const [first_name, setFirstname] = useState(_first_name || '')
+    const [last_name, setLastname] = useState(_last_name || '')
+    const [email_id, setEmail] = useState(_email_id || '')
+    const [phone_no, setPhone] = useState(_phone_no || '')
+    const [DOB, setDob] = useState(_DOB || '')
+    let dateString = new Date(DOB)
 
     const onChangeUsername = (e) => setUsername(e.target.value)
     const onChangeFirstname = (e) => setFirstname(e.target.value)
     const onChangeLastname = (e) => setLastname(e.target.value)
     const onChangeEmail = (e) => setEmail(e.target.value)
     const onChangePhone = (e) => setPhone(e.target.value)
-    const onChangeDob = (e) => setDob(e.target.value)
+    // const onChangeDob = (e) => {
+    //     setDob(new Date(e.target.value))
+    // }
 
-    return(
+    return (
         <div className="row">
             <div className="col-xl-5">
 
@@ -40,24 +67,30 @@ const EditProfileCard = () => {
                     </div>
                     <div className="card-body text-center">
                         <img className="img-account-profile rounded-circle mb-2"
-                             src={(()=>{
-                                 switch(user.role){
-                                     case "NORMAL": return "http://bootdey.com/img/Content/avatar/avatar1.png";
+                             src={(() => {
+                                 switch (user.role) {
+                                     case "NORMAL":
+                                         return "http://bootdey.com/img/Content/avatar/avatar1.png";
 
-                                     case "ADMIN" : return "http://bootdey.com/img/Content/avatar/avatar2.png";
+                                     case "ADMIN" :
+                                         return "http://bootdey.com/img/Content/avatar/avatar2.png";
 
-                                     case "CRITIC" : return "http://bootdey.com/img/Content/avatar/avatar3.png";
+                                     case "CRITIC" :
+                                         return "http://bootdey.com/img/Content/avatar/avatar3.png";
 
-                                     default: return "";
-                                 }})()} alt=""/>
+                                     default:
+                                         return "";
+                                 }
+                             })()} alt=""/>
                         <br/>
 
-                        <i className="fa-duotone fa-at"></i>{user.username.toLowerCase()}<br/><br/>
+                        <i className="fa-duotone fa-at"></i>{user.username}<br/><br/>
                         <span className='text-left'>
-                                    <h2><b>{user.first_name}   {user.last_name}</b></h2>
-                                    <h5><i className="fa-solid fa-phone"></i><h6 className='disp-inline'> {user.phone_no}</h6></h5>
-                                    <h5><i className="fa-solid fa-envelope"></i><h6 className='disp-inline'> {user.email_id.toLowerCase()}</h6></h5>
-                                    <h5><i className="fa-solid fa-cake-candles"></i><h6 className='disp-inline'> {(new Date(user.DOB)).toISOString().substring(0,10)}</h6></h5>
+                                    <h2><b>{user.first_name} {user.last_name}</b></h2>
+                                    <h5><i className="fa-solid fa-phone"></i> {user.phone_no}</h5>
+                                    <h5><i className="fa-solid fa-envelope"></i> {user.email_id}</h5>
+                                    <h5><i
+                                        className="fa-solid fa-cake-candles"></i> {dateString.toLocaleDateString()}</h5>
                                     </span>
                     </div>
                 </div>
@@ -76,7 +109,7 @@ const EditProfileCard = () => {
                                     will appear to other users on the site)</label>
                                 <input className="form-control" id="inputUsername" type="text"
                                        placeholder="Enter your username" value={username}
-                                       onChange={onChangeUsername} />
+                                       onChange={onChangeUsername}/>
                             </div>
                             {/*Form Row*/}
                             <div className="row gx-3 mb-3">
@@ -118,21 +151,21 @@ const EditProfileCard = () => {
                                     />
                                 </div>
 
-                                <div className="col-md-6">
-                                    <label className="small mb-1" htmlFor="inputBirthday">Date of birth</label>
-                                    <input className="form-control" id="inputBirthday" type="date"
-                                           name="birthday" placeholder="Enter your birthday" value={(new Date(DOB)).toISOString().substring(0,10)}
-                                           onChange={onChangeDob}
-                                    />
-                                </div>
+                                {/*<div className="col-md-6">*/}
+                                {/*    <label className="small mb-1" htmlFor="inputBirthday">Date of birth</label>*/}
+                                {/*    <input className="form-control" id="inputBirthday" type="date"*/}
+                                {/*           name="birthday" placeholder="Enter your birthday" value={(new Date(DOB)).toISOString().substring(0,10)}*/}
+                                {/*           onChange={onChangeDob}*/}
+                                {/*    />*/}
+                                {/*</div>*/}
                             </div>
 
-                            <button
-                                onClick={() => {
-                                updateProfile({...user, first_name, last_name, email_id, phone_no, DOB}, {navigate, dispatch})
-                            }}
-                                    className="btn btn-primary rounded bg-success"
-                                type="button">Save changes</button>
+                            {/*navigate(`/profile/${user._id}`)*/}
+                            <Link to={`/profile/${user._id}`}
+                                onClick={saveProfileButton}
+                                className="btn btn-primary rounded bg-success"
+                                type="button">Save changes
+                            </Link>
                         </form>
                     </div>
                 </div>

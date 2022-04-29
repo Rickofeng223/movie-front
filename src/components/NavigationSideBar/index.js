@@ -3,14 +3,14 @@ import {useDispatch, useSelector} from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { searchForMovies, seartStartForMovies } from "../actions/searcActions";
 import MovieSearchList from "../movie-search/MovieSearch";
+import {logout} from "../../actions/userActions";
 //import { useLocation } from "react-router-dom";
 
 import {Navbar, Container, Nav, Form, FormControl, Button} from "react-bootstrap";
 
 const NavigationSidebar = () => {
   // console.log(window.location.href); // window location for url example: http://localhost:3000/tuiter/home
-
-  const user = useSelector((x) => x.currentUser)
+  const user = useSelector(e=>e.currentUser)
 
   const location = useLocation(); // get the current location
   // console.log(location.pathname); // /tuiter/home
@@ -41,9 +41,19 @@ const NavigationSidebar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/home">Home</Nav.Link>
-              <Nav.Link as={Link} to="/home/profile">Profile</Nav.Link>
+              {user && user.role==="ADMIN" &&
+                  <Nav.Link as={Link} to="/admin">Admin</Nav.Link>}
+              { (user) &&
+                  <Nav.Link as={Link} to={`/profile/${user._id}`}>Profile</Nav.Link>}
+
+              {user ?
+                    <Nav.Link as={Link} to={'/'} onClick={() => logout({dispatch})}>Logout</Nav.Link>
+                    :
+                    <Nav.Link as={Link} to="/login">Login</Nav.Link>
+              }
               {(!user) &&
-                <Nav.Link as={Link} to="/login">Login</Nav.Link>}
+                  <Nav.Link as={Link} to={"/signup"}>Sign Up</Nav.Link>
+              }
             </Nav>
             <Form className="d-flex">
               <FormControl
@@ -62,15 +72,10 @@ const NavigationSidebar = () => {
                   Search
                 </Button>
               </Link>
-
-
-
             </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-
 
 
 

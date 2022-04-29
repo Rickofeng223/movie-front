@@ -16,7 +16,7 @@ const Login = () => {
                 <div className="col-4">
                     <h2>Login</h2>
                     <p>
-                        Welocm to Movie App. Write review as a critic and rate reviews as a fan. You can find all the latest movies as well as the throwbacks.
+                        Welcome to Movie App. Write review as a critic and rate reviews as a fan. You can find all the latest movies as well as the throwbacks.
                     </p>
                     <div>
 
