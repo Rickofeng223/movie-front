@@ -1,27 +1,15 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect} from "react";
 import UserListItem from "./user-list-item";
 import {Col, Nav, Row, Tab} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
-import {DELETE_USER, GET_USERS, getUsers} from "../../actions/admin/usersActions";
-import {useAsync} from "react-async";
-import axios from "axios";
+import {getUsers} from "../../actions/admin/usersActions";
 
 const UserList = ({uid}) => {
-    const users = useSelector(e => e.users)
     const dispatch = useDispatch()
+    const users = useSelector(e => e.users)
 
-
-
-    //
-    //
-    // useEffect(() => {
-    //
-    //     return () => { mountedRef.current = false }
-    // }, [dispatch])
-        // // const [all,setUsers]= useState(_users)
         useEffect(()=>{
-            getUsers(uid, dispatch)
-            //.then(e=>setUsers(e))
+            getUsers(uid, dispatch).catch(e=>console.error(e))
         },[dispatch])
 
         return (
@@ -44,7 +32,7 @@ const UserList = ({uid}) => {
                     <Col sm={9}>
                         <Tab.Content>
 
-                              <Tab.Pane eventKey={'normal'}>
+                             <Tab.Pane eventKey={'normal'}>
                                 {
                                     users.filter((x) => x.role === "NORMAL").map(user => {
                                         return (

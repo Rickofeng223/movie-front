@@ -3,16 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteReview} from "../../actions/admin/reviewsActions";
 
 
-const ReviewListItem = ({
-                            uid, review
+const ReviewListItem = ({uid,review,onDelete
                         }) => {
     const dispatch = useDispatch();
-
-
     const rating = useSelector(state => state.ratings);
 
-
-
+    //TODO REFACTOR to actions
     const likeRating = async (rating) => {
 
         dispatch({type: 'like-rating', rating});
@@ -20,10 +16,10 @@ const ReviewListItem = ({
 
     }
 
+    //TODO REFACTOR to actions
     const dislikeRating = async (rating) => {
         dispatch({type: 'dislike-rating', rating})
         dispatch({type: 'dislike-review', review, liked: rating.liked, disliked: rating.disliked})
-
     }
 
 
@@ -38,9 +34,7 @@ const ReviewListItem = ({
                         </div>
                          <div className="col">
                             <i className="float-end fa-solid fa-trash-can"
-                               onClick={() => {
-                                   deleteReview(uid, review, dispatch)
-                               }}/>
+                               onClick={onDelete}/>
                         </div>
                     </div>
                 </div>
