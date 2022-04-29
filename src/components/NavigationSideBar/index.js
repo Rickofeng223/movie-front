@@ -72,17 +72,19 @@ const NavigationSidebar = () => {
                 Movie
               </a>
             </li>
-            <li className={`nav-item`}>
-              <Link className={`nav-link`} to="/home/profile">
+            {(user) && <li className={`nav-item`}>
+              <Link className={`nav-link`} to={`/profile/${user._id}`}>
                 Profile
               </Link>
-            </li>
+
+            </li>}
 
             {
             <li className={`nav-item`}>
               {user ? <Link className={`nav-link`} to={'/'} onClick={()=>logout({dispatch})}>Logout</Link>
                   :
                   <Link className={`nav-link`} to="/login">
+
                 Login
               </Link>}
             </li>
