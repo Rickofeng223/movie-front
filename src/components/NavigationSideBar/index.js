@@ -3,12 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { searchForMovies, seartStartForMovies } from "../actions/searcActions";
 import MovieSearchList from "../movie-search/MovieSearch";
+import {logout} from "../../actions/userActions";
 //import { useLocation } from "react-router-dom";
 
 const NavigationSidebar = () => {
   // console.log(window.location.href); // window location for url example: http://localhost:3000/tuiter/home
-
-  const user = useSelector((x) => x.currentUser)
+  const user = useSelector(e=>e.currentUser)
 
   const location = useLocation(); // get the current location
   // console.log(location.pathname); // /tuiter/home
@@ -55,6 +55,13 @@ const NavigationSidebar = () => {
                 Home
               </Link>
             </li>
+            {user && user.role==="ADMIN" &&
+            <li className={`nav-item `}>
+              <Link to={"/admin"} className={`nav-link `}>
+                Admin
+              </Link>
+            </li>
+            }
             <li className={`nav-item`}>
               <a className={`nav-link`} href="#">
                 Top List
@@ -69,12 +76,20 @@ const NavigationSidebar = () => {
               <Link className={`nav-link`} to={`/profile/${user._id}`}>
                 Profile
               </Link>
+
             </li>}
-            {(!user) && <li className={`nav-item`}>
-              <Link className={`nav-link`} to="/login">
+
+            {
+            <li className={`nav-item`}>
+              {user ? <Link className={`nav-link`} to={'/'} onClick={()=>logout({dispatch})}>Logout</Link>
+                  :
+                  <Link className={`nav-link`} to="/login">
+
                 Login
-              </Link>
-            </li>}
+              </Link>}
+            </li>
+            }
+
             <li className={`nav-item dropdown`}>
               <a
                 className={`nav-link dropdown-toggle`}
@@ -92,6 +107,8 @@ const NavigationSidebar = () => {
                 </a>
               </div>
             </li>
+
+
           </ul>
           <form className={`d-flex`}>
             <input
