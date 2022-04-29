@@ -43,6 +43,8 @@ const ratingsReducer =
                         return rating;
                     }
                 });
+            case 'delete-rating':
+                return state.filter (e=>e._id !== action.rating._id)
             default:
                 console.log('hit default');
                 return state;

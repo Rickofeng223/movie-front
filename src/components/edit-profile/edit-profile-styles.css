@@ -2,6 +2,7 @@
     height: 10rem;
 }
 
+
 .disp-inline{
     display: inline;
 }
@@ -9,7 +10,7 @@
 .red-button{
     background-color: red;
 }
-
+ 
 .rounded-circle {
     border-radius: 50% !important;
 }
