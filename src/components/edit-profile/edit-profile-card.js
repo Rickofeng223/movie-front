@@ -40,10 +40,18 @@ const EditProfileCard = () => {
                     </div>
                     <div className="card-body text-center">
                         <img className="img-account-profile rounded-circle mb-2"
-                             src="http://bootdey.com/img/Content/avatar/avatar1.png" alt=""/><br/>
-                        {/*<div className="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB*/}
-                        {/*</div>*/}
-                        {/*<button className="btn btn-primary" type="button" disabled={true}>Upload new image</button>*/}
+                             src={(()=>{
+                                 switch(user.role){
+                                     case "NORMAL": return "http://bootdey.com/img/Content/avatar/avatar1.png";
+
+                                     case "ADMIN" : return "http://bootdey.com/img/Content/avatar/avatar2.png";
+
+                                     case "CRITIC" : return "http://bootdey.com/img/Content/avatar/avatar3.png";
+
+                                     default: return "";
+                                 }})()} alt=""/>
+                        <br/>
+
                         <i className="fa-duotone fa-at"></i>{user.username.toLowerCase()}<br/><br/>
                         <span className='text-left'>
                                     <h2><b>{user.first_name}   {user.last_name}</b></h2>
