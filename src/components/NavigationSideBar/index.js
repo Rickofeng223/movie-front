@@ -54,7 +54,7 @@ const NavigationSidebar = () => {
                   onChange={(x) => setInputMovie(x.target.value)}
                   value={inputMovie}
               />
-              <Button variant="outline-success"
+              <Button variant="outline-success rounded-pill"
                       className="btn btn-secondary"
                       onClick={handleSearch}>
                 Search
