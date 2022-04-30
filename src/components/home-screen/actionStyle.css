@@ -14,3 +14,11 @@
   max-width: 200px;
   text-align: match-parent;
 }
+
+.b-width{
+  max-width: 50px;
+}
+
+.m-height{
+  max-height: 100px;
+}
