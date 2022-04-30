@@ -81,7 +81,7 @@ function App() {
               <Route path="home" exact={true} element={<HomeScreen/>}/>
               <Route path="home/search/:movie_name" element={<SearchList/>}/>
               <Route
-                  path="home/moviedetail"
+                  path={"home/moviedetail"}
                   exact={true}
                   element={<MoviePage/>}
               />
