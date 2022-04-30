@@ -1,7 +1,7 @@
 import rating from '../data/ratings.json';
 
 const ratingsReducer =
-    (state = rating, action) => {
+    (state = [], action) => {
         switch (action.type) {
                 // console.log('like');
                 // return state.map(rating => {
@@ -19,8 +19,9 @@ const ratingsReducer =
                 //         return rating;
                 //     }
                 // });
-            case 'like-rating':
-            case 'dislike-rating':
+            case 'set-ratings':
+                return action.ratings;
+            case 'update-rating':
 
                 console.log('dislike');
 

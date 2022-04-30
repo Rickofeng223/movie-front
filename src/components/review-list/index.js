@@ -4,6 +4,7 @@ import ReviewListItem from "./review-list-item";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteReview, getReviews} from "../../actions/admin/reviewsActions.js";
 import {useSearchParams} from "react-router-dom";
+import {getRatings} from "../../actions/admin/ratingsActions";
 
 
 const ReviewList = () => {
@@ -15,6 +16,7 @@ const ReviewList = () => {
     const [query,setQuery] = useSearchParams( )
     useEffect(() => {
          let iife = async ()=> {
+                await getRatings(user._id, dispatch())
                 await getReviews(user._id, null, dispatch,sortType)
         }
         if(resort) {
