@@ -33,7 +33,7 @@ export const getUserState = async (userid, dispatch) => {
             `http://localhost:4000/api/users/${userid}?user=${userid}`
             )
 
-        dispatch({type: LOGIN, user: data})
+        dispatch({type: LOGIN, user})
 
     } catch (e) {
        alert('error: '+e)
