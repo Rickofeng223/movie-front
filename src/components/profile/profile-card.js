@@ -43,7 +43,7 @@ const ProfileCard = () => {
 
                             <Phone ph={user.phone_no}/>
 
-                            <Link to={{ pathname:'/profile/edit', search:`?uid=${user ? user._id : query.uid}`}} className="btn btn-primary rounded"
+                            <Link to={{ pathname:'/profile/edit', search:`?uid=${user ? user._id : query.get("uid")}`}} className="btn btn-primary rounded"
                                   type="button">Edit Profile</Link>
                         </form>
                     </div>

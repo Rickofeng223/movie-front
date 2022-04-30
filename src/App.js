@@ -43,8 +43,8 @@ function XComponent() {
     useEffect(() => {
         if (user) {
             setQuery({uid: user._id})
-        } else if (query._id) {
-            getUserState(query.uid, {dispatch})
+        } else if (query.get("uid")) {
+            getUserState(query.get("uid"), {dispatch})
         }
 
     }, [dispatch])

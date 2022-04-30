@@ -13,11 +13,11 @@ const AdminPage = () => {
 
     // alert(JSON.stringify(query))
 
-    const _userId = query.uid
+    const _userId = query.get("uid")
     const dispatch = useDispatch()
     const user = useSelector(e => e.currentUser)
     useEffect(()=>{
-        getUserState(query.uid,{dispatch})
+        getUserState(query.get("uid"),dispatch)
 
     },[dispatch])
     const navigate = useNavigate()

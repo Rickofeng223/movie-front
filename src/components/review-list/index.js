@@ -47,7 +47,7 @@ const ReviewList = () => {
                         console.log(review)
 
                         return(
-                            <ReviewListItem uid={user._id||query.user}
+                            <ReviewListItem uid={user._id||query.get("uid")}
                                             review={review}
                                             onDelete={()=>
                                                 deleteReview(user._id,review,dispatch)}

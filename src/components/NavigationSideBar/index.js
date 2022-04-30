@@ -27,28 +27,28 @@ const NavigationSidebar = () => {
         dispatch(seartStartForMovies());
         dispatch(searchForMovies(inputMovie));
     };
-    const _navigate = (pathname) => () => navigate({pathname, search: `?uid=${user ? user._id : query.uid}`})
+    const _navigate = (pathname) => () => navigate({pathname, search: `?uid=${user ? user._id : query.get("uid")}`})
     return (
 
         <Navbar className="navbar navbar-expand-lg navbar-dark bg-primary" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to={{
               pathname: '/home',
-              search: (user || query.uid) ? `?uid=${user ? user._id : query.uid}` : ''
+              search: (user || query.uid) ? `?uid=${user ? user._id : query.get("uid")}` : ''
           }}>Movie Group Project</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
 
                 {user && user.role === "ADMIN" &&
-                <Nav.Link as={Link} to={{pathname: '/admin', search: `?uid=${user ? user._id : query.uid}`}}>
+                <Nav.Link as={Link} to={{pathname: '/admin', search: `?uid=${user ? user._id : query.get("uid")}`}}>
                   Admin                </Nav.Link>
                 }
 
                 {user &&
                 <Nav.Link as={Link}
                           to={
-                              {pathname: '/profile', search: `?uid=${user ? user._id : query.uid}`}
+                              {pathname: '/profile', search: `?uid=${user ? user._id :  query.get("uid")}`}
                           }>
                   Profile
                 </Nav.Link>}
