@@ -7,8 +7,9 @@ export const getUsers = async ( userid,dispatch)=>{
     try{
 
         const {data:users} = await axios.get(`http://localhost:4000/api/users/?user=${userid}`)
+        console.log(users)
         dispatch({type:GET_USERS,  users })
-
+return users
     }catch (e) {
         console.log(e)
         alert(`ERROR: ${e.message}`)

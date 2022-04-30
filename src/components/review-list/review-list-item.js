@@ -1,27 +1,16 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteReview} from "../../actions/admin/reviewsActions";
+import axios from "axios";
+import {likeOrDislike} from "../../actions/ratingactions";
+import {useSearchParams} from "react-router-dom";
 
 
-const ReviewListItem = ({uid,review,onDelete
-                        }) => {
+const ReviewListItem = ({uid,review,onDelete,
+                        updateCallback}) => {
     const dispatch = useDispatch();
     const rating = useSelector(state => state.ratings);
-
-    //TODO REFACTOR to actions
-    const likeRating = async (rating) => {
-
-        dispatch({type: 'like-rating', rating});
-        dispatch({type: 'like-review', review, liked: rating.liked, disliked: rating.disliked});
-
-    }
-
-    //TODO REFACTOR to actions
-    const dislikeRating = async (rating) => {
-        dispatch({type: 'dislike-rating', rating})
-        dispatch({type: 'dislike-review', review, liked: rating.liked, disliked: rating.disliked})
-    }
-
+    const [query , setQuery ]= useSearchParams()
 
     return (
         <>
@@ -45,7 +34,7 @@ const ReviewListItem = ({uid,review,onDelete
 
                     <div className="row d-inline">
                         <span className="mr-3"
-                              onClick={likeRating}>
+                              onClick={()=>likeOrDislike(uid,review,rating,true,dispatch,updateCallback)}>
                             {
                                 rating.liked &&
                                 <i className="fa-solid fa-thumbs-up"
@@ -58,7 +47,7 @@ const ReviewListItem = ({uid,review,onDelete
                             {rating.likes} likes
                         </span>
                         <span className="mr-3"
-                              onClick={dislikeRating}>
+                              onClick={()=>likeOrDislike(uid,review,rating,false,dispatch,updateCallback)}>
                             {
                                 rating.disliked &&
                                 <i className="fa-solid fa-thumbs-down"

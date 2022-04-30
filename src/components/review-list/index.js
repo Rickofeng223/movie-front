@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import ReviewListItem from "./review-list-item";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteReview, getReviews} from "../../actions/admin/reviewsActions.js";
+import {useSearchParams} from "react-router-dom";
 
 
 const ReviewList = () => {
@@ -10,11 +11,16 @@ const ReviewList = () => {
      const user = useSelector(s=>s.currentUser);
      const reviews = useSelector(s=>s.reviews);
     const [sortType, setSort] = useState('recent');
+    const [resort,setReSort] = useState(true)
+    const [query,setQuery] = useSearchParams( )
     useEffect(() => {
          let iife = async ()=> {
                 await getReviews(user._id, null, dispatch,sortType)
         }
-        iife();
+        if(resort) {
+            iife();
+            setReSort(false)
+        }
     }, [sortType,dispatch]);
 
     return(
@@ -41,10 +47,11 @@ const ReviewList = () => {
                         console.log(review)
 
                         return(
-                            <ReviewListItem uid={user._id}
+                            <ReviewListItem uid={user._id||query.get("uid")}
                                             review={review}
                                             onDelete={()=>
                                                 deleteReview(user._id,review,dispatch)}
+                                            updateCallback={()=>setReSort(true)}
                             />
                         );
                     })
