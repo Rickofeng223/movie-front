@@ -33,7 +33,7 @@ const NavigationSidebar = () => {
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark bg-primary`}>
       <div className={`container-fluid`}>
-        <Link className={`navbar-brand`} to={"/home"}>
+        <Link className={`navbar-brand animate-charcter`} to={"/home"}>
           Movie Group Project
         </Link>
         <button
@@ -70,11 +70,13 @@ const NavigationSidebar = () => {
                 Profile
               </Link>
             </li>
-            {(!user) && <li className={`nav-item`}>
-              <Link className={`nav-link`} to="/login">
-                Login
-              </Link>
-            </li>}
+            {!user && (
+              <li className={`nav-item`}>
+                <Link className={`nav-link`} to="/login">
+                  Login
+                </Link>
+              </li>
+            )}
             <li className={`nav-item dropdown`}>
               <a
                 className={`nav-link dropdown-toggle`}

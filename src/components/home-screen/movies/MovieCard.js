@@ -28,7 +28,10 @@ const MovieCard = ({ m, handleClick }) => {
 
   //const imLink = "https://image.tmdb.org/t/p/original/"    // get the img starter link
   return (
-    <li className={`wd-actionList`} onClick={() => handleClick(m)}>
+    <li
+      className={`wd-actionList wd-background-image`}
+      onClick={() => handleClick(m)}
+    >
       <div className={`featured-content`}>
         <Link to="/home/moviedetail">
           <AsyncImage
@@ -37,7 +40,7 @@ const MovieCard = ({ m, handleClick }) => {
             alt="listMovies"
           />
         </Link>
-        <p className={`featured-desc wd-text-size`}>{m.title}</p>
+        <p className={`featured-desc wd-movie-text wd-text-style `}>{m.title}</p>
       </div>
     </li>
   );
