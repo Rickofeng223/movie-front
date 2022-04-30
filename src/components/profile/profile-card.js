@@ -1,30 +1,24 @@
 import React, {useEffect, useRef, useState} from "react";
 
 import ReviewList from "../review-list";
-import {updateProfile} from "../../actions/userActions";
-import {useSelector} from "react-redux";
-import {Link, useNavigate, useParams} from "react-router-dom";
+// import {getUser State, updateProfile} from "../../actions/userActions";
+import {useDispatch, useSelector} from "react-redux";
+import {Link, useNavigate, useParams, useSearchParams} from "react-router-dom";
 
 import '../edit-profile/edit-profile-styles.css';
+import {getUserState} from "../../actions/userActions";
 
 const ProfileCard = () => {
-    const navigate = useNavigate()
-    const user = useSelector((s) => s.currentUser)
-    // alert(JSON.stringify(user))
-    const{uid} = useParams()
-    useEffect(() => {if(!uid){navigate('/')}}, [navigate])
+    const [query,setQuery]= useSearchParams()
 
-    let dateString = new Date(user.DOB)
+    const user = useSelector((s) => s.currentUser)
+
+
 
     return(
         <div className="row">
-            <PCard role={user.role || ''}
-                   first={user.first_name || ''}
-                   last={user.last_name || ''}
-                   email={user.email_id || ''}
-                   username={user.username || ''}
-                   ph={user.phone_no || ''}
-                   dateString={dateString || ''}/>
+            <PCard
+              />
 
 
             <div className="col-xl-7">
@@ -32,7 +26,7 @@ const ProfileCard = () => {
                 <div className="card mb-4">
                     <div className="card-header">Account Details</div>
                     <div className="card-body">
-                        <form>
+                        <div>
                             {/*Form Group (username)*/}
                             <GroupUsername username={user.username}/>
                             {/*Form Row*/}
@@ -42,9 +36,9 @@ const ProfileCard = () => {
 
                             <Phone ph={user.phone_no}/>
 
-                            <Link to='/profile/edit' className="btn btn-primary rounded"
+                            <Link to={{ pathname:'/profile/edit', search:`?uid=${user ? user._id : query.get("uid")}`}} className="btn btn-primary rounded"
                                   type="button">Edit Profile</Link>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,7 +66,20 @@ function ImageAvatar({role}){
     </>
 }
 
-function PCard({role,first, last, email, username, ph,  dateString}){
+function PCard({    }){
+    const [query,setQuery]= useSearchParams()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [user ,setUser]= useState({  })
+    const [dateString ,sds]= useState('')
+    useEffect(() => {
+        (async ()=>{
+            setUser(await getUserState(query.get("uid"),dispatch))
+            sds(       (new Date(user.DOB)) )
+        })()
+    }, [navigate,dispatch])
+    console.log(user)
+
     return<>
         <div className="col-xl-5">
 
@@ -80,17 +87,20 @@ function PCard({role,first, last, email, username, ph,  dateString}){
 
             <div className="card mb-4 mb-xl-0">
                 <div className="card-header">User Profile
-                    <span className='float-right'>Role: {role}</span>
+                    <span className='float-right'>Role: {user.role}</span>
                 </div>
                 <div className="card-body text-center">
-                    <ImageAvatar role={role}/>
+                    <ImageAvatar role={user.role}/>
 
-                    <i className="fa-duotone fa-at"></i>{username}<br/><br/>
-                    <PCardInfo first={first}
-                               last={last}
-                               ph={ph}
-                               email={email}
-                               dateString={dateString}/>
+                    <i className="fa-duotone fa-at"></i>{user.username}<br/><br/>
+                    <PCardInfo first={    user.first_name }
+                               last={user.last_name
+                               }
+                               ph={  user.phone_no
+                               }
+                               email={user.email_id
+                               }
+                               dateString={'dateString'}/>
                 </div>
             </div>
         </div>
@@ -159,7 +169,7 @@ function PCardInfo({first, last, ph, email, dateString}){
         <h2><b>{first}   {last}</b></h2>
         <h5><i className="fa-solid fa-phone"></i> {ph}</h5>
         <h5><i className="fa-solid fa-envelope"></i> {email}</h5>
-        <h5><i className="fa-solid fa-cake-candles"></i> {dateString.toLocaleDateString()}</h5>
+        <h5><i className="fa-solid fa-cake-candles"></i> {dateString }</h5>
     </span>
     </>
 }

@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 import { getImage } from "../../../util/constant";
 import "../actionStyle.css";
 import AsyncImage from "../../util/AsyncImage";
+import {useSelector} from "react-redux";
 
 const MovieCard = ({ m, handleClick }) => {
   return (

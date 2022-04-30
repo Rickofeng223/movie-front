@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import ReviewList from "../review-list";
 import {updateProfile} from "../../actions/userActions";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 import '../edit-profile/edit-profile-styles.css';
 import profile from "../profile";
@@ -11,7 +11,7 @@ import profile from "../profile";
 
 const EditProfileCard = () => {
 
-
+    const [query,setQuery]= useSearchParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector(s => s.currentUser)
@@ -24,11 +24,6 @@ const EditProfileCard = () => {
     //     }
     // }, [navigate])
 
-    const saveProfileButton = () => {
-        const profile = {...user, first_name, last_name, email_id, phone_no}
-        // alert(JSON.stringify(profile, null, 4))
-        updateProfile(profile, {navigate, dispatch}, obj)
-    }
 
     const {username:_username,
     first_name: _first_name,
@@ -54,6 +49,7 @@ const EditProfileCard = () => {
     // const onChangeDob = (e) => {
     //     setDob(new Date(e.target.value))
     // }
+    // const saveProfileButton =
 
     return (
         <div className="row">
@@ -161,11 +157,14 @@ const EditProfileCard = () => {
                             </div>
 
                             {/*navigate(`/profile/${user._id}`)*/}
-                            <Link to={`/profile/${user._id}`}
-                                onClick={saveProfileButton}
+                            <button
+                                onClick={ async () => {
+                                     await updateProfile({...user, first_name, last_name, email_id, phone_no}, {navigate, dispatch})
+                                    navigate({ pathname:'/profile', search:`?uid=${user ? user._id : query.get("uid")}`})
+                                }}
                                 className="btn btn-primary rounded bg-success"
                                 type="button">Save changes
-                            </Link>
+                            </button>
                         </form>
                     </div>
                 </div>

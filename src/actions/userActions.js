@@ -6,9 +6,8 @@ export const LOGIN = 'login', UPDATE = 'update-profile', LOGOUT = 'logout', PROF
 export const signup = async (user_data, {navigate, dispatch}) => {
     try {
         let {data} = await axios.post(`http://localhost:4000/api/auth/signup`, user_data)
-       let _=await axios.get(`http://localhost:4000/api/session/get`)
         dispatch({type: LOGIN, user: data})
-        navigate('/')
+        navigate({pathname: '/', search: `?uid=${data._id}`})
     } catch (e) {
         navigate('/signup-error')
         console.log(e.message)
@@ -20,27 +19,39 @@ export const login = async (auth, {navigate, dispatch}) => {
         let {data} = await axios.post('http://localhost:4000/api/auth/login',  auth)
 
         dispatch({type: LOGIN, user: data})
+        return data._id
 
-        navigate('/')
     } catch (e) {
         navigate('/login-error')
         console.log(e.message)
     }
 }
+export const getUserState = async (userid, dispatch) => {
+    try {
+        let {data:user} = await axios.get(
+            `http://localhost:4000/api/users/${userid}?user=${userid}`
+            )
+
+        dispatch({type: LOGIN, user})
+        return {...user}
+    } catch (e) {
+       alert('error: '+e)
+        console.log(e.message)
+    }
+}
 export const logout = async ({navigate, dispatch}) => {
     try {
-        let {status} = await axios.post('http://localhost:4000/api/auth/logout', {})
-        dispatch({type: LOGOUT, user: null})
+        // let {status} = await axios.post('http://localhost:4000/api/auth/logout', {})
+        dispatch({type: LOGOUT, user: {}})
     } catch (e) {
         console.log(e.message)
     }
 }
 
-export const updateProfile = async (user, {navigate,dispatch}, obj) => {
+export const updateProfile = async (user, {navigate,dispatch}) => {
     try {
         let {data} = await axios.put(`http://localhost:4000/api/users/${user._id}?user=${user._id}`,user)
-        dispatch({type:UPDATE, user:user})
-        obj.value = true
+        dispatch({type:UPDATE, user})
     } catch (e) {
         navigate('/error')
         console.log(e.message)

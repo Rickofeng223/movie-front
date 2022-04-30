@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 
 import {login} from '../../actions/userActions'
@@ -9,7 +9,7 @@ const Login = () => {
     const [password,setPassword]= useState('')
     const dispatch=useDispatch()
     const navigate= useNavigate()
-
+    const [query,setQuery]= useSearchParams()
     return(
         <>
             <div className="row d-flex justify-content-center">
@@ -29,7 +29,14 @@ const Login = () => {
                         <input onChange={(e)=>setPassword(e.target.value)} className="mb-4"  type="password" id="password"/><br/>
 
                         <button
-                            onClick={()=>{login({username,password},{navigate,dispatch})}}
+                            onClick={async ()=> {
+                                const uid = await login({username, password}, {navigate, dispatch})
+                                 navigate({
+                                    pathname: `/`,
+                                    search: `?uid=${uid}`
+                                })
+                            }
+                            }
                             className="btn btn-primary btn-block rounded-pill mt-4 mb-2">
                             Login
                         </button>

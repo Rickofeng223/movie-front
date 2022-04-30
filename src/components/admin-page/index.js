@@ -1,12 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Tab, Tabs} from "react-bootstrap";
 
 import ReviewList from "../review-list";
 import UserList from "../user-list";
-import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useSearchParams} from "react-router-dom";
+import {getUserState} from "../../actions/userActions";
 
 const AdminPage = () => {
+    const [query,setQuery]= useSearchParams();
+
+
+    const _userId = query.get("uid")
+    const dispatch = useDispatch()
     const user = useSelector(e => e.currentUser)
     const navigate = useNavigate()
     return (

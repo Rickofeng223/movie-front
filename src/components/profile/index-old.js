@@ -3,10 +3,10 @@ import React, {useState} from "react";
 import ReviewList from "../review-list";
 import {updateProfile} from "../../actions/userActions";
 import {useSelector} from "react-redux";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 const ProfileComponent = () => {
-
+    const[query,setQuery]=useSearchParams()
     const navigate = useNavigate()
 
     const user = useSelector((s) => s.currentUser)
@@ -41,7 +41,7 @@ const ProfileComponent = () => {
                         Manage Site
                     </button> : ''}
 
-                    <Link to='/profile/edit'
+                    <Link to={{ pathname:'/profile/edit', search:`?uid=${user ? user._id : query.uid}`}}
                     //     onClick={() => {
                     //     navigate('/profile/edit')
                     // }}

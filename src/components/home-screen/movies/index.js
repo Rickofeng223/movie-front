@@ -5,10 +5,11 @@ import axios from "axios";
 import "../actionStyle.css";
 import { useDispatch } from "react-redux";
 import { setUserSelectedMovie } from "../../actions/searcActions";
+import {useSearchParams} from "react-router-dom";
 
-const Movies = ({ movieType, dataUrl }) => {
+const Movies = ({ movieType, dataUrl , uid }) => {
   const [movies, setMovies] = useState([]);
-
+const[query,setQuery]=useSearchParams()
   const dispatch = useDispatch();
 
   const returnAction = async () => {
@@ -21,7 +22,7 @@ const Movies = ({ movieType, dataUrl }) => {
   }, []);
 
   const handleUserSelectMovie = (movie) => {
-    dispatch(setUserSelectedMovie(movie));
+    (setUserSelectedMovie(movie));
   };
 
   return (
@@ -31,6 +32,7 @@ const Movies = ({ movieType, dataUrl }) => {
         {movies.map((event, key) => {
           return (
             <MovieCard
+                uid={query.get("uid")}
               m={event}
               key={key}
               handleClick={handleUserSelectMovie}
