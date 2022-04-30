@@ -24,6 +24,11 @@ const MoviePage = (
   const [modalShow, setModalShow] = React.useState(false);
 
   const movie = useSelector((state) => state.searchMovies.selectedMovie);
+  let dateString = String(movie.release_date)
+  let yearString = dateString.substring(0, 4)
+  let monthString = dateString.substring(5, 7)
+  let dayString = dateString.substring(8, 10)
+
 
 
   return (
@@ -45,11 +50,12 @@ const MoviePage = (
             </div>
 
             <div className="col-sm-12 col-md-7 col-lg-8 col-xl-8 ml-3">
-              <h1>{movie.title}</h1>
-              <span>{movie.genre_ids}</span> | <span>{movie.release_date}</span>
-              <h2 className="mb-3 mt-2">Vote Average: {movie.vote_average}</h2>
+              <h1 className='font-weight-bold font'>{movie.title}</h1>
+              <br/>
               <h3>Overview</h3>
               <p>{movie.overview}</p>
+              <h4 className="mb-3 pt-2">Vote Average: {movie.vote_average}</h4>
+              <h4 className='pt-2'>{'Release Date: ' + monthString + '/' + dayString + '/' + yearString}</h4>
             </div>
             <ReviewList />
           </div>
