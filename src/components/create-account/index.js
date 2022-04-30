@@ -17,6 +17,7 @@ const CreateAccount = () => {
     const [role, setRole] = useState("NORMAL")
     const [genres, setGenres] = useState(new Set())
     // value={first_name} onChange={(event=> setFirst(event.target.value))}
+
     return (
         <>
             <div className="row d-flex justify-content-center">
@@ -43,39 +44,49 @@ const CreateAccount = () => {
                         <input required className="mb-4" type="password" id="password"
                                value={password} onChange={(event => setPass(event.target.value))}/><br/>
 
-                        <label className="font-weight-bold" htmlFor="email">Email</label><br/>
+                        <label className="font-weight-bold" htmlFor="email">Email<br/>
                         <input className="mb-4" type="email" id="email" placeholder="email@domain.com"
-                               value={email} onChange={(event => setEmail(event.target.value))}/><br/>
+                               value={email} onChange={(event => setEmail(event.target.value))}/></label><br/>
 
-                        <label className="font-weight-bold" htmlFor="phone">Phone Number</label><br/>
+                        <label className="font-weight-bold" htmlFor="phone">Phone Number
+                        <br/>
                         <input className="mb-4" type="text" id="phone" placeholder="6175478890"
-                               value={phone} onChange={(event => setPhone(event.target.value))}/><br/>
+                               value={phone} onChange={(event => setPhone(event.target.value))}/></label>
+                        <br/>
 
-                        <label className="font-weight-bold" htmlFor="dob">Date of Birth</label><br/>
+                        <label className="font-weight-bold" htmlFor="dob">Date of Birth
+
+                        <br/>
                         <input className="mb-4" type="date" id="dob"
-                               value={DOB} onChange={(event => setDOB(event.target.value))}/><br/>
+                               value={DOB} onChange={(event => setDOB(event.target.value))}/>
+                        </label>
+                        <br/>
 
                         <label className="font-weight-bold">Account type: *</label><br/>
-                        <input required checked type="radio" value="NORMAL"
-                            // name="radio-account-type"
-                            // id="radio-normal"
+                        <input required  type="radio" value="NORMAL"
+                            name="radio-account-type"
+                            id="radio-normal"
                                className="mr-2"
-                               onChange={() => setRole("NORMAL")}
+                               onClick={(event) => {
+                                   setRole("NORMAL")
+                                   // event.target.checked
+
+                               }}
                         />
                         <label htmlFor="radio-normal">Normal</label><br/>
                         <input required type="radio" value="CRITIC"
-                            // name="radio-account-type"
-                            // id="radio-critic"
-                               onChange={() => setRole("CRITIC")}
+                            name="radio-account-type"
+                            id="radio-critic"
+                               onClick={() => setRole("CRITIC")}
+
                                className="mr-2"/>
                         <label htmlFor="radio-critic">Critic</label><br/>
                         <input required type="radio" value="ADMIN"
-                            // name="radio-account-type"
-                            // id="radio-admin"
-                               onChange={() => setRole("ADMIN")}
+                            name="radio-account-type"
+                            id="radio-admin"
+                               onClick={() => setRole("ADMIN")}
                                className="mr-2"/>
                         <label htmlFor="radio-admin">Admin</label><br/>
-
 
                         <button onClick={
                             () => signup({

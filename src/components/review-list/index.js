@@ -1,44 +1,21 @@
 import React, {useEffect, useState} from "react";
 //import reviews from "../data/reviews.json"
 import ReviewListItem from "./review-list-item";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteReview, getReviews} from "../../actions/admin/reviewsActions.js";
 
-const sortRecent = (a, b) => b.recent - a.recent;
-const sortLikes = (a, b) => b.likes - a.likes;
-const sortDislikes = (a, b) => b.dislikes - a.dislikes;
 
 const ReviewList = () => {
-
-    const reviews = useSelector(s=>s.reviews);
-    let sorted = reviews
-    let [sortedData, setSorted] = useState(sorted);
-    //const [data, setData] = useState([]);
+ const dispatch = useDispatch()
+     const user = useSelector(s=>s.currentUser);
+     const reviews = useSelector(s=>s.reviews);
     const [sortType, setSort] = useState('recent');
-
     useEffect(() => {
-
-        let temp;
-        switch (sortType) {
-            case "recent":
-                temp = sortedData.sort(sortRecent);
-                setSorted(temp);
-                break
-            case "likes":
-                temp = sortedData.sort(sortLikes);
-                setSorted(temp);
-                break
-            case "dislikes":
-                temp = sortedData.sort(sortDislikes);
-                setSorted(temp);
-                break
+         let iife = async ()=> {
+                await getReviews(user._id, null, dispatch,sortType)
         }
-        //const sorted = reviewsData.sort((a, b) => b[sortType] - a[sortType]);
-        //temp = sortedData.sort((a, b) => b[sortType] - a[sortType]);
-        //setSorted(temp);
-        //setReviewsData(sorted);
-
-
-    }, [sortType]);
+        iife();
+    }, [sortType,dispatch]);
 
     return(
         <>
@@ -47,7 +24,10 @@ const ReviewList = () => {
                     <h2 className="mt-4">Reviews</h2>
                 </div>
 
-                <select onChange={(event) => setSort(event.target.value)}
+                <select onChange={(e)=> {
+                    setSort(e.target.value)
+                    console.log(e.target.value)
+                }}
                         className="float-end w-25">
                     <option value="recent">Recent</option>
                     <option value="likes">Most dislikes</option>
@@ -57,9 +37,15 @@ const ReviewList = () => {
 
             <ul className="">
                 {
-                    sorted.map(reviews => {
+                    reviews.map(review => {
+                        console.log(review)
+
                         return(
-                            <ReviewListItem review={reviews}/>
+                            <ReviewListItem uid={user._id}
+                                            review={review}
+                                            onDelete={()=>
+                                                deleteReview(user._id,review,dispatch)}
+                            />
                         );
                     })
                 }
