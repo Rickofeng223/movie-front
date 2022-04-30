@@ -11,5 +11,6 @@
   height: 300px;
 }
 .wd-text-size {
-  width: 80%;
+  max-width: 200px;
+  text-align: match-parent;
 }
