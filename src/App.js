@@ -1,6 +1,6 @@
 import "./App.css";
-import React from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import React, {useEffect} from "react";
+import {BrowserRouter, Outlet, Route, Routes, useSearchParams} from "react-router-dom";
 import HomeScreen from "./components/home-screen/HomeScreen";
 import MoviePage from "./components/movie-page";
 import "./vendors/bootstrap/css/bootstrap.min.css"
@@ -14,7 +14,7 @@ import ratingsReducer from "./components/reducers/ratingsReducer";
 import searchReducer from "./components/reducers/searchReducers";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import UserReducer from './reducers/userReducer'
-import {Provider} from "react-redux";
+import {Provider, useDispatch, useSelector} from "react-redux";
 import thunk from "redux-thunk";
 import ProfileComponent from "./components/profile";
 import EditProfileComponent from "./components/edit-profile/index";
@@ -23,6 +23,7 @@ import CreateAccount from "./components/create-account";
 import AdminPage from "./components/admin-page";
 import UsersReducer from "./reducers/admin-users-reducer";
 import NavigationSidebar from "./components/NavigationSideBar";
+import {getUserState} from "./actions/userActions";
 
 
 const reducer = combineReducers({
@@ -35,32 +36,50 @@ const reducer = combineReducers({
 const store = createStore(reducer, applyMiddleware(thunk));
 
 
+function XComponent() {
+    const user = useSelector(e=>e.currentUser)
+    const [query,setQuery] = useSearchParams()
+    const dispatch = useDispatch()
+    useEffect(() => {
+        if (user) {
+            setQuery({uid: user._id})
+        } else if (query._id) {
+            getUserState(query.uid, {dispatch})
+        }
+
+    }, [dispatch])
+    return   <>
+    <NavigationSidebar/>
+    <Outlet/>
+        </>;
+}
+
 function App() {
     return (
         <Provider store={store}>
       <BrowserRouter>
         <div className="container">
-          <NavigationSidebar/>
           <Routes>
+            <Route path="/" element={ <XComponent/>}>
              <Route
-                 path="/login"
+                 path="login"
                  exact={true}
                  element={<Login/>}
              />
              <Route
-                 path="/signup"
+                 path="signup"
                  exact={true}
                  element={<CreateAccount/>}
              />
               <Route
-                  path="/admin"
+                  path="admin"
                   exact={true}
                   element={<AdminPage/>}
               />
-            <Route path="/">
-              <Route path="/" element={<HomeScreen/>}/>
+
+              <Route index element={<HomeScreen/>}/>
               <Route path="home" exact={true} element={<HomeScreen/>}/>
-              <Route path="/home/search/:movie_name" element={<SearchList/>}/>
+              <Route path="home/search/:movie_name" element={<SearchList/>}/>
               <Route
                   path="home/moviedetail"
                   exact={true}
@@ -69,20 +88,22 @@ function App() {
 
               <Route
 
-                path="/profile/:uid"
+                path="profile"
                 exact={true}
                 element={<ProfileComponent />}
 
               />
 
                 <Route
-                    path="/profile/edit"
+                    path="profile/edit"
                     exact={true}
                     element={<EditProfileComponent />}
                 />
 
              </Route>
+
           </Routes>
+
         </div>
       </BrowserRouter>
     </Provider>

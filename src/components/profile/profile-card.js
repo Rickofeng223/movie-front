@@ -3,16 +3,17 @@ import React, {useEffect, useRef, useState} from "react";
 import ReviewList from "../review-list";
 import {updateProfile} from "../../actions/userActions";
 import {useSelector} from "react-redux";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams, useSearchParams} from "react-router-dom";
 
 import '../edit-profile/edit-profile-styles.css';
 
 const ProfileCard = () => {
+    const [query,setQuery]= useSearchParams()
     const navigate = useNavigate()
     const user = useSelector((s) => s.currentUser)
     // alert(JSON.stringify(user))
     const{uid} = useParams()
-    useEffect(() => {if(!uid){navigate('/')}}, [navigate])
+    // useEffect(() => {if(!uid){navigate('/')}}, [navigate])
 
     let dateString = new Date(user.DOB)
 
@@ -42,7 +43,7 @@ const ProfileCard = () => {
 
                             <Phone ph={user.phone_no}/>
 
-                            <Link to='/profile/edit' className="btn btn-primary rounded"
+                            <Link to={{ pathname:'/profile/edit', search:`?uid=${user ? user._id : query.uid}`}} className="btn btn-primary rounded"
                                   type="button">Edit Profile</Link>
                         </form>
                     </div>

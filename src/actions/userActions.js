@@ -8,7 +8,7 @@ export const signup = async (user_data, {navigate, dispatch}) => {
         let {data} = await axios.post(`http://localhost:4000/api/auth/signup`, user_data)
        let _=await axios.get(`http://localhost:4000/api/session/get`)
         dispatch({type: LOGIN, user: data})
-        navigate('/')
+        navigate({pathname: '/', search: `?uid=${data._id}`})
     } catch (e) {
         navigate('/signup-error')
         console.log(e.message)
@@ -20,8 +20,21 @@ export const login = async (auth, {navigate, dispatch}) => {
         let {data} = await axios.post('http://localhost:4000/api/auth/login',  auth)
 
         dispatch({type: LOGIN, user: data})
+        return data._id
 
-        navigate('/')
+    } catch (e) {
+        navigate('/login-error')
+        console.log(e.message)
+    }
+}
+export const getUserState = async (userid, {navigate, dispatch}) => {
+    try {let _
+        let {data} = await axios.get(
+            `http://localhost:4000/api/users/${userid}`
+            )
+
+        dispatch({type: LOGIN, user: data})
+
     } catch (e) {
         navigate('/login-error')
         console.log(e.message)

@@ -1,13 +1,25 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Tab, Tabs} from "react-bootstrap";
 
 import ReviewList from "../review-list";
 import UserList from "../user-list";
-import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useSearchParams} from "react-router-dom";
+import {getUserState} from "../../actions/userActions";
 
 const AdminPage = () => {
+    // const {uid:_userId}=
+    const [query,setQuery]= useSearchParams();
+
+    // alert(JSON.stringify(query))
+
+    const _userId = query.uid
+    const dispatch = useDispatch()
     const user = useSelector(e => e.currentUser)
+    useEffect(()=>{
+        getUserState(query.uid,{dispatch})
+
+    },[dispatch])
     const navigate = useNavigate()
     return (
         <>{user && user.role === "ADMIN" ? (<>
