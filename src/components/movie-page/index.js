@@ -27,43 +27,34 @@ const MoviePage = (
 
 
   return (
-    <>
-      {/* <div className="row">
-        <span className="mb-3">
-          <i className="fa-solid fa-arrow-left" /> Back
-        </span>
-      </div> */}
-      <br>
-      </br>
-      <div className="row flex-row">
-        <div className="col-2">
-          <img src={getImage(movie.poster_path)} width="180" />
-          <div className="row">
-            <button
-              className="btn btn-primary btn-block rounded-pill w-100 mt-2"
-              onClick={() => setModalShow(true)}
-            >
-              Write Review
-            </button>
-            <WriteReviewModal
-              show={modalShow}
-              //reviewsState={[reviewsData, setReviewsData]}
-              onHide={() => setModalShow(false)}
-            />
+      <>
+        <div className='container'>
+          <div className="row mt-2">
+            <div className="col-sm-7 col-md-4 col-lg-3 col-xl-2 card border-0 m-0 p-0">
+              <img className='card-img' src={getImage(movie.poster_path)} />
+              <button
+                  className="btn btn-primary rounded mt-2 card-body"
+                  onClick={() => setModalShow(true)}
+              >
+                Write Review
+              </button>
+              <WriteReviewModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+              />
+            </div>
+
+            <div className="col-sm-12 col-md-7 col-lg-8 col-xl-8 ml-3">
+              <h1>{movie.title}</h1>
+              <span>{movie.genre_ids}</span> | <span>{movie.release_date}</span>
+              <h2 className="mb-3 mt-2">Vote Average: {movie.vote_average}</h2>
+              <h3>Overview</h3>
+              <p>{movie.overview}</p>
+            </div>
+            <ReviewList />
           </div>
         </div>
-
-        <div className="col-8 ml-3">
-          <h1>{movie.title}</h1>
-          <span>{movie.genre_ids}</span> | <span>{movie.release_date}</span>
-          <h2 className="mb-3 mt-2">Vote Average: {movie.vote_average}</h2>
-          <h3>Overview</h3>
-          <p>{movie.overview}</p>
-          
-          <ReviewList />
-        </div>
-      </div>
-    </>
+      </>
   );
 
 };
