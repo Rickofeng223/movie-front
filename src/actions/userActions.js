@@ -6,7 +6,6 @@ export const LOGIN = 'login', UPDATE = 'update-profile', LOGOUT = 'logout', PROF
 export const signup = async (user_data, {navigate, dispatch}) => {
     try {
         let {data} = await axios.post(`http://localhost:4000/api/auth/signup`, user_data)
-       let _=await axios.get(`http://localhost:4000/api/session/get`)
         dispatch({type: LOGIN, user: data})
         navigate({pathname: '/', search: `?uid=${data._id}`})
     } catch (e) {
