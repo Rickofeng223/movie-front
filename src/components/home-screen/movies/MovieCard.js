@@ -40,7 +40,7 @@ const MovieCard = ({ m, handleClick }) => {
             alt="listMovies"
           />
         </Link>
-        <p className={`featured-desc wd-movie-text wd-text-style `}>{m.title}</p>
+        <p className={`featured-desc wd-movie-text wd-text-style  `}>{m.title}</p>
       </div>
     </li>
   );

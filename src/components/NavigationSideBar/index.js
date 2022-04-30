@@ -27,52 +27,69 @@ const NavigationSidebar = () => {
   };
 
   return (
+    <Navbar
+      className="navbar navbar-expand-lg navbar-dark bg-primary"
+      expand="lg"
+    >
+      <Container>
+        <Navbar.Brand className="animate-charcter" href="/home">
+          Movie Group Project
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/home">
+              Home
+            </Nav.Link>
+            {user && user.role === "ADMIN" && (
+              <Nav.Link as={Link} to="/admin">
+                Admin
+              </Nav.Link>
+            )}
+            {user && (
+              <Nav.Link as={Link} to={`/profile/${user._id}`}>
+                Profile
+              </Nav.Link>
+            )}
 
-      <Navbar className="navbar navbar-expand-lg navbar-dark bg-primary" expand="lg">
-        <Container>
-          <Navbar.Brand href="/home">Movie Group Project</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/home">Home</Nav.Link>
-              {user && user.role==="ADMIN" &&
-                  <Nav.Link as={Link} to="/admin">Admin</Nav.Link>}
-              { (user) &&
-                  <Nav.Link as={Link} to={`/profile/${user._id}`}>Profile</Nav.Link>}
-
-              {user ?
-                    <Nav.Link as={Link} to={'/'} onClick={() => logout({dispatch})}>Logout</Nav.Link>
-                    :
-                    <Nav.Link as={Link} to="/login">Login</Nav.Link>
-              }
-              {(!user) &&
-                  <Nav.Link as={Link} to={"/signup"}>Sign Up</Nav.Link>
-              }
-            </Nav>
-            <Form className="d-flex">
-              <FormControl
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search Movies"
-                  onChange={(x) => setInputMovie(x.target.value)}
-                  value={inputMovie}
-              />
-              <Link to={`/home/search/${inputMovie}`}>
-                <Button variant="outline-success rounded-pill"
-                        type="submit"
-                        className="btn btn-secondary"
-                        onClick={handleSearch}>
-                  Search
-                </Button>
-              </Link>
-            </Form>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-
-
+            {user ? (
+              <Nav.Link as={Link} to={"/"} onClick={() => logout({ dispatch })}>
+                Logout
+              </Nav.Link>
+            ) : (
+              <Nav.Link as={Link} to="/login">
+                Login
+              </Nav.Link>
+            )}
+            {!user && (
+              <Nav.Link as={Link} to={"/signup"}>
+                Sign Up
+              </Nav.Link>
+            )}
+          </Nav>
+          <Form className="d-flex">
+            <FormControl
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search Movies"
+              onChange={(x) => setInputMovie(x.target.value)}
+              value={inputMovie}
+            />
+            <Link to={`/home/search/${inputMovie}`}>
+              <Button
+                variant="outline-success rounded-pill"
+                type="submit"
+                className="btn btn-secondary"
+                onClick={handleSearch}
+              >
+                Search
+              </Button>
+            </Link>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 export default NavigationSidebar;
