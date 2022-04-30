@@ -27,6 +27,8 @@ export const login = async (auth, {navigate, dispatch}) => {
     }
 }
 export const getUserState = async (userid, dispatch) => {
+    if(!userid){return {}}
+
     try {
         let {data:user} = await axios.get(
             `http://localhost:4000/api/users/${userid}?user=${userid}`
