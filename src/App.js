@@ -44,10 +44,13 @@ function OutletStateComponent() {
         let queryied = user? user._id :query.get("uid")
         console.log('queried: '+queryied)
         if (user&& user._id) {
+            console.log(user)
+            console.log(user._id)
             setQuery({uid: user._id})
             console.log('set: '+user._id)
-        } else if (queryied) {
-            getUserState(query.get("uid"),  dispatch )
+        } else if (query.get("uid") !== undefined) {
+            console.log('wind',query.get("uid"))
+             getUserState(query.get("uid"),  dispatch )
             console.log('set: '+query.get("uid"))
         }
 
