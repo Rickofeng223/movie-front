@@ -27,16 +27,16 @@ export const login = async (auth, {navigate, dispatch}) => {
         console.log(e.message)
     }
 }
-export const getUserState = async (userid, {navigate, dispatch}) => {
-    try {let _
-        let {data} = await axios.get(
-            `http://localhost:4000/api/users/${userid}`
+export const getUserState = async (userid, dispatch) => {
+    try {
+        let {data:user} = await axios.get(
+            `http://localhost:4000/api/users/${userid}?user=${userid}`
             )
 
         dispatch({type: LOGIN, user: data})
 
     } catch (e) {
-        navigate('/login-error')
+       alert('error: '+e)
         console.log(e.message)
     }
 }
