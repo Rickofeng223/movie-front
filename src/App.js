@@ -17,6 +17,7 @@ import UserReducer from './reducers/userReducer'
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import ProfileComponent from "./components/profile";
+import EditProfileComponent from "./components/edit-profile/index";
 import Login from "./components/login";
 import CreateAccount from "./components/create-account";
 import AdminPage from "./components/admin-page";
@@ -33,10 +34,6 @@ const reducer = combineReducers({
 });
 const store = createStore(reducer, applyMiddleware(thunk));
 
-
-function EditProfileComponent() {
-    return null;
-}
 
 function App() {
     return (
