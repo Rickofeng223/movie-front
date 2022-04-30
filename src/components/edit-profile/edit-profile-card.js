@@ -24,11 +24,6 @@ const EditProfileCard = () => {
     //     }
     // }, [navigate])
 
-    const saveProfileButton = () => {
-        const profile = {...user, first_name, last_name, email_id, phone_no}
-        // alert(JSON.stringify(profile, null, 4))
-        updateProfile(profile, {navigate, dispatch}, obj)
-    }
 
     const {username:_username,
     first_name: _first_name,
@@ -54,6 +49,7 @@ const EditProfileCard = () => {
     // const onChangeDob = (e) => {
     //     setDob(new Date(e.target.value))
     // }
+    // const saveProfileButton =
 
     return (
         <div className="row">
@@ -161,11 +157,14 @@ const EditProfileCard = () => {
                             </div>
 
                             {/*navigate(`/profile/${user._id}`)*/}
-                            <Link to={{ pathname:'/profile', search:`?uid=${user ? user._id : query.uid}`}}
-                                onClick={saveProfileButton}
+                            <button
+                                onClick={ async () => {
+                                     await updateProfile({...user, first_name, last_name, email_id, phone_no}, {navigate, dispatch})
+                                    navigate({ pathname:'/profile', search:`?uid=${user ? user._id : query.get("uid")}`})
+                                }}
                                 className="btn btn-primary rounded bg-success"
                                 type="button">Save changes
-                            </Link>
+                            </button>
                         </form>
                     </div>
                 </div>

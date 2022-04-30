@@ -14,10 +14,6 @@ const AdminPage = () => {
     const _userId = query.get("uid")
     const dispatch = useDispatch()
     const user = useSelector(e => e.currentUser)
-    useEffect(()=>{
-        getUserState(query.get("uid"),dispatch)
-
-    },[dispatch])
     const navigate = useNavigate()
     return (
         <>{user && user.role === "ADMIN" ? (<>

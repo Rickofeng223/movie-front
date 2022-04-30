@@ -18,6 +18,7 @@ const likeRating = async (review, rating,dispatch,cb) => {
 
 //TODO REFACTOR to actions
 export const likeOrDislike = async (uid,review,rating,isLike,dispatch, callback) => {
+    console.log(uid,review,rating,isLike)
     //like
     if(isLike) {
         if (rating.disliked === true) {

@@ -1,45 +1,24 @@
 import React, {useEffect, useRef, useState} from "react";
 
 import ReviewList from "../review-list";
-import {getUserState, updateProfile} from "../../actions/userActions";
+// import {getUser State, updateProfile} from "../../actions/userActions";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate, useParams, useSearchParams} from "react-router-dom";
 
 import '../edit-profile/edit-profile-styles.css';
+import {getUserState} from "../../actions/userActions";
 
 const ProfileCard = () => {
     const [query,setQuery]= useSearchParams()
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+
     const user = useSelector((s) => s.currentUser)
-    // alert(JSON.stringify(user))
-    // const{uid} = useParams()
-    useEffect(() => {
-        (async ()=>{
-            if(user && user._id,dispatch()){
 
-            getUserState(user._id)
-            }else if(query && query.get("uid")){
-            getUserState(query.get("uid"),dispatch)
 
-            }
-        })()
-    }, [navigate,dispatch])
-    const uid = query.get('uid')
-
-    let dateString = new Date(user.DOB)
 
     return(
         <div className="row">
             <PCard
-            user={user}
-                role={user.role || ''}
-                   first={user.first_name || ''}
-                   last={user.last_name || ''}
-                   email={user.email_id || ''}
-                   username={user.username || ''}
-                   ph={user.phone_no || ''}
-                   dateString={dateString || ''}/>
+              />
 
 
             <div className="col-xl-7">
@@ -47,7 +26,7 @@ const ProfileCard = () => {
                 <div className="card mb-4">
                     <div className="card-header">Account Details</div>
                     <div className="card-body">
-                        <form>
+                        <div>
                             {/*Form Group (username)*/}
                             <GroupUsername username={user.username}/>
                             {/*Form Row*/}
@@ -59,7 +38,7 @@ const ProfileCard = () => {
 
                             <Link to={{ pathname:'/profile/edit', search:`?uid=${user ? user._id : query.get("uid")}`}} className="btn btn-primary rounded"
                                   type="button">Edit Profile</Link>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,8 +66,18 @@ function ImageAvatar({role}){
     </>
 }
 
-function PCard({role,first, last, email, username, ph,  dateString}){
-    const user = useSelector((s) => s.currentUser)
+function PCard({    }){
+    const [query,setQuery]= useSearchParams()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [user ,setUser]= useState({  })
+    const [dateString ,sds]= useState('')
+    useEffect(() => {
+        (async ()=>{
+            setUser(await getUserState(query.get("uid"),dispatch))
+            sds(       (new Date(user.DOB)) )
+        })()
+    }, [navigate,dispatch])
     console.log(user)
 
     return<>
@@ -103,12 +92,15 @@ function PCard({role,first, last, email, username, ph,  dateString}){
                 <div className="card-body text-center">
                     <ImageAvatar role={user.role}/>
 
-                    <i className="fa-duotone fa-at"></i>{username}<br/><br/>
-                    <PCardInfo first={first}
-                               last={last}
-                               ph={ph}
-                               email={email}
-                               dateString={dateString}/>
+                    <i className="fa-duotone fa-at"></i>{user.username}<br/><br/>
+                    <PCardInfo first={    user.first_name }
+                               last={user.last_name
+                               }
+                               ph={  user.phone_no
+                               }
+                               email={user.email_id
+                               }
+                               dateString={'dateString'}/>
                 </div>
             </div>
         </div>
@@ -177,7 +169,7 @@ function PCardInfo({first, last, ph, email, dateString}){
         <h2><b>{first}   {last}</b></h2>
         <h5><i className="fa-solid fa-phone"></i> {ph}</h5>
         <h5><i className="fa-solid fa-envelope"></i> {email}</h5>
-        <h5><i className="fa-solid fa-cake-candles"></i> {dateString.toLocaleDateString()}</h5>
+        <h5><i className="fa-solid fa-cake-candles"></i> {dateString }</h5>
     </span>
     </>
 }

@@ -36,19 +36,23 @@ const reducer = combineReducers({
 const store = createStore(reducer, applyMiddleware(thunk));
 
 
-function XComponent() {
-    const user = useSelector(e=>e.currentUser)
-    const [query,setQuery] = useSearchParams()
+function OutletStateComponent() {
+    const user = useSelector(e => e.currentUser)
+    const [query, setQuery] = useSearchParams()
     const dispatch = useDispatch()
     useEffect(() => {
-        if (user) {
+        let queryied = user? user._id :query.get("uid")
+        console.log('queried: '+queryied)
+        if (user&& user._id) {
             setQuery({uid: user._id})
-        } else if (query.get("uid")) {
-            getUserState(query.get("uid"), {dispatch})
+            console.log('set: '+user._id)
+        } else if (queryied) {
+            getUserState(query.get("uid"),  dispatch )
+            console.log('set: '+query.get("uid"))
         }
 
     }, [dispatch])
-    return   <>
+    return <>
     <NavigationSidebar/>
     <Outlet/>
         </>;
@@ -60,7 +64,7 @@ function App() {
       <BrowserRouter>
         <div className="container">
           <Routes>
-            <Route path="/" element={ <XComponent/>}>
+            <Route path="/" element={<OutletStateComponent/>}>
              <Route
                  path="login"
                  exact={true}
@@ -88,16 +92,16 @@ function App() {
 
               <Route
 
-                path="profile"
-                exact={true}
-                element={<ProfileComponent />}
+                  path="profile"
+                  exact={true}
+                  element={<ProfileComponent/>}
 
               />
 
                 <Route
                     path="profile/edit"
                     exact={true}
-                    element={<EditProfileComponent />}
+                    element={<EditProfileComponent/>}
                 />
 
              </Route>

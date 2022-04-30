@@ -33,7 +33,7 @@ export const getUserState = async (userid, dispatch) => {
             )
 
         dispatch({type: LOGIN, user})
-
+        return {...user}
     } catch (e) {
        alert('error: '+e)
         console.log(e.message)
@@ -41,18 +41,17 @@ export const getUserState = async (userid, dispatch) => {
 }
 export const logout = async ({navigate, dispatch}) => {
     try {
-        let {status} = await axios.post('http://localhost:4000/api/auth/logout', {})
-        dispatch({type: LOGOUT, user: null})
+        // let {status} = await axios.post('http://localhost:4000/api/auth/logout', {})
+        dispatch({type: LOGOUT, user: {}})
     } catch (e) {
         console.log(e.message)
     }
 }
 
-export const updateProfile = async (user, {navigate,dispatch}, obj) => {
+export const updateProfile = async (user, {navigate,dispatch}) => {
     try {
         let {data} = await axios.put(`http://localhost:4000/api/users/${user._id}?user=${user._id}`,user)
-        dispatch({type:UPDATE, user:user})
-        obj.value = true
+        dispatch({type:UPDATE, user})
     } catch (e) {
         navigate('/error')
         console.log(e.message)

@@ -5,7 +5,7 @@ export default function UsersReducer(state=[],action){
         case DELETE_USER:
             return state.filter(e=>e._id!==action.userid);
         case GET_USERS:
-            return  action.users;
+            return  [...action.users];
         default:
             return state
     }
