@@ -1,17 +1,46 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteReview} from "../../actions/admin/reviewsActions";
+import {deleteReview, getReviews} from "../../actions/admin/reviewsActions";
 import axios from "axios";
 import {likeOrDislike} from "../../actions/ratingactions";
 import {useSearchParams} from "react-router-dom";
+import {getUserState} from "../../actions/userActions";
+import {getRatings} from "../../actions/admin/ratingsActions";
 
 
 const ReviewListItem = ({uid,review,onDelete,
                         updateCallback}) => {
-    const dispatch = useDispatch();
-    const rating = useSelector(state => state.ratings);
-    const [query , setQuery ]= useSearchParams()
+     const rating = useSelector(state => state.ratings);
+    const dispatch = useDispatch()
+    const user = useSelector(s=>s.currentUser);
+    const reviews = useSelector(s=>s.reviews);
+    const [sortType, setSort] = useState('recent');
+    const [resort,setReSort] = useState(true)
+    const [query,setQuery] = useSearchParams( )
 
+
+    useEffect(() => {
+        let iife = async ()=> {
+            await getRatings(user._id, dispatch)
+            await getReviews(user._id, null, dispatch,sortType)
+        }
+        if(resort) {
+            iife();
+            setReSort(false)
+        }
+    }, [sortType,resort,user._id,dispatch]);
+
+    const [canDelete , setCanDelete ]= useState(false)
+useEffect( ()=>{
+    const userid=uid || query.get("uid")
+   ; (async ()=>{
+
+        if (userid) {
+            const user =await getUserState(userid  ,dispatch)
+            setCanDelete(user.role==="ADMIN" && true)
+        }
+    })()
+},[dispatch])
     return (
         <>
             <li className="card p-4 mb-2">
@@ -21,10 +50,10 @@ const ReviewListItem = ({uid,review,onDelete,
                             <h6>{review.critic}</h6>
                             <small className="">{review.time}</small>
                         </div>
-                         <div className="col">
+                        {canDelete && <div className="col">
                             <i className="float-end fa-solid fa-trash-can"
                                onClick={onDelete}/>
-                        </div>
+                        </div>}
                     </div>
                 </div>
 
