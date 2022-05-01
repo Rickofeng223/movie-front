@@ -10,8 +10,8 @@ const MoviePage = (
   }
 ) => {
   const [modalShow, setModalShow] = React.useState(false);
-
-  const movie = useSelector((state) => state.searchMovies.selectedMovie);
+const searchMovies= useSelector((state) => state.searchMovies)
+  const movie = searchMovies.selectedMovie ;
   let dateString = String(movie.release_date)
   let yearString = dateString.substring(0, 4)
   let monthString = dateString.substring(5, 7)
