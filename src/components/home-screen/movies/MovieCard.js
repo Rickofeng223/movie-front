@@ -4,10 +4,27 @@ import "../actionStyle.css";
 import AsyncImage from "../../util/AsyncImage";
 import {useDispatch, useSelector} from "react-redux";
 import {SET_USER_SELECTED_MOVIE} from "../../actions/searcActions";
+import {useEffect} from "react";
+import {getUserState} from "../../../actions/userActions";
 
 const MovieCard = ({ m, handleClick }) => {
-  const dispatch = useDispatch()
-  return (
+    const user = useSelector(e => e.currentUser)
+    const [query, setQuery] = useSearchParams()
+    const dispatch = useDispatch()
+    useEffect(() => {
+        if (user&& user._id) {
+            setQuery({uid: user._id})
+        } else if (query.get("uid") !== undefined) {
+            getUserState(query.get("uid"),  dispatch )
+        }
+
+    }, [dispatch])
+    let search=`?movie=${m.id}`
+    let _user = (user ? user._id : query.get('uid'))
+    if(_user){
+        search+= `&uid=${_user}`
+    }
+   return (
     <li
       className={`wd-actionList`}
       onClick={() => dispatch({
@@ -16,7 +33,8 @@ const MovieCard = ({ m, handleClick }) => {
       })}
     >
       <div className={`featured-content`}>
-        <Link to={{pathname: "/home/moviedetail", search: `?movie=${m.id}`}}>
+        <Link to={{pathname: "/home/moviedetail", search}
+        }>
           <AsyncImage
             className={`featured-title imageSize`}
             src={getImage(m.poster_path)}

@@ -26,9 +26,11 @@ const searchMovies= useSelector((state) => state.searchMovies)
   const user = useSelector(e => e.currentUser)
   const [query, setQuery] = useSearchParams()
   const dispatch = useDispatch()
+  const movieID = query.get("movie")
   useEffect(() => {
+
     if (user&& user._id) {
-      setQuery({uid: user._id})
+      setQuery({uid: user._id,movie:query.get("movie")})
     } else if (query.get("uid") !== undefined) {
       getUserState(query.get("uid"),  dispatch )
     }
