@@ -4,8 +4,7 @@ import {LOGIN, LOGOUT, UPDATE} from "../actions/userActions";
 
 
 
-export default function UserReducer(state={},action){
-console.log("DISPATCH: ",action.type,<action className="user"></action>)
+export default function UserReducer(state=null,action){
 
     switch (action.type) {
 
@@ -17,7 +16,6 @@ console.log("DISPATCH: ",action.type,<action className="user"></action>)
             return null
 
         default:
-            console.log(state)
             return state
     }
 }

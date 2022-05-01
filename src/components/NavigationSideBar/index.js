@@ -20,7 +20,7 @@ const NavigationSidebar = () => {
     const [inputMovie, setInputMovie] = useState("");
 
     const oc_nav = (pathname) => {
-        const search = `?uid=${user._id || query.uid}`
+        const search = `?uid=${user._id || query.get("uid")}`
         console.log(search)
         navigate({pathname, search})
     }
@@ -76,7 +76,7 @@ const NavigationSidebar = () => {
               />
               <Link to={{
                   pathname: `/home/search/${inputMovie}`, search: `?${
-                      user ? 'user=' + user._id + '&' : ''
+                      user ? 'uid=' + user._id + '&' : ''
                   }search=${inputMovie}`
               }}>
                 <Button variant="outline-success rounded-pill"

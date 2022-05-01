@@ -16,10 +16,11 @@ const ReviewList = () => {
     const [query,setQuery] = useSearchParams( )
     useEffect(() => {
          let iife = async ()=> {
-                await getRatings(user._id, dispatch())
+                await getRatings(user._id, dispatch)
                 await getReviews(user._id, null, dispatch,sortType)
         }
-        if(resort) {
+
+        if((user || query.get("uid")) && resort) {
             iife();
             setReSort(false)
         }
@@ -49,7 +50,7 @@ const ReviewList = () => {
                         console.log(review)
 
                         return(
-                            <ReviewListItem uid={user._id||query.get("uid")}
+                            <ReviewListItem key={review._id} uid={user._id||query.get("uid")}
                                             review={review}
                                             onDelete={()=>
                                                 deleteReview(user._id,review,dispatch)}

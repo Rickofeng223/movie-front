@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "../actionStyle.css";
 import { useDispatch } from "react-redux";
-import { setUserSelectedMovie } from "../../actions/searcActions";
+import {SET_USER_SELECTED_MOVIE, setUserSelectedMovie} from "../../actions/searcActions";
 import {useSearchParams} from "react-router-dom";
 
 const Movies = ({ movieType, dataUrl , uid }) => {
@@ -35,7 +35,7 @@ const[query,setQuery]=useSearchParams()
                 uid={query.get("uid")}
               m={event}
               key={key}
-              handleClick={handleUserSelectMovie}
+              handleClick={()=>{}}
             />
           );
         })}
