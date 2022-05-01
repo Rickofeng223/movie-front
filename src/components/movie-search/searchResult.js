@@ -10,7 +10,7 @@ const SearchResult = ({ m }) => {
   return (
     <li className={`wd-actionList`}>
       <div className={`featured-content`}>
-        <Link to="/home/moviedetail">
+        <Link to={{pathname:"/home/moviedetail",search:`?movie=${m.id}`}}>
           <img
             className={`featured-title imageSize`}
             //src="https://image.tmdb.org/t/p/original/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg"
