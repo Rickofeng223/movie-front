@@ -24,7 +24,7 @@ const searchMovies= useSelector((state) => state.searchMovies)
         <div className='container'>
           <div className="row mt-2">
             <div className="col-sm-7 col-md-4 col-lg-3 col-xl-2 card border-0 m-0 p-0">
-              <AsyncImage className='card-img' src={getImage(movie.poster_path)} />
+              <img className='card-img' src={getImage(movie.poster_path)} />
               <button
                   className="btn btn-primary rounded mt-2 card-body"
                   onClick={() => setModalShow(true)}
