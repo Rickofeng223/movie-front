@@ -23,7 +23,7 @@ const ReviewList = () => {
             iife();
             setReSort(false)
         }
-    }, [sortType,dispatch]);
+    }, [sortType,resort,user._id,dispatch]);
 
     return(
         <>
