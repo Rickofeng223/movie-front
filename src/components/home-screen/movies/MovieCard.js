@@ -2,13 +2,18 @@ import {Link, useSearchParams} from "react-router-dom";
 import { getImage } from "../../../util/constant";
 import "../actionStyle.css";
 import AsyncImage from "../../util/AsyncImage";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {SET_USER_SELECTED_MOVIE} from "../../actions/searcActions";
 
 const MovieCard = ({ m, handleClick }) => {
+  const dispatch = useDispatch()
   return (
     <li
       className={`wd-actionList`}
-      onClick={() => handleClick(m)}
+      onClick={() => dispatch({
+        type: SET_USER_SELECTED_MOVIE,
+        payload: m,
+      })}
     >
       <div className={`featured-content`}>
         <Link to={{pathname: "/home/moviedetail", search: `?movie=${m.id}`}}>

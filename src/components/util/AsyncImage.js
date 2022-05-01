@@ -12,7 +12,8 @@ const AsyncImage = ({src, alt, className}) => {
         if(src) {
             fetchImage()
         }
-    }, [src]);
+
+    }, []);
 
     return (<img src={img} alt={alt} className={className}/>);
 }
