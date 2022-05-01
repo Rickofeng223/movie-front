@@ -11,7 +11,7 @@ const MovieCard = ({ m, handleClick }) => {
       onClick={() => handleClick(m)}
     >
       <div className={`featured-content`}>
-        <Link to="/home/moviedetail">
+        <Link to={{pathname: "/home/moviedetail", search: `?movie=${m.id}`}}>
           <AsyncImage
             className={`featured-title imageSize`}
             src={getImage(m.poster_path)}
