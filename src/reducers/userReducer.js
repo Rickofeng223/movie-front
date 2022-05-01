@@ -4,8 +4,8 @@ import {LOGIN, LOGOUT, UPDATE} from "../actions/userActions";
 
 
 
-export default function UserReducer(state={},action){
- 
+export default function UserReducer(state=null,action){
+
     switch (action.type) {
 
         case LOGIN:
@@ -16,7 +16,6 @@ export default function UserReducer(state={},action){
             return null
 
         default:
-            console.log(state)
             return state
     }
 }
