@@ -54,7 +54,7 @@ function OutletStateComponent() {
             console.log('set: '+query.get("uid"))
         }
 
-    }, [dispatch])
+    }, [dispatch,query,setQuery,user])
     return <>
     <NavigationSidebar/>
     <Outlet/>
