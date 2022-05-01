@@ -16,7 +16,7 @@ const ReviewList = () => {
     const [query,setQuery] = useSearchParams( )
     useEffect(() => {
          let iife = async ()=> {
-                await getRatings(user._id, dispatch())
+                await getRatings(user._id, dispatch)
                 await getReviews(user._id, null, dispatch,sortType)
         }
         if(resort) {
