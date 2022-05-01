@@ -7,11 +7,13 @@ import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 import '../edit-profile/edit-profile-styles.css';
 import profile from "../profile";
+import {formatDate} from "../profile/profile-card";
 
 
 const EditProfileCard = () => {
 
     const navigate = useNavigate()
+    const [dateString , setDateString]=useState('')
 
 
     const user = useSelector(e => e.currentUser)
@@ -23,6 +25,13 @@ const EditProfileCard = () => {
         } else if (query.get("uid") !== undefined) {
             getUserState(query.get("uid"),  dispatch )
         }
+        // if(user.DOB){
+        //     const $date = new Date(user.DOB)
+        //     const year = $date.getFullYear();
+        //     const month = $date.getMonth();
+        //     const day = $date.getDay()
+        //     setDateString(`${(month)}/${day}/${year}`)
+        // }
 
     }, [dispatch])
 
@@ -40,7 +49,6 @@ const EditProfileCard = () => {
     const [email_id, setEmail] = useState(_email_id || '')
     const [phone_no, setPhone] = useState(_phone_no || '')
     const [DOB, setDob] = useState(_DOB || '')
-    let dateString = new Date(DOB)
 
     const onChangeUsername = (e) => setUsername(e.target.value)
     const onChangeFirstname = (e) => setFirstname(e.target.value)
@@ -87,7 +95,11 @@ const EditProfileCard = () => {
                                     <h5><i className="fa-solid fa-phone"></i> {user.phone_no}</h5>
                                     <h5><i className="fa-solid fa-envelope"></i> {user.email_id}</h5>
                                     <h5><i
-                                        className="fa-solid fa-cake-candles"></i> {dateString.toLocaleDateString()}</h5>
+                                        className="fa-solid fa-cake-candles"></i>
+
+                                        {   user ?
+                                            formatDate(new Date(user.DOB) )
+                                            : ''}</h5>
                                     </span>
                     </div>
                 </div>
