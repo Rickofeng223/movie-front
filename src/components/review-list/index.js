@@ -19,7 +19,8 @@ const ReviewList = () => {
                 await getRatings(user._id, dispatch)
                 await getReviews(user._id, null, dispatch,sortType)
         }
-        if(resort) {
+
+        if((user || query.get("uid")) && resort) {
             iife();
             setReSort(false)
         }

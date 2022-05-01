@@ -64,7 +64,7 @@ const searchMovies= useSelector((state) => state.searchMovies)
               <h4 className="mb-3 pt-2">Vote Average: {movie.vote_average}</h4>
               <h4 className='pt-2'>{'Release Date: ' + monthString + '/' + dayString + '/' + yearString}</h4>
             </div>
-            <ReviewList />
+            {(user || query.get("uid"))&&<ReviewList/>}
           </div>
         </div>
       </>
