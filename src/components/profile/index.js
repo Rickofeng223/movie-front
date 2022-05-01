@@ -41,13 +41,7 @@ const ProfileComponent = () => {
                     {/*      className="btn btn-secondary rounded-pill">*/}
                     {/*    Edit Profile*/}
 
-                    {user.role === "ADMIN" &&
-                        <>
-                        <br/><br/>
-                        <button className="btn btn-primary rounded">
-                        Manage Site</button>
-                        </>
-                        }
+                  
                     {user.role === "CRITIC" &&
                         <>
                         <div className="card mb-4 mb-xl-0">
