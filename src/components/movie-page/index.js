@@ -19,15 +19,13 @@ const searchMovies= useSelector((state) => state.searchMovies)
   let monthString = dateString.substring(5, 7)
   let dayString = dateString.substring(8, 10)
 
-
+const[query,setQuery]=useSearchParams()
 
 
 
   const user = useSelector(e => e.currentUser)
-  const [query, setQuery] = useSearchParams()
-  const dispatch = useDispatch()
-  const movieID = query.get("movie")
-  useEffect(() => {
+   const dispatch = useDispatch()
+   useEffect(() => {
 
     if (user&& user._id) {
       setQuery({uid: user._id,movie:query.get("movie")})
@@ -44,13 +42,14 @@ const searchMovies= useSelector((state) => state.searchMovies)
           <div className="row mt-2">
             <div className="col-sm-7 col-md-4 col-lg-3 col-xl-2 card border-0 m-0 p-0">
               <img className='card-img' src={getImage(movie.poster_path)} />
-              <button
+              {user && user.role==="CRITIC" && <button
                   className="btn btn-primary rounded mt-2 card-body"
                   onClick={() => setModalShow(true)}
               >
                 Write Review
-              </button>
+              </button>}
               <WriteReviewModal
+                  movie={movie}
                   show={modalShow}
                   onHide={() => setModalShow(false)}
               />
