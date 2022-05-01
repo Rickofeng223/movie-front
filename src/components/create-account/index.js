@@ -11,8 +11,8 @@ const CreateAccount = () => {
     const [last_name, setLast] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPass] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
+    const [email_id, setEmail] = useState('')
+    const [phone_id, setPhone] = useState('')
     const [DOB, setDOB] = useState('')
     const [role, setRole] = useState("NORMAL")
     const [genres, setGenres] = useState(new Set())
@@ -46,12 +46,12 @@ const CreateAccount = () => {
 
                         <label className="font-weight-bold" htmlFor="email">Email<br/>
                         <input className="mb-4" type="email" id="email" placeholder="email@domain.com"
-                               value={email} onChange={(event => setEmail(event.target.value))}/></label><br/>
+                               value={email_id} onChange={(event => setEmail(event.target.value))}/></label><br/>
 
                         <label className="font-weight-bold" htmlFor="phone">Phone Number
                         <br/>
                         <input className="mb-4" type="text" id="phone" placeholder="6175478890"
-                               value={phone} onChange={(event => setPhone(event.target.value))}/></label>
+                               value={phone_id} onChange={(event => setPhone(event.target.value))}/></label>
                         <br/>
 
                         <label className="font-weight-bold" htmlFor="dob">Date of Birth
@@ -92,7 +92,7 @@ const CreateAccount = () => {
                             () => signup({
                                 password,
                                 userData: {
-                                    first_name, last_name, username, email, phone, DOB, role
+                                    first_name, last_name, username, email_id,  phone_id, DOB, role
                                 }
                             }, {navigate, dispatch})
                         } className="btn btn-primary btn-block rounded-pill mt-4 mb-2">
