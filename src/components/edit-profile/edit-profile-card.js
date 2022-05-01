@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 
 import ReviewList from "../review-list";
-import {updateProfile} from "../../actions/userActions";
+import {getUserState, updateProfile} from "../../actions/userActions";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
@@ -11,19 +11,20 @@ import profile from "../profile";
 
 const EditProfileCard = () => {
 
-    const [query,setQuery]= useSearchParams()
     const navigate = useNavigate()
+
+
+    const user = useSelector(e => e.currentUser)
+    const [query, setQuery] = useSearchParams()
     const dispatch = useDispatch()
-    const user = useSelector(s => s.currentUser)
+    useEffect(() => {
+        if (user&& user._id) {
+            setQuery({uid: user._id})
+        } else if (query.get("uid") !== undefined) {
+            getUserState(query.get("uid"),  dispatch )
+        }
 
-    const obj = {value: false}
-
-    // useEffect(() => {
-    //     if(obj.value){
-    //         navigate(`/profile/${user._id}`)
-    //     }
-    // }, [navigate])
-
+    }, [dispatch])
 
     const {username:_username,
     first_name: _first_name,

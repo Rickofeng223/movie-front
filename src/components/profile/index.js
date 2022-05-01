@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import ReviewList from "../review-list";
- import {updateProfile} from "../../actions/userActions";
-import {useSelector} from "react-redux";
-import {Link, useNavigate} from "react-router-dom";
+ import {getUserState, updateProfile} from "../../actions/userActions";
+import {useDispatch, useSelector} from "react-redux";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
  import ProfileCard from "./profile-card";
 
 
@@ -12,8 +12,20 @@ const ProfileComponent = () => {
 
     const navigate = useNavigate()
 
-    const user = useSelector((s) => s.currentUser)
-if(!user){
+    const user = useSelector(e => e.currentUser)
+    const [query, setQuery] = useSearchParams()
+    const dispatch = useDispatch()
+    useEffect(() => {
+        if (user&& user._id) {
+            setQuery({uid: user._id})
+        } else if (query.get("uid") !== undefined) {
+            getUserState(query.get("uid"),  dispatch )
+        }
+
+    }, [dispatch])
+
+
+ if(!user){
     navigate("/login")
 }
     return (

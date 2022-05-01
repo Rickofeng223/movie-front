@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import ReviewList from "../review-list";
 import WriteReviewModal from "../write-review-modal";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { getImage } from "../../util/constant";
 import AsyncImage from "../util/AsyncImage";
+import {useSearchParams} from "react-router-dom";
+import {getUserState} from "../../actions/userActions";
 
 const MoviePage = (
   {
@@ -17,6 +19,21 @@ const searchMovies= useSelector((state) => state.searchMovies)
   let monthString = dateString.substring(5, 7)
   let dayString = dateString.substring(8, 10)
 
+
+
+
+
+  const user = useSelector(e => e.currentUser)
+  const [query, setQuery] = useSearchParams()
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (user&& user._id) {
+      setQuery({uid: user._id})
+    } else if (query.get("uid") !== undefined) {
+      getUserState(query.get("uid"),  dispatch )
+    }
+
+  }, [dispatch])
 
 
   return (
