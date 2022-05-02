@@ -1,24 +1,21 @@
-import React, {useEffect, useRef, useState} from "react";
-
-import ReviewList from "../review-list";
+import React, {useEffect, useState} from "react";
 // import {getUser State, updateProfile} from "../../actions/userActions";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate, useParams, useSearchParams} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 import '../edit-profile/edit-profile-styles.css';
 import {getUserState} from "../../actions/userActions";
 
 const ProfileCard = () => {
-    const [query,setQuery]= useSearchParams()
+    const [query, setQuery] = useSearchParams()
 
     const user = useSelector((s) => s.currentUser)
 
 
-
-    return(
+    return (
         <div className="row">
             <PCard
-              />
+            />
 
 
             <div className="col-xl-7">
@@ -36,7 +33,8 @@ const ProfileCard = () => {
 
                             <Phone ph={user.phone_no}/>
 
-                            <Link to={{ pathname:'/profile/edit', search:`?uid=${user ? user._id : query.get("uid")}`}} className="btn btn-primary rounded"
+                            <Link to={{pathname: '/profile/edit', search: `?uid=${user ? user._id : query.get("uid")}`}}
+                                  className="btn btn-primary rounded"
                                   type="button">Edit Profile</Link>
                         </div>
                     </div>
@@ -49,38 +47,57 @@ const ProfileCard = () => {
 export default ProfileCard;
 
 
-function ImageAvatar({role}){
+function ImageAvatar({role}) {
     return <>
     <img className="img-account-profile rounded-circle mb-2"
-                src={(()=>{
-                    switch(role){
-                        case "NORMAL": return "http://bootdey.com/img/Content/avatar/avatar1.png";
+         src={(() => {
+             switch (role) {
+                 case "NORMAL":
+                     return "http://bootdey.com/img/Content/avatar/avatar1.png";
 
-                        case "ADMIN" : return "http://bootdey.com/img/Content/avatar/avatar2.png";
+                 case "ADMIN" :
+                     return "http://bootdey.com/img/Content/avatar/avatar2.png";
 
-                        case "CRITIC" : return "http://bootdey.com/img/Content/avatar/avatar3.png";
+                 case "CRITIC" :
+                     return "http://bootdey.com/img/Content/avatar/avatar3.png";
 
-                        default: return "";
-                    }})()} alt=""/>
+                 default:
+                     return "";
+             }
+         })()} alt=""/>
     <br/>
     </>
 }
+export function formatDate($date){
 
-function PCard({    }){
-    const [query,setQuery]= useSearchParams()
+    const year = $date.getFullYear();
+    const month = $date.getMonth();
+    const day = $date.getDay()
+    return `${(month)}/${day}/${year}`
+}
+function PCard({}) {
+    const [query, setQuery] = useSearchParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [user ,setUser]= useState({  })
-    const [dateString ,sds]= useState('')
+    const [user, setUser] = useState({})
+    const [dateString, setDateString] = useState('')
+
     useEffect(() => {
-        (async ()=>{
-            setUser(await getUserState(query.get("uid"),dispatch))
-            sds(       (new Date(user.DOB)) )
+        (async () => {
+            setUser(await getUserState(query.get("uid"), dispatch))
+            //
+            // if(user.DOB) {
+            //     const $date = new Date(user.DOB)
+            //     const year = $date.getFullYear();
+            //     const month = $date.getMonth();
+            //     const day = $date.getDay()
+            //     setDateString(`${(month)}/${day}/${year}`)
+            // }
         })()
-    }, [navigate,dispatch])
+    }, [navigate, dispatch])
     console.log(user)
 
-    return<>
+    return <>
         <div className="col-xl-5">
 
             {/* Profile Card */}
@@ -93,21 +110,24 @@ function PCard({    }){
                     <ImageAvatar role={user.role}/>
 
                     <i className="fa-duotone fa-at"></i>{user.username}<br/><br/>
-                    <PCardInfo first={    user.first_name }
+                    <PCardInfo first={user.first_name}
                                last={user.last_name
                                }
-                               ph={  user.phone_no
+                               ph={user.phone_no
                                }
                                email={user.email_id
                                }
-                               dateString={'dateString'}/>
+                               dateString={
+                                   user ?
+                                       formatDate(new Date(user.DOB) )
+                                   : ''}/>
                 </div>
             </div>
         </div>
     </>
 }
 
-function GroupUsername({username}){
+function GroupUsername({username}) {
     return <>
         <div className="mb-4">
             <label className="small mb-1" htmlFor="inputUsername">Username</label>
@@ -118,7 +138,7 @@ function GroupUsername({username}){
     </>
 }
 
-function FirstLastEmail({first,last,email}){
+function FirstLastEmail({first, last, email}) {
     return <>
         <div className="row gx-3 mb-3">
 
@@ -148,7 +168,7 @@ function FirstLastEmail({first,last,email}){
     </>
 }
 
-function Phone({ph}){
+function Phone({ph}) {
     return <>
         <div className="row gx-3 mb-3">
 
@@ -163,13 +183,13 @@ function Phone({ph}){
     </>
 }
 
-function PCardInfo({first, last, ph, email, dateString}){
-    return<>
+function PCardInfo({first, last, ph, email, dateString}) {
+    return <>
     <span className='text-left'>
-        <h2><b>{first}   {last}</b></h2>
+        <h2><b>{first} {last}</b></h2>
         <h5><i className="fa-solid fa-phone"></i> {ph}</h5>
         <h5><i className="fa-solid fa-envelope"></i> {email}</h5>
-        <h5><i className="fa-solid fa-cake-candles"></i> {dateString }</h5>
+        <h5><i className="fa-solid fa-cake-candles"></i> {dateString}</h5>
     </span>
     </>
 }

@@ -1,29 +1,39 @@
 import React, {useEffect, useRef, useState} from "react";
 
 import ReviewList from "../review-list";
-import {updateProfile} from "../../actions/userActions";
+import {getUserState, updateProfile} from "../../actions/userActions";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 import '../edit-profile/edit-profile-styles.css';
 import profile from "../profile";
+import {formatDate} from "../profile/profile-card";
 
 
 const EditProfileCard = () => {
 
-    const [query,setQuery]= useSearchParams()
     const navigate = useNavigate()
+    const [dateString , setDateString]=useState('')
+
+
+    const user = useSelector(e => e.currentUser)
+    const [query, setQuery] = useSearchParams()
     const dispatch = useDispatch()
-    const user = useSelector(s => s.currentUser)
+    useEffect(() => {
+        if (user&& user._id) {
+            setQuery({uid: user._id})
+        } else if (query.get("uid") !== undefined) {
+            getUserState(query.get("uid"),  dispatch )
+        }
+        // if(user.DOB){
+        //     const $date = new Date(user.DOB)
+        //     const year = $date.getFullYear();
+        //     const month = $date.getMonth();
+        //     const day = $date.getDay()
+        //     setDateString(`${(month)}/${day}/${year}`)
+        // }
 
-    const obj = {value: false}
-
-    // useEffect(() => {
-    //     if(obj.value){
-    //         navigate(`/profile/${user._id}`)
-    //     }
-    // }, [navigate])
-
+    }, [dispatch])
 
     const {username:_username,
     first_name: _first_name,
@@ -39,7 +49,6 @@ const EditProfileCard = () => {
     const [email_id, setEmail] = useState(_email_id || '')
     const [phone_no, setPhone] = useState(_phone_no || '')
     const [DOB, setDob] = useState(_DOB || '')
-    let dateString = new Date(DOB)
 
     const onChangeUsername = (e) => setUsername(e.target.value)
     const onChangeFirstname = (e) => setFirstname(e.target.value)
@@ -86,7 +95,11 @@ const EditProfileCard = () => {
                                     <h5><i className="fa-solid fa-phone"></i> {user.phone_no}</h5>
                                     <h5><i className="fa-solid fa-envelope"></i> {user.email_id}</h5>
                                     <h5><i
-                                        className="fa-solid fa-cake-candles"></i> {dateString.toLocaleDateString()}</h5>
+                                        className="fa-solid fa-cake-candles"></i>
+
+                                        {   user ?
+                                            formatDate(new Date(user.DOB) )
+                                            : ''}</h5>
                                     </span>
                     </div>
                 </div>

@@ -9,7 +9,10 @@ const AsyncImage = ({src, alt, className}) => {
     };
 
     useEffect(()=> {
-        fetchImage()
+        if(src) {
+            fetchImage()
+        }
+
     }, []);
 
     return (<img src={img} alt={alt} className={className}/>);

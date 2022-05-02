@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useLocation, useNavigate, useSearchParams} from "react-router-dom";
-import {searchForMovies, seartStartForMovies} from "../actions/searcActions";
+import {searchForMovies, seartStartForMovies, START_SEARCH_FOR_MOVIE} from "../actions/searcActions";
 import {logout} from "../../actions/userActions";
 //import { useLocation } from "react-router-dom";
 import {Button, Container, Form, FormControl, Nav, Navbar} from "react-bootstrap";
@@ -20,12 +20,14 @@ const NavigationSidebar = () => {
     const [inputMovie, setInputMovie] = useState("");
 
     const oc_nav = (pathname) => {
-        const search = `?uid=${user._id || query.uid}`
+        const search = `?uid=${user._id || query.get("uid")}`
         console.log(search)
         navigate({pathname, search})
     }
     const handleSearch = () => {
-        dispatch(seartStartForMovies());
+        dispatch({
+            type: START_SEARCH_FOR_MOVIE,
+        });
         dispatch(searchForMovies(inputMovie));
     };
     const _navigate = (pathname) => () => navigate({pathname, search: `?uid=${user ? user._id : query.get("uid")}`})
@@ -74,7 +76,7 @@ const NavigationSidebar = () => {
               />
               <Link to={{
                   pathname: `/home/search/${inputMovie}`, search: `?${
-                      user ? 'user=' + user._id + '&' : ''
+                      user ? 'uid=' + user._id + '&' : ''
                   }search=${inputMovie}`
               }}>
                 <Button variant="outline-success rounded-pill"

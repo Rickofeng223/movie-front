@@ -36,38 +36,16 @@ const reducer = combineReducers({
 const store = createStore(reducer, applyMiddleware(thunk));
 
 
-function OutletStateComponent() {
-    const user = useSelector(e => e.currentUser)
-    const [query, setQuery] = useSearchParams()
-    const dispatch = useDispatch()
-    useEffect(() => {
-        let queryied = user? user._id :query.get("uid")
-        console.log('queried: '+queryied)
-        if (user&& user._id) {
-            console.log(user)
-            console.log(user._id)
-            setQuery({uid: user._id})
-            console.log('set: '+user._id)
-        } else if (query.get("uid") !== undefined) {
-            console.log('wind',query.get("uid"))
-             getUserState(query.get("uid"),  dispatch )
-            console.log('set: '+query.get("uid"))
-        }
-
-    }, [dispatch])
-    return <>
-    <NavigationSidebar/>
-    <Outlet/>
-        </>;
-}
 
 function App() {
     return (
         <Provider store={store}>
       <BrowserRouter>
         <div className="container">
+                <NavigationSidebar/>
+
           <Routes>
-            <Route path="/" element={<OutletStateComponent/>}>
+            <Route path="/" >
              <Route
                  path="login"
                  exact={true}

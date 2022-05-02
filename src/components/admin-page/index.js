@@ -8,13 +8,21 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 import {getUserState} from "../../actions/userActions";
 
 const AdminPage = () => {
-    const [query,setQuery]= useSearchParams();
 
-
-    const _userId = query.get("uid")
-    const dispatch = useDispatch()
     const user = useSelector(e => e.currentUser)
-    const navigate = useNavigate()
+    const [query, setQuery] = useSearchParams()
+    const dispatch = useDispatch()
+    useEffect(() => {
+        if (user&& user._id) {
+            setQuery({uid: user._id})
+        } else if (query.get("uid") !== undefined) {
+            getUserState(query.get("uid"),  dispatch )
+        }
+
+    }, [dispatch])
+
+
+     const navigate = useNavigate()
     return (
         <>{user && user.role === "ADMIN" ? (<>
             <h1 className="mt-4 mb-3">Manage Site</h1>

@@ -1,16 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import { getImage } from "../../util/constant";
 import "../home-screen/actionStyle.css";
+import {getUserState} from "../../actions/userActions";
 
 const SearchResult = ({ m }) => {
-  
-  //const getImage = (path) => `https://image.tmdb.org/t/p/original${path}`;
+    useEffect(() => {
+        if (user&& user._id) {
+            setQuery({uid: user._id})
+        } else if (query.get("uid") !== undefined) {
+            getUserState(query.get("uid"),  dispatch )
+        }
 
+    }, [dispatch])
+  //const getImage = (path) => `https://image.tmdb.org/t/p/original${path}`;
+    let search=`?movie=${m.id}`
+    let _user = (user ? user._id : query.get('uid'))
+    if(_user){
+        search+= `&uid=${_user}`
+    }
   return (
     <li className={`wd-actionList`}>
       <div className={`featured-content`}>
-        <Link to="/home/moviedetail">
+        <Link to={{pathname:"/home/moviedetail",search }}>
           <img
             className={`featured-title imageSize`}
             //src="https://image.tmdb.org/t/p/original/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg"

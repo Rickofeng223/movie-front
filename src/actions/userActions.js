@@ -14,20 +14,19 @@ export const signup = async (user_data, {navigate, dispatch}) => {
     }
 }
 
-export const login = async (auth, {navigate, dispatch}) => {
-    try {let _
+export const login = async (auth,  dispatch ) => {
+
         let {data} = await axios.post('http://localhost:4000/api/auth/login',  auth)
 
-        dispatch({type: LOGIN, user: data})
-        return data._id
+        return data 
 
-    } catch (e) {
-        navigate('/login-error')
-        console.log(e.message)
-    }
+
 }
 export const getUserState = async (userid, dispatch) => {
-    if(!userid){return {}}
+    if(!userid){
+        console.log('no userid')
+        return {msg:'notworking'}
+    }
 
     try {
         let {data:user} = await axios.get(

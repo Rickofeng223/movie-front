@@ -6,19 +6,8 @@ const reviewReducer =
         case 'get-reviews':
             return action.reviews
         case 'create-review':
-            const time = (new Date()).getTime() + '';
-            const newReview = {
-                tmdb_id: 550,
-                user_id: 1234,
-                content: action.review,
-                time: time,
-                likes: 0,
-                dislikes: 0
-            }
-            return [
-                /*action.review*/newReview,
-                ...state,
-            ];
+
+            return [ action.review, ...state];
         case 'delete-review':
             return state.filter(
 

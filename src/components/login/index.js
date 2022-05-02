@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 
-import {login} from '../../actions/userActions'
+import {LOGIN, login} from '../../actions/userActions'
 import {useDispatch} from "react-redux";
 const Login = () => {
     const [username,setUsername]=useState('')
@@ -29,12 +29,23 @@ const Login = () => {
                         <input onChange={(e)=>setPassword(e.target.value)} className="mb-4"  type="password" id="password"/><br/>
 
                         <button
+
                             onClick={async ()=> {
-                                const uid = await login({username, password}, {navigate, dispatch})
-                                 navigate({
-                                    pathname: `/`,
-                                    search: `?uid=${uid}`
-                                })
+                                try {
+                                    console.log("onClick")
+                                    const data = await login({username, password}, {dispatch})
+                                    dispatch({type: LOGIN, user: data})
+
+                                    console.log("UID",data._id)
+                                    navigate( {
+                                        pathname: `/home`,
+                                        search: `?uid=${data._id}`
+                                    })
+                                }catch (e) {
+                                    console.log(e)
+                                    navigate('/error')
+                                }
+
                             }
                             }
                             className="btn btn-primary btn-block rounded-pill mt-4 mb-2">

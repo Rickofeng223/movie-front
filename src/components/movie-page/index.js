@@ -1,21 +1,39 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import ReviewList from "../review-list";
 import WriteReviewModal from "../write-review-modal";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { getImage } from "../../util/constant";
+import AsyncImage from "../util/AsyncImage";
+import {useSearchParams} from "react-router-dom";
+import {getUserState} from "../../actions/userActions";
 
 const MoviePage = (
   {
   }
 ) => {
   const [modalShow, setModalShow] = React.useState(false);
-
-  const movie = useSelector((state) => state.searchMovies.selectedMovie);
+const searchMovies= useSelector((state) => state.searchMovies)
+  const movie = searchMovies.selectedMovie ;
   let dateString = String(movie.release_date)
   let yearString = dateString.substring(0, 4)
   let monthString = dateString.substring(5, 7)
   let dayString = dateString.substring(8, 10)
 
+const[query,setQuery]=useSearchParams()
+
+
+
+  const user = useSelector(e => e.currentUser)
+   const dispatch = useDispatch()
+   useEffect(() => {
+
+    if (user&& user._id) {
+      setQuery({uid: user._id,movie:query.get("movie")})
+    } else if (query.get("uid") !== undefined) {
+      getUserState(query.get("uid"),  dispatch )
+    }
+
+  }, [dispatch])
 
 
   return (
@@ -24,13 +42,14 @@ const MoviePage = (
           <div className="row mt-2">
             <div className="col-sm-7 col-md-4 col-lg-3 col-xl-2 card border-0 m-0 p-0">
               <img className='card-img' src={getImage(movie.poster_path)} />
-              <button
+              {user && user.role==="CRITIC" && <button
                   className="btn btn-primary rounded mt-2 card-body"
                   onClick={() => setModalShow(true)}
               >
                 Write Review
-              </button>
+              </button>}
               <WriteReviewModal
+                  movie={movie}
                   show={modalShow}
                   onHide={() => setModalShow(false)}
               />
@@ -44,7 +63,7 @@ const MoviePage = (
               <h4 className="mb-3 pt-2">Vote Average: {movie.vote_average}</h4>
               <h4 className='pt-2'>{'Release Date: ' + monthString + '/' + dayString + '/' + yearString}</h4>
             </div>
-            <ReviewList />
+            {(user || query.get("uid"))&&<ReviewList/>}
           </div>
         </div>
       </>
