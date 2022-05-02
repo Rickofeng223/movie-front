@@ -52,8 +52,8 @@ const ReviewListItem = ({
                 <div className="col">
                     <div className="row">
                         <div className="col mb-3">
-                            {/*<h6>{review.movie}</h6>*/}
-                            {/*<small className="">{formatDate(review.time)}</small>*/}
+                            <h6>{review.movie}</h6>
+                            <small className="">{formatDate(review.time)}</small>
                         </div>
                         {canDelete && <div className="col">
                             <i className="float-end fa-solid fa-trash-can"
