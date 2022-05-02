@@ -5,6 +5,7 @@ import {likeOrDislike} from "../../actions/ratingactions";
 import {useSearchParams} from "react-router-dom";
 import {getUserState} from "../../actions/userActions";
 import {getRatings} from "../../actions/admin/ratingsActions";
+import {formatDate} from "../profile/profile-card";
 
 
 const ReviewListItem = ({
@@ -51,8 +52,8 @@ const ReviewListItem = ({
                 <div className="col">
                     <div className="row">
                         <div className="col mb-3">
-                            <h6>{review.critic}</h6>
-                            <small className="">{review.time}</small>
+                            {/*<h6>{review.movie}</h6>*/}
+                            {/*<small className="">{formatDate(review.time)}</small>*/}
                         </div>
                         {canDelete && <div className="col">
                             <i className="float-end fa-solid fa-trash-can"
