@@ -1,4 +1,4 @@
-export default (prev/*"liked" or "disliked"*/, action/*LIKE DISLIKE*/ , review )=> {
+export default function prevToCurrState(prev/*"liked" or "disliked"*/, action/*LIKE DISLIKE*/ , review ) {
 let liked, disliked
     liked = action==="like"
     disliked = !liked
