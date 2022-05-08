@@ -42,27 +42,15 @@ const Login = () => {
 
 
                                 try {
-                                    // console.log("onClick")
-                                    const data = await login({username, password}, {dispatch})
-                                    // console.log(data.data)
 
-
-
-                                        dispatch({type: LOGIN, user: data})
-                                        setError(blankError)
                                         // console.log("UID", data._id)
-                                        navigate({
-                                            pathname: `/home`,
-                                            search: `?uid=${data._id}`
-                                        })
+                                    const response= await login({username,password},dispatch,navigate)
 
                                 }catch (e) {
+                                    // if()
+                                    setPassword('')
                                     setError(e.response.data)
-                                    // console.log(
-                                    //    ' xdata',e.response
-                                    // )
-                                    // console.log(e)
-                                    // navigate('/error')
+
                                 }
 
                             }

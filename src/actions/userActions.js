@@ -14,11 +14,20 @@ export const signup = async (user_data, {navigate, dispatch}) => {
     }
 }
 
-export const login = async (auth,  dispatch ) => {
+export const login = async (auth,  dispatch ,navigate) => {
 
-        let {data} = await axios.post('http://localhost:4000/api/auth/login',  auth)
+        let {data} = await axios.post('http://localhost:4000/api/auth/login', auth)
+        // const data = await login({username, password}, {dispatch})
+        dispatch({type: LOGIN, user: data})
+        navigate({
+            pathname: `/home`,
+            search: `?uid=${data._id}`
+        })
 
-        return data 
+
+
+
+        return data
 
 
 }
