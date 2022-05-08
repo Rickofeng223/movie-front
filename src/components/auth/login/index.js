@@ -10,6 +10,8 @@ const Login = () => {
     const dispatch=useDispatch()
     const navigate= useNavigate()
     const [query,setQuery]= useSearchParams()
+    const blankError={error:false,message:"no error"}
+    const [errorState, setError]= useState(blankError)
     return(
         <>
             <div className="row d-flex justify-content-center">
@@ -24,6 +26,12 @@ const Login = () => {
                         <input value={username} onChange={(e)=>setUsername(e.target.value)} className="mb-4" type="text" id="username" placeholder="example@aol.com"/><br/>
 
 
+                        {errorState.error
+                        && <div style={{color: "red"}}>
+                          {errorState.message}
+                        </div>
+                        }
+
 
                         <label className="font-weight-bold" htmlFor="password">Password</label><br/>
                         <input onChange={(e)=>setPassword(e.target.value)} className="mb-4"  type="password" id="password"/><br/>
@@ -31,19 +39,30 @@ const Login = () => {
                         <button
 
                             onClick={async ()=> {
-                                try {
-                                    console.log("onClick")
-                                    const data = await login({username, password}, {dispatch})
-                                    dispatch({type: LOGIN, user: data})
 
-                                    console.log("UID",data._id)
-                                    navigate( {
-                                        pathname: `/home`,
-                                        search: `?uid=${data._id}`
-                                    })
+
+                                try {
+                                    // console.log("onClick")
+                                    const data = await login({username, password}, {dispatch})
+                                    // console.log(data.data)
+
+
+
+                                        dispatch({type: LOGIN, user: data})
+                                        setError(blankError)
+                                        // console.log("UID", data._id)
+                                        navigate({
+                                            pathname: `/home`,
+                                            search: `?uid=${data._id}`
+                                        })
+
                                 }catch (e) {
-                                    console.log(e)
-                                    navigate('/error')
+                                    setError(e.response.data)
+                                    // console.log(
+                                    //    ' xdata',e.response
+                                    // )
+                                    // console.log(e)
+                                    // navigate('/error')
                                 }
 
                             }
