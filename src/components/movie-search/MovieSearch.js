@@ -1,8 +1,8 @@
 import axios from "axios";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setUserSelectedMovie } from "../actions/searcActions";
-import MovieCard from "../home-screen/movies/MovieCard";
+import { setUserSelectedMovie } from "../../actions";
+import MovieCard from "../movie_page_home/home_screen/movies/MovieCard";
 // import SearchResult from "./searchResult";
 
 //   https://api.themoviedb.org/3/search/movie?api_key=f48cf3e24ec9e89cc63cc40d1d8975c1&query=spiderman

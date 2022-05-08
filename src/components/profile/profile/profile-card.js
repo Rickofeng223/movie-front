@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 import '../edit-profile/edit-profile-styles.css';
-import {getUserState} from "../../actions/userActions";
+import {getUserState} from "../../../actions";
 
 const ProfileCard = () => {
     const [query, setQuery] = useSearchParams()

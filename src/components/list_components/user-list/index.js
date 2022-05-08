@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import UserListItem from "./user-list-item";
 import {Col, Nav, Row, Tab} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
-import {getUsers} from "../../actions/admin/usersActions";
+import {getUsers} from "../../../actions";
 
 const UserList = ({uid}) => {
     const dispatch = useDispatch()

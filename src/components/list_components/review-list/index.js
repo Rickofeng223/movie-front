@@ -2,9 +2,8 @@ import React, {useEffect, useState} from "react";
 //import reviews from "../data/reviews.json"
 import ReviewListItem from "./review-list-item";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteReview, getReviews} from "../../actions/admin/reviewsActions.js";
+import {deleteReview, getReviews,getRatings} from "../../../actions";
 import {useSearchParams} from "react-router-dom";
-import {getRatings} from "../../actions/admin/ratingsActions";
 
 
 const ReviewList = () => {

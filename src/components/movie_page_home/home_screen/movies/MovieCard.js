@@ -1,11 +1,13 @@
 import {Link, useSearchParams} from "react-router-dom";
-import { getImage } from "../../../util/constant";
+
 import "../actionStyle.css";
-import AsyncImage from "../../util/AsyncImage";
+
 import {useDispatch, useSelector} from "react-redux";
-import {SET_USER_SELECTED_MOVIE} from "../../actions/searcActions";
+import {SET_USER_SELECTED_MOVIE,getUserState} from "../../../../actions";
 import {useEffect} from "react";
-import {getUserState} from "../../../actions/userActions";
+import {getImage} from "../../../../util/constant";
+import AsyncImage from "../../../util/AsyncImage";
+
 
 const MovieCard = ({ m, handleClick }) => {
     const user = useSelector(e => e.currentUser)

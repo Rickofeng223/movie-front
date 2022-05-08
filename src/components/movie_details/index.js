@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
-import ReviewList from "../review-list";
-import WriteReviewModal from "../write-review-modal";
+import ReviewList from "../list_components/review-list";
+import WriteReviewModal from "../movie_page_home/write_review_modal";
 import {useDispatch, useSelector} from "react-redux";
 import { getImage } from "../../util/constant";
 import AsyncImage from "../util/AsyncImage";
 import {useSearchParams} from "react-router-dom";
-import {getUserState} from "../../actions/userActions";
+import {getUserState} from "../../actions";
 
 const MoviePage = (
   {

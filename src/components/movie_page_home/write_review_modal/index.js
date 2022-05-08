@@ -2,7 +2,7 @@ import * as redux from 'react-redux'
 import React, {useEffect, useState} from "react";
 import {Button, Modal} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
-import {getUserState} from "../../actions/userActions";
+import {getUserState} from "../../../actions";
 import {useSearchParams} from "react-router-dom";
 import axios from "axios";
 

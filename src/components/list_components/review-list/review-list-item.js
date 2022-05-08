@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from "react";
+import  {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getReviews} from "../../actions/admin/reviewsActions";
-import {likeOrDislike} from "../../actions/ratingactions";
+import {getReviews, likeOrDislike,getUserState,getRatings} from "../../../actions";
 import {useSearchParams} from "react-router-dom";
-import {getUserState} from "../../actions/userActions";
-import {getRatings} from "../../actions/admin/ratingsActions";
+
 
 
 const ReviewListItem = ({

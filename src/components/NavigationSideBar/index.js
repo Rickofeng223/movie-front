@@ -1,9 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useLocation, useNavigate, useSearchParams} from "react-router-dom";
-import {searchForMovies, seartStartForMovies, START_SEARCH_FOR_MOVIE} from "../actions/searcActions";
-import {logout} from "../../actions/userActions";
-//import { useLocation } from "react-router-dom";
+import {searchForMovies, seartStartForMovies, START_SEARCH_FOR_MOVIE,logout} from "../../actions";
 import {Button, Container, Form, FormControl, Nav, Navbar} from "react-bootstrap";
 
 const NavigationSidebar = () => {

@@ -1,37 +1,32 @@
 import "./App.css";
-import React, {useEffect} from "react";
-import {BrowserRouter, Outlet, Route, Routes, useSearchParams} from "react-router-dom";
-import HomeScreen from "./components/home-screen/HomeScreen";
-import MoviePage from "./components/movie-page";
+import React from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import HomeScreen from "./components/movie_page_home/home_screen/HomeScreen";
+import MoviePage from "./components/movie_details";
 import "./vendors/bootstrap/css/bootstrap.min.css"
 import "./vendors/fontawesome/css/all.min.css";
 import "./vendors/bootswatch/bootstrap.min.css";
 import SearchList from "./components/movie-search";
-
-import reviewReducer from "./components/reducers/review";
-
-import ratingsReducer from "./components/reducers/ratingsReducer";
-import searchReducer from "./components/reducers/searchReducers";
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import UserReducer from './reducers/userReducer'
-import {Provider, useDispatch, useSelector} from "react-redux";
+import {Provider} from "react-redux";
 import thunk from "redux-thunk";
-import ProfileComponent from "./components/profile";
-import EditProfileComponent from "./components/edit-profile/index";
-import Login from "./components/login";
-import CreateAccount from "./components/create-account";
-import AdminPage from "./components/admin-page";
-import UsersReducer from "./reducers/admin-users-reducer";
+import ProfileComponent from "./components/profile/profile";
+import EditProfileComponent from "./components/profile/edit-profile/index";
+import Login from "./components/auth/login";
+import CreateAccount from "./components/auth/create-account";
+import AdminPage from "./components/auth/admin-page";
 import NavigationSidebar from "./components/NavigationSideBar";
-import {getUserState} from "./actions/userActions";
+import {ratingsReducer, reviewReducer, searchReducer, userReducer, usersReducer} from "./reducers";
+
+;
 
 
 const reducer = combineReducers({
     reviews: reviewReducer,
     ratings: ratingsReducer,
     searchMovies: searchReducer,
-    currentUser: UserReducer,
-    users: UsersReducer
+    currentUser: userReducer,
+    users: usersReducer
 });
 const store = createStore(reducer, applyMiddleware(thunk));
 

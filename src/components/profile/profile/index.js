@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 
-import ReviewList from "../review-list";
- import {getUserState, updateProfile} from "../../actions/userActions";
+import {ReviewList} from "../../list_components";
+import {getUserState} from "../../../actions";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate, useSearchParams} from "react-router-dom";
- import ProfileCard from "./profile-card";
-
+import {useNavigate, useSearchParams} from "react-router-dom";
+import ProfileCard from "./profile-card";
 
 
 const ProfileComponent = () => {

@@ -1,11 +1,10 @@
 import React, {useEffect} from "react";
 import {Tab, Tabs} from "react-bootstrap";
 
-import ReviewList from "../review-list";
-import UserList from "../user-list";
+import {UsersList as UserList,ReviewList} from "../../list_components/index.js";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {getUserState} from "../../actions/userActions";
+import {getUserState} from "../../../actions";
 
 const AdminPage = () => {
 

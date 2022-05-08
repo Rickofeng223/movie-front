@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
 
 
-import {LOGIN, login} from '../../actions/userActions'
+import {LOGIN, login} from '../../../actions'
 import {useDispatch} from "react-redux";
 const Login = () => {
     const [username,setUsername]=useState('')

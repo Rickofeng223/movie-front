@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "../actionStyle.css";
 import { useDispatch } from "react-redux";
-import {SET_USER_SELECTED_MOVIE, setUserSelectedMovie} from "../../actions/searcActions";
+import {SET_USER_SELECTED_MOVIE, setUserSelectedMovie} from "../../../../actions";
 import {useSearchParams} from "react-router-dom";
 
 const Movies = ({ movieType, dataUrl , uid }) => {

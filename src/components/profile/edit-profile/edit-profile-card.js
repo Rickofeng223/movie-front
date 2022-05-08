@@ -1,12 +1,8 @@
-import React, {useEffect, useRef, useState} from "react";
-
-import ReviewList from "../review-list";
-import {getUserState, updateProfile} from "../../actions/userActions";
+import React, {useEffect, useState} from "react";
+import {getUserState, updateProfile} from "../../../actions";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate, useSearchParams} from "react-router-dom";
-
-import '../edit-profile/edit-profile-styles.css';
-import profile from "../profile";
+import {useNavigate, useSearchParams} from "react-router-dom";
+import './/edit-profile-styles.css';
 import {formatDate} from "../profile/profile-card";
 
 

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useDispatch} from 'react-redux'
 import {useNavigate,Link} from "react-router-dom";
 // import {signup} from '../../reducers/userReducer'
-import {signup} from '../../actions/userActions.js'
+import {signup} from '../../../actions'
 const CreateAccount = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()

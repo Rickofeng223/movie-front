@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import { getImage } from "../../util/constant";
-import "../home-screen/actionStyle.css";
-import {getUserState} from "../../actions/userActions";
+import "../movie_page_home/home_screen/actionStyle.css";
+import {getUserState} from "../../actions";
 
 const SearchResult = ({ m }) => {
     useEffect(() => {

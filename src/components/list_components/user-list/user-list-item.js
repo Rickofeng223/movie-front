@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {DELETE_USER, deleteUser,} from "../../actions/admin/usersActions";
+import {DELETE_USER, deleteUser,} from "../../../actions";
 import axios from "axios";
 
 const UserListItem = (

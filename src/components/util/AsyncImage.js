@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import  {useEffect, useState} from "react";
 
 const AsyncImage = ({src, alt, className}) => {
     const [img, setImg] = useState();
